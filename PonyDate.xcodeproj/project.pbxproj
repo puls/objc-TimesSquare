@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A806805F16700FD70071C71E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805E16700FD70071C71E /* Foundation.framework */; };
+		A806806416700FD70071C71E /* PonyDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A806806316700FD70071C71E /* PonyDate.h */; };
+		A806806616700FD70071C71E /* PonyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A806806516700FD70071C71E /* PonyDate.m */; };
+		A806806E16700FD80071C71E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806806D16700FD80071C71E /* SenTestingKit.framework */; };
+		A806807016700FD80071C71E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806806F16700FD80071C71E /* UIKit.framework */; };
+		A806807116700FD80071C71E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805E16700FD70071C71E /* Foundation.framework */; };
+		A806807416700FD80071C71E /* libPonyDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805B16700FD70071C71E /* libPonyDate.a */; };
+		A806807A16700FD80071C71E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A806807816700FD80071C71E /* InfoPlist.strings */; };
+		A806807D16700FD80071C71E /* PonyDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A806807C16700FD80071C71E /* PonyDateTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A806807216700FD80071C71E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A806805216700FD70071C71E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A806805A16700FD70071C71E;
+			remoteInfo = PonyDate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A806805916700FD70071C71E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				A806806416700FD70071C71E /* PonyDate.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A806805B16700FD70071C71E /* libPonyDate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPonyDate.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A806805E16700FD70071C71E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A806806216700FD70071C71E /* PonyDate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PonyDate-Prefix.pch"; sourceTree = "<group>"; };
+		A806806316700FD70071C71E /* PonyDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PonyDate.h; sourceTree = "<group>"; };
+		A806806516700FD70071C71E /* PonyDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PonyDate.m; sourceTree = "<group>"; };
+		A806806C16700FD80071C71E /* PonyDateTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PonyDateTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A806806D16700FD80071C71E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		A806806F16700FD80071C71E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		A806807716700FD80071C71E /* PonyDateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PonyDateTests-Info.plist"; sourceTree = "<group>"; };
+		A806807916700FD80071C71E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A806807B16700FD80071C71E /* PonyDateTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PonyDateTests.h; sourceTree = "<group>"; };
+		A806807C16700FD80071C71E /* PonyDateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PonyDateTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A806805816700FD70071C71E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A806805F16700FD70071C71E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A806806816700FD80071C71E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A806806E16700FD80071C71E /* SenTestingKit.framework in Frameworks */,
+				A806807016700FD80071C71E /* UIKit.framework in Frameworks */,
+				A806807116700FD80071C71E /* Foundation.framework in Frameworks */,
+				A806807416700FD80071C71E /* libPonyDate.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A806805016700FD70071C71E = {
+			isa = PBXGroup;
+			children = (
+				A806806016700FD70071C71E /* PonyDate */,
+				A806807516700FD80071C71E /* PonyDateTests */,
+				A806805D16700FD70071C71E /* Frameworks */,
+				A806805C16700FD70071C71E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A806805C16700FD70071C71E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A806805B16700FD70071C71E /* libPonyDate.a */,
+				A806806C16700FD80071C71E /* PonyDateTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A806805D16700FD70071C71E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A806805E16700FD70071C71E /* Foundation.framework */,
+				A806806D16700FD80071C71E /* SenTestingKit.framework */,
+				A806806F16700FD80071C71E /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A806806016700FD70071C71E /* PonyDate */ = {
+			isa = PBXGroup;
+			children = (
+				A806806316700FD70071C71E /* PonyDate.h */,
+				A806806516700FD70071C71E /* PonyDate.m */,
+				A806806116700FD70071C71E /* Supporting Files */,
+			);
+			path = PonyDate;
+			sourceTree = "<group>";
+		};
+		A806806116700FD70071C71E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A806806216700FD70071C71E /* PonyDate-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A806807516700FD80071C71E /* PonyDateTests */ = {
+			isa = PBXGroup;
+			children = (
+				A806807B16700FD80071C71E /* PonyDateTests.h */,
+				A806807C16700FD80071C71E /* PonyDateTests.m */,
+				A806807616700FD80071C71E /* Supporting Files */,
+			);
+			path = PonyDateTests;
+			sourceTree = "<group>";
+		};
+		A806807616700FD80071C71E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A806807716700FD80071C71E /* PonyDateTests-Info.plist */,
+				A806807816700FD80071C71E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A806805A16700FD70071C71E /* PonyDate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A806808016700FD80071C71E /* Build configuration list for PBXNativeTarget "PonyDate" */;
+			buildPhases = (
+				A806805716700FD70071C71E /* Sources */,
+				A806805816700FD70071C71E /* Frameworks */,
+				A806805916700FD70071C71E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PonyDate;
+			productName = PonyDate;
+			productReference = A806805B16700FD70071C71E /* libPonyDate.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A806806B16700FD80071C71E /* PonyDateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A806808316700FD80071C71E /* Build configuration list for PBXNativeTarget "PonyDateTests" */;
+			buildPhases = (
+				A806806716700FD80071C71E /* Sources */,
+				A806806816700FD80071C71E /* Frameworks */,
+				A806806916700FD80071C71E /* Resources */,
+				A806806A16700FD80071C71E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A806807316700FD80071C71E /* PBXTargetDependency */,
+			);
+			name = PonyDateTests;
+			productName = PonyDateTests;
+			productReference = A806806C16700FD80071C71E /* PonyDateTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A806805216700FD70071C71E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = Square;
+			};
+			buildConfigurationList = A806805516700FD70071C71E /* Build configuration list for PBXProject "PonyDate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A806805016700FD70071C71E;
+			productRefGroup = A806805C16700FD70071C71E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A806805A16700FD70071C71E /* PonyDate */,
+				A806806B16700FD80071C71E /* PonyDateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A806806916700FD80071C71E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A806807A16700FD80071C71E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A806806A16700FD80071C71E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A806805716700FD70071C71E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A806806616700FD70071C71E /* PonyDate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A806806716700FD80071C71E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A806807D16700FD80071C71E /* PonyDateTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A806807316700FD80071C71E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A806805A16700FD70071C71E /* PonyDate */;
+			targetProxy = A806807216700FD80071C71E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A806807816700FD80071C71E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A806807916700FD80071C71E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A806807E16700FD80071C71E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A806807F16700FD80071C71E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A806808116700FD80071C71E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PonyDate.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PonyDate/PonyDate-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A806808216700FD80071C71E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PonyDate.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PonyDate/PonyDate-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A806808416700FD80071C71E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PonyDate/PonyDate-Prefix.pch";
+				INFOPLIST_FILE = "PonyDateTests/PonyDateTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		A806808516700FD80071C71E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PonyDate/PonyDate-Prefix.pch";
+				INFOPLIST_FILE = "PonyDateTests/PonyDateTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A806805516700FD70071C71E /* Build configuration list for PBXProject "PonyDate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A806807E16700FD80071C71E /* Debug */,
+				A806807F16700FD80071C71E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A806808016700FD80071C71E /* Build configuration list for PBXNativeTarget "PonyDate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A806808116700FD80071C71E /* Debug */,
+				A806808216700FD80071C71E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A806808316700FD80071C71E /* Build configuration list for PBXNativeTarget "PonyDateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A806808416700FD80071C71E /* Debug */,
+				A806808516700FD80071C71E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A806805216700FD70071C71E /* Project object */;
+}
