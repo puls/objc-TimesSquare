@@ -9,17 +9,52 @@
 /* Begin PBXBuildFile section */
 		A806805F16700FD70071C71E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805E16700FD70071C71E /* Foundation.framework */; };
 		A806806416700FD70071C71E /* PonyDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A806806316700FD70071C71E /* PonyDate.h */; };
-		A806806616700FD70071C71E /* PonyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A806806516700FD70071C71E /* PonyDate.m */; };
 		A806806E16700FD80071C71E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806806D16700FD80071C71E /* SenTestingKit.framework */; };
 		A806807016700FD80071C71E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806806F16700FD80071C71E /* UIKit.framework */; };
 		A806807116700FD80071C71E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805E16700FD70071C71E /* Foundation.framework */; };
 		A806807416700FD80071C71E /* libPonyDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805B16700FD70071C71E /* libPonyDate.a */; };
 		A806807A16700FD80071C71E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A806807816700FD80071C71E /* InfoPlist.strings */; };
 		A806807D16700FD80071C71E /* PonyDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A806807C16700FD80071C71E /* PonyDateTests.m */; };
+		A806808E167010030071C71E /* PDCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068087167010030071C71E /* PDCalendarCell.m */; };
+		A806808F167010030071C71E /* PDCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068087167010030071C71E /* PDCalendarCell.m */; };
+		A8068090167010030071C71E /* PDCalendarMonthHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068089167010030071C71E /* PDCalendarMonthHeaderCell.m */; };
+		A8068091167010030071C71E /* PDCalendarMonthHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068089167010030071C71E /* PDCalendarMonthHeaderCell.m */; };
+		A8068092167010030071C71E /* PDCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808B167010030071C71E /* PDCalendarRowCell.m */; };
+		A8068093167010030071C71E /* PDCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808B167010030071C71E /* PDCalendarRowCell.m */; };
+		A8068094167010030071C71E /* PDCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808D167010030071C71E /* PDCalendarView.m */; };
+		A8068095167010030071C71E /* PDCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808D167010030071C71E /* PDCalendarView.m */; };
+		A806809C167012980071C71E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806806F16700FD80071C71E /* UIKit.framework */; };
+		A806809D167012980071C71E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805E16700FD70071C71E /* Foundation.framework */; };
+		A806809F167012980071C71E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806809E167012980071C71E /* CoreGraphics.framework */; };
+		A80680A5167012980071C71E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A80680A3167012980071C71E /* InfoPlist.strings */; };
+		A80680A7167012980071C71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A80680A6167012980071C71E /* main.m */; };
+		A80680AB167012980071C71E /* PDTAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A80680AA167012980071C71E /* PDTAAppDelegate.m */; };
+		A80680AD167012980071C71E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A80680AC167012980071C71E /* Default.png */; };
+		A80680AF167012980071C71E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80680AE167012980071C71E /* Default@2x.png */; };
+		A80680B1167012980071C71E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80680B0167012980071C71E /* Default-568h@2x.png */; };
+		A80680BB167012F50071C71E /* PDTAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80680BA167012F50071C71E /* PDTAViewController.m */; };
+		A80680C5167018310071C71E /* libPonyDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805B16700FD70071C71E /* libPonyDate.a */; };
+		A80681141670242D0071C71E /* CalendarPreviousMonth.png in Resources */ = {isa = PBXBuildFile; fileRef = A806810A1670242C0071C71E /* CalendarPreviousMonth.png */; };
+		A80681151670242D0071C71E /* CalendarPreviousMonth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A806810B1670242C0071C71E /* CalendarPreviousMonth@2x.png */; };
+		A80681161670242D0071C71E /* CalendarRow.png in Resources */ = {isa = PBXBuildFile; fileRef = A806810C1670242C0071C71E /* CalendarRow.png */; };
+		A80681171670242D0071C71E /* CalendarRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A806810D1670242C0071C71E /* CalendarRow@2x.png */; };
+		A80681181670242D0071C71E /* CalendarRowBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = A806810E1670242C0071C71E /* CalendarRowBottom.png */; };
+		A80681191670242D0071C71E /* CalendarRowBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A806810F1670242C0071C71E /* CalendarRowBottom@2x.png */; };
+		A806811A1670242D0071C71E /* CalendarSelectedDate.png in Resources */ = {isa = PBXBuildFile; fileRef = A80681101670242C0071C71E /* CalendarSelectedDate.png */; };
+		A806811B1670242D0071C71E /* CalendarSelectedDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80681111670242C0071C71E /* CalendarSelectedDate@2x.png */; };
+		A806811C1670242D0071C71E /* CalendarTodaysDate.png in Resources */ = {isa = PBXBuildFile; fileRef = A80681121670242C0071C71E /* CalendarTodaysDate.png */; };
+		A806811D1670242D0071C71E /* CalendarTodaysDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80681131670242C0071C71E /* CalendarTodaysDate@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A806807216700FD80071C71E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A806805216700FD70071C71E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A806805A16700FD70071C71E;
+			remoteInfo = PonyDate;
+		};
+		A80680C3167016FE0071C71E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A806805216700FD70071C71E /* Project object */;
 			proxyType = 1;
@@ -46,7 +81,6 @@
 		A806805E16700FD70071C71E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A806806216700FD70071C71E /* PonyDate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PonyDate-Prefix.pch"; sourceTree = "<group>"; };
 		A806806316700FD70071C71E /* PonyDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PonyDate.h; sourceTree = "<group>"; };
-		A806806516700FD70071C71E /* PonyDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PonyDate.m; sourceTree = "<group>"; };
 		A806806C16700FD80071C71E /* PonyDateTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PonyDateTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A806806D16700FD80071C71E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A806806F16700FD80071C71E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -54,6 +88,37 @@
 		A806807916700FD80071C71E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A806807B16700FD80071C71E /* PonyDateTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PonyDateTests.h; sourceTree = "<group>"; };
 		A806807C16700FD80071C71E /* PonyDateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PonyDateTests.m; sourceTree = "<group>"; };
+		A8068086167010030071C71E /* PDCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCalendarCell.h; sourceTree = "<group>"; };
+		A8068087167010030071C71E /* PDCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDCalendarCell.m; sourceTree = "<group>"; };
+		A8068088167010030071C71E /* PDCalendarMonthHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCalendarMonthHeaderCell.h; sourceTree = "<group>"; };
+		A8068089167010030071C71E /* PDCalendarMonthHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDCalendarMonthHeaderCell.m; sourceTree = "<group>"; };
+		A806808A167010030071C71E /* PDCalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCalendarRowCell.h; sourceTree = "<group>"; };
+		A806808B167010030071C71E /* PDCalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDCalendarRowCell.m; sourceTree = "<group>"; };
+		A806808C167010030071C71E /* PDCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDCalendarView.h; sourceTree = "<group>"; };
+		A806808D167010030071C71E /* PDCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDCalendarView.m; sourceTree = "<group>"; };
+		A806809A167012980071C71E /* PonyDateTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PonyDateTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A806809E167012980071C71E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A80680A2167012980071C71E /* PonyDateTestApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PonyDateTestApp-Info.plist"; sourceTree = "<group>"; };
+		A80680A4167012980071C71E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A80680A6167012980071C71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A80680A8167012980071C71E /* PonyDateTestApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PonyDateTestApp-Prefix.pch"; sourceTree = "<group>"; };
+		A80680A9167012980071C71E /* PDTAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDTAAppDelegate.h; sourceTree = "<group>"; };
+		A80680AA167012980071C71E /* PDTAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDTAAppDelegate.m; sourceTree = "<group>"; };
+		A80680AC167012980071C71E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A80680AE167012980071C71E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A80680B0167012980071C71E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A80680B9167012F40071C71E /* PDTAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDTAViewController.h; sourceTree = "<group>"; };
+		A80680BA167012F50071C71E /* PDTAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDTAViewController.m; sourceTree = "<group>"; };
+		A806810A1670242C0071C71E /* CalendarPreviousMonth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarPreviousMonth.png; sourceTree = "<group>"; };
+		A806810B1670242C0071C71E /* CalendarPreviousMonth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarPreviousMonth@2x.png"; sourceTree = "<group>"; };
+		A806810C1670242C0071C71E /* CalendarRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarRow.png; sourceTree = "<group>"; };
+		A806810D1670242C0071C71E /* CalendarRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarRow@2x.png"; sourceTree = "<group>"; };
+		A806810E1670242C0071C71E /* CalendarRowBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarRowBottom.png; sourceTree = "<group>"; };
+		A806810F1670242C0071C71E /* CalendarRowBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarRowBottom@2x.png"; sourceTree = "<group>"; };
+		A80681101670242C0071C71E /* CalendarSelectedDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarSelectedDate.png; sourceTree = "<group>"; };
+		A80681111670242C0071C71E /* CalendarSelectedDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarSelectedDate@2x.png"; sourceTree = "<group>"; };
+		A80681121670242C0071C71E /* CalendarTodaysDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarTodaysDate.png; sourceTree = "<group>"; };
+		A80681131670242C0071C71E /* CalendarTodaysDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarTodaysDate@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +141,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8068097167012980071C71E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A80680C5167018310071C71E /* libPonyDate.a in Frameworks */,
+				A806809C167012980071C71E /* UIKit.framework in Frameworks */,
+				A806809D167012980071C71E /* Foundation.framework in Frameworks */,
+				A806809F167012980071C71E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -84,6 +160,7 @@
 			children = (
 				A806806016700FD70071C71E /* PonyDate */,
 				A806807516700FD80071C71E /* PonyDateTests */,
+				A80680A0167012980071C71E /* PonyDateTestApp */,
 				A806805D16700FD70071C71E /* Frameworks */,
 				A806805C16700FD70071C71E /* Products */,
 			);
@@ -94,6 +171,7 @@
 			children = (
 				A806805B16700FD70071C71E /* libPonyDate.a */,
 				A806806C16700FD80071C71E /* PonyDateTests.octest */,
+				A806809A167012980071C71E /* PonyDateTestApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +182,7 @@
 				A806805E16700FD70071C71E /* Foundation.framework */,
 				A806806D16700FD80071C71E /* SenTestingKit.framework */,
 				A806806F16700FD80071C71E /* UIKit.framework */,
+				A806809E167012980071C71E /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,7 +191,14 @@
 			isa = PBXGroup;
 			children = (
 				A806806316700FD70071C71E /* PonyDate.h */,
-				A806806516700FD70071C71E /* PonyDate.m */,
+				A8068086167010030071C71E /* PDCalendarCell.h */,
+				A8068087167010030071C71E /* PDCalendarCell.m */,
+				A8068088167010030071C71E /* PDCalendarMonthHeaderCell.h */,
+				A8068089167010030071C71E /* PDCalendarMonthHeaderCell.m */,
+				A806808A167010030071C71E /* PDCalendarRowCell.h */,
+				A806808B167010030071C71E /* PDCalendarRowCell.m */,
+				A806808C167010030071C71E /* PDCalendarView.h */,
+				A806808D167010030071C71E /* PDCalendarView.m */,
 				A806806116700FD70071C71E /* Supporting Files */,
 			);
 			path = PonyDate;
@@ -143,6 +229,50 @@
 				A806807816700FD80071C71E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A80680A0167012980071C71E /* PonyDateTestApp */ = {
+			isa = PBXGroup;
+			children = (
+				A80680A9167012980071C71E /* PDTAAppDelegate.h */,
+				A80680AA167012980071C71E /* PDTAAppDelegate.m */,
+				A80680B9167012F40071C71E /* PDTAViewController.h */,
+				A80680BA167012F50071C71E /* PDTAViewController.m */,
+				A806811E167024FA0071C71E /* Images */,
+				A80680A1167012980071C71E /* Supporting Files */,
+			);
+			path = PonyDateTestApp;
+			sourceTree = "<group>";
+		};
+		A80680A1167012980071C71E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A80680A2167012980071C71E /* PonyDateTestApp-Info.plist */,
+				A80680A3167012980071C71E /* InfoPlist.strings */,
+				A80680A6167012980071C71E /* main.m */,
+				A80680A8167012980071C71E /* PonyDateTestApp-Prefix.pch */,
+				A80680AC167012980071C71E /* Default.png */,
+				A80680AE167012980071C71E /* Default@2x.png */,
+				A80680B0167012980071C71E /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A806811E167024FA0071C71E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A806810A1670242C0071C71E /* CalendarPreviousMonth.png */,
+				A806810B1670242C0071C71E /* CalendarPreviousMonth@2x.png */,
+				A806810C1670242C0071C71E /* CalendarRow.png */,
+				A806810D1670242C0071C71E /* CalendarRow@2x.png */,
+				A806810E1670242C0071C71E /* CalendarRowBottom.png */,
+				A806810F1670242C0071C71E /* CalendarRowBottom@2x.png */,
+				A80681101670242C0071C71E /* CalendarSelectedDate.png */,
+				A80681111670242C0071C71E /* CalendarSelectedDate@2x.png */,
+				A80681121670242C0071C71E /* CalendarTodaysDate.png */,
+				A80681131670242C0071C71E /* CalendarTodaysDate@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +314,24 @@
 			productReference = A806806C16700FD80071C71E /* PonyDateTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		A8068099167012980071C71E /* PonyDateTestApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A80680B2167012980071C71E /* Build configuration list for PBXNativeTarget "PonyDateTestApp" */;
+			buildPhases = (
+				A8068096167012980071C71E /* Sources */,
+				A8068097167012980071C71E /* Frameworks */,
+				A8068098167012980071C71E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A80680C4167016FE0071C71E /* PBXTargetDependency */,
+			);
+			name = PonyDateTestApp;
+			productName = PonyDateTestApp;
+			productReference = A806809A167012980071C71E /* PonyDateTestApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -207,6 +355,7 @@
 			targets = (
 				A806805A16700FD70071C71E /* PonyDate */,
 				A806806B16700FD80071C71E /* PonyDateTests */,
+				A8068099167012980071C71E /* PonyDateTestApp */,
 			);
 		};
 /* End PBXProject section */
@@ -217,6 +366,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				A806807A16700FD80071C71E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8068098167012980071C71E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A80680A5167012980071C71E /* InfoPlist.strings in Resources */,
+				A80680AD167012980071C71E /* Default.png in Resources */,
+				A80680AF167012980071C71E /* Default@2x.png in Resources */,
+				A80680B1167012980071C71E /* Default-568h@2x.png in Resources */,
+				A80681141670242D0071C71E /* CalendarPreviousMonth.png in Resources */,
+				A80681151670242D0071C71E /* CalendarPreviousMonth@2x.png in Resources */,
+				A80681161670242D0071C71E /* CalendarRow.png in Resources */,
+				A80681171670242D0071C71E /* CalendarRow@2x.png in Resources */,
+				A80681181670242D0071C71E /* CalendarRowBottom.png in Resources */,
+				A80681191670242D0071C71E /* CalendarRowBottom@2x.png in Resources */,
+				A806811A1670242D0071C71E /* CalendarSelectedDate.png in Resources */,
+				A806811B1670242D0071C71E /* CalendarSelectedDate@2x.png in Resources */,
+				A806811C1670242D0071C71E /* CalendarTodaysDate.png in Resources */,
+				A806811D1670242D0071C71E /* CalendarTodaysDate@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +413,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A806806616700FD70071C71E /* PonyDate.m in Sources */,
+				A806808E167010030071C71E /* PDCalendarCell.m in Sources */,
+				A8068090167010030071C71E /* PDCalendarMonthHeaderCell.m in Sources */,
+				A8068092167010030071C71E /* PDCalendarRowCell.m in Sources */,
+				A8068094167010030071C71E /* PDCalendarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +425,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				A806807D16700FD80071C71E /* PonyDateTests.m in Sources */,
+				A806808F167010030071C71E /* PDCalendarCell.m in Sources */,
+				A8068091167010030071C71E /* PDCalendarMonthHeaderCell.m in Sources */,
+				A8068093167010030071C71E /* PDCalendarRowCell.m in Sources */,
+				A8068095167010030071C71E /* PDCalendarView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8068096167012980071C71E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A80680A7167012980071C71E /* main.m in Sources */,
+				A80680AB167012980071C71E /* PDTAAppDelegate.m in Sources */,
+				A80680BB167012F50071C71E /* PDTAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +450,11 @@
 			target = A806805A16700FD70071C71E /* PonyDate */;
 			targetProxy = A806807216700FD80071C71E /* PBXContainerItemProxy */;
 		};
+		A80680C4167016FE0071C71E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A806805A16700FD70071C71E /* PonyDate */;
+			targetProxy = A80680C3167016FE0071C71E /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -270,6 +462,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				A806807916700FD80071C71E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A80680A3167012980071C71E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A80680A4167012980071C71E /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -297,7 +497,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -316,7 +516,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -325,6 +525,7 @@
 		A806808116700FD80071C71E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/PonyDate.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PonyDate/PonyDate-Prefix.pch";
@@ -337,6 +538,7 @@
 		A806808216700FD80071C71E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/PonyDate.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PonyDate/PonyDate-Prefix.pch";
@@ -349,6 +551,7 @@
 		A806808416700FD80071C71E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -364,6 +567,7 @@
 		A806808516700FD80071C71E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -373,6 +577,45 @@
 				INFOPLIST_FILE = "PonyDateTests/PonyDateTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		A80680B3167012980071C71E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PonyDateTestApp/PonyDateTestApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = $SRCROOT/PonyDate/;
+				INFOPLIST_FILE = "PonyDateTestApp/PonyDateTestApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A80680B4167012980071C71E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PonyDateTestApp/PonyDateTestApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = $SRCROOT/PonyDate/;
+				INFOPLIST_FILE = "PonyDateTestApp/PonyDateTestApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
@@ -401,6 +644,14 @@
 			buildConfigurations = (
 				A806808416700FD80071C71E /* Debug */,
 				A806808516700FD80071C71E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A80680B2167012980071C71E /* Build configuration list for PBXNativeTarget "PonyDateTestApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A80680B3167012980071C71E /* Debug */,
+				A80680B4167012980071C71E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
