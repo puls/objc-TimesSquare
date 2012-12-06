@@ -116,4 +116,12 @@ static const CGFloat PDCalendarMonthHeaderCellMonthsHeight = 20.f;
     self.textLabel.text = [self.monthDateFormatter stringFromDate:firstOfMonth];
 }
 
+- (void)setBackgroundColor:(UIColor *)backgroundColor;
+{
+    [super setBackgroundColor:backgroundColor];
+    for (UILabel *label in self.headerLabels) {
+        label.backgroundColor = backgroundColor;
+    }
+}
+
 @end

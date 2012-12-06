@@ -177,6 +177,7 @@
         PDCalendarMonthHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
             cell = [[[self headerCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
+            cell.backgroundColor = self.backgroundColor;
         }
         return cell;
     } else {
@@ -184,6 +185,7 @@
         PDCalendarRowCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
             cell = [[[self rowCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
+            cell.backgroundColor = self.backgroundColor;
             cell.calendarView = self;
         }
         return cell;
