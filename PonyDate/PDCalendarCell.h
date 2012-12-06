@@ -16,16 +16,10 @@
 @property (nonatomic, readonly) NSUInteger daysInWeek;
 @property (nonatomic, strong) NSCalendar *calendar;
 
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic) CGSize shadowOffset;
+
 - (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)layoutViewsForColumnAtIndex:(NSUInteger)index inRect:(CGRect)rect;
-
-@end
-
-@interface PDCalendarCell (Styling)
-
-+ (UIColor *)standardTextColor;
-+ (UIColor *)backgroundColor;
-
-+ (CGSize)standardShadowOffset;
 
 @end

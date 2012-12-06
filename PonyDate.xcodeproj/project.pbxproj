@@ -44,6 +44,7 @@
 		A806811B1670242D0071C71E /* CalendarSelectedDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80681111670242C0071C71E /* CalendarSelectedDate@2x.png */; };
 		A806811C1670242D0071C71E /* CalendarTodaysDate.png in Resources */ = {isa = PBXBuildFile; fileRef = A80681121670242C0071C71E /* CalendarTodaysDate.png */; };
 		A806811D1670242D0071C71E /* CalendarTodaysDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A80681131670242C0071C71E /* CalendarTodaysDate@2x.png */; };
+		A806813116702A6E0071C71E /* PDTACalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A806813016702A6E0071C71E /* PDTACalendarRowCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,8 @@
 		A80681111670242C0071C71E /* CalendarSelectedDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarSelectedDate@2x.png"; sourceTree = "<group>"; };
 		A80681121670242C0071C71E /* CalendarTodaysDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarTodaysDate.png; sourceTree = "<group>"; };
 		A80681131670242C0071C71E /* CalendarTodaysDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarTodaysDate@2x.png"; sourceTree = "<group>"; };
+		A806812F16702A6E0071C71E /* PDTACalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDTACalendarRowCell.h; sourceTree = "<group>"; };
+		A806813016702A6E0071C71E /* PDTACalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDTACalendarRowCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,8 @@
 			children = (
 				A80680A9167012980071C71E /* PDTAAppDelegate.h */,
 				A80680AA167012980071C71E /* PDTAAppDelegate.m */,
+				A806812F16702A6E0071C71E /* PDTACalendarRowCell.h */,
+				A806813016702A6E0071C71E /* PDTACalendarRowCell.m */,
 				A80680B9167012F40071C71E /* PDTAViewController.h */,
 				A80680BA167012F50071C71E /* PDTAViewController.m */,
 				A806811E167024FA0071C71E /* Images */,
@@ -439,6 +444,7 @@
 				A80680A7167012980071C71E /* main.m in Sources */,
 				A80680AB167012980071C71E /* PDTAAppDelegate.m in Sources */,
 				A80680BB167012F50071C71E /* PDTAViewController.m in Sources */,
+				A806813116702A6E0071C71E /* PDTACalendarRowCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +644,7 @@
 				A806808216700FD80071C71E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A806808316700FD80071C71E /* Build configuration list for PBXNativeTarget "PonyDateTests" */ = {
 			isa = XCConfigurationList;
@@ -646,6 +653,7 @@
 				A806808516700FD80071C71E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A80680B2167012980071C71E /* Build configuration list for PBXNativeTarget "PonyDateTestApp" */ = {
 			isa = XCConfigurationList;
@@ -654,6 +662,7 @@
 				A80680B4167012980071C71E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

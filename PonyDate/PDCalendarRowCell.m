@@ -20,10 +20,6 @@
 @property (nonatomic, assign) NSInteger indexOfTodayButton;
 @property (nonatomic, assign) NSInteger indexOfSelectedButton;
 
-@property (weak, nonatomic, readonly) UIImage *todayBackgroundImage;
-@property (weak, nonatomic, readonly) UIImage *selectedBackgroundImage;
-@property (weak, nonatomic, readonly) UIImage *notThisMonthBackgroundImage;
-
 @property (nonatomic, strong) NSDateFormatter *dayFormatter;
 
 @property (nonatomic, strong) NSDateComponents *todayDateComponents;
@@ -52,9 +48,9 @@
 - (void)configureButton:(UIButton *)button;
 {
     button.titleLabel.font = [UIFont boldSystemFontOfSize:19.f];
-    button.titleLabel.shadowOffset = [PDCalendarCell standardShadowOffset];
+    button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
-    [button setTitleColor:[PDCalendarCell standardTextColor] forState:UIControlStateNormal];
+    [button setTitleColor:self.textColor forState:UIControlStateNormal];
     [button setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
@@ -67,7 +63,7 @@
         [dayButtons addObject:button];
         [self.contentView addSubview:button];
         [self configureButton:button];
-        [button setTitleColor:[[PDCalendarCell standardTextColor] colorWithAlphaComponent:0.5f] forState:UIControlStateDisabled];
+        [button setTitleColor:[self.textColor colorWithAlphaComponent:0.5f] forState:UIControlStateDisabled];
     }
     self.dayButtons = dayButtons;
 }
@@ -169,8 +165,7 @@
 
     _bottomRow = bottomRow;
     
-    NSString *imageName = [NSString stringWithFormat:@"CalendarRow%@.png", bottomRow ? @"Bottom" : @""];
-    self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    self.backgroundView = [[UIImageView alloc] initWithImage:self.backgroundImage];
     
     [self setNeedsLayout];
 }
@@ -259,21 +254,6 @@
         _dayFormatter.dateFormat = @"d";
     }
     return _dayFormatter;
-}
-
-- (UIImage *)todayBackgroundImage;
-{
-    return [[UIImage imageNamed:@"CalendarTodaysDate.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
-}
-
-- (UIImage *)selectedBackgroundImage;
-{
-    return [[UIImage imageNamed:@"CalendarSelectedDate.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:4];
-}
-
-- (UIImage *)notThisMonthBackgroundImage;
-{
-    return [[UIImage imageNamed:@"CalendarPreviousMonth.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
 }
 
 - (NSInteger)monthOfBeginningDate;

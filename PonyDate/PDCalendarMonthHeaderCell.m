@@ -73,10 +73,10 @@ static const CGFloat PDCalendarMonthHeaderCellMonthsHeight = 20.f;
         label.textAlignment = UITextAlignmentCenter;
         label.text = [dayFormatter stringFromDate:referenceDate];
         label.font = [UIFont boldSystemFontOfSize:12.f];
-        label.backgroundColor = [PDCalendarCell backgroundColor];
-        label.textColor = [PDCalendarCell standardTextColor];
+        label.backgroundColor = self.backgroundColor;
+        label.textColor = self.textColor;
         label.shadowColor = [UIColor whiteColor];
-        label.shadowOffset = [PDCalendarCell standardShadowOffset];
+        label.shadowOffset = self.shadowOffset;
         [label sizeToFit];
         headerLabels[ordinality - 1] = label;
         [self.contentView addSubview:label];
@@ -86,9 +86,9 @@ static const CGFloat PDCalendarMonthHeaderCellMonthsHeight = 20.f;
     
     self.headerLabels = headerLabels;
     self.textLabel.textAlignment = UITextAlignmentCenter;
-    self.textLabel.textColor = [PDCalendarCell standardTextColor];
+    self.textLabel.textColor = self.textColor;
     self.textLabel.shadowColor = [UIColor whiteColor];
-    self.textLabel.shadowOffset = [PDCalendarCell standardShadowOffset];
+    self.textLabel.shadowOffset = self.shadowOffset;
 }
 
 - (void)layoutSubviews;

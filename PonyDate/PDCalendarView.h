@@ -20,6 +20,9 @@
 @property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, weak) id<PDCalendarViewDelegate> delegate;
 
+@property (nonatomic, strong) Class headerCellClass;
+@property (nonatomic, strong) Class rowCellClass;
+
 @end
 
 

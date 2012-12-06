@@ -7,6 +7,7 @@
 //
 
 #import "PDTAViewController.h"
+#import "PDTACalendarRowCell.h"
 #import "PonyDate.h"
 
 
@@ -30,9 +31,11 @@
 {
     PDCalendarView *calendarView = [[PDCalendarView alloc] init];
     calendarView.calendar = self.calendar;
+    calendarView.rowCellClass = [PDTACalendarRowCell class];
     calendarView.firstDate = [NSDate date];
     calendarView.lastDate = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * 365 * 5];
-    
+    calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
+
     self.view = calendarView;
 }
 
@@ -48,6 +51,7 @@
 {
     [super viewDidAppear:animated];
     
+    // Uncomment this to test scrolling performance of your custom drawing
 //    self.timer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(scroll) userInfo:nil repeats:YES];
 }
 

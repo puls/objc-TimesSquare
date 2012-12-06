@@ -29,7 +29,6 @@
     _tableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    _tableView.backgroundColor = [PDCalendarCell backgroundColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     [self addSubview:_tableView];
@@ -49,6 +48,28 @@
         self.calendar = [NSCalendar currentCalendar];
     }
     return _calendar;
+}
+
+- (Class)headerCellClass;
+{
+    if (!_headerCellClass) {
+        return [PDCalendarMonthHeaderCell class];
+    }
+    return _headerCellClass;
+}
+
+- (Class)rowCellClass;
+{
+    if (!_rowCellClass) {
+        return [PDCalendarRowCell class];
+    }
+    return _rowCellClass;
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor;
+{
+    [super setBackgroundColor:backgroundColor];
+    [self.tableView setBackgroundColor:backgroundColor];
 }
 
 - (void)setFirstDate:(NSDate *)firstDate;
@@ -154,14 +175,14 @@
         static NSString *identifier = @"header";
         PDCalendarMonthHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
-            cell = [[PDCalendarMonthHeaderCell alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
+            cell = [[[self headerCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
         }
         return cell;
     } else {
         static NSString *identifier = @"row";
         PDCalendarRowCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
-            cell = [[PDCalendarRowCell alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
+            cell = [[[self rowCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
             cell.calendarView = self;
         }
         return cell;
@@ -189,7 +210,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    return (indexPath.row == 0 ? [PDCalendarMonthHeaderCell cellHeight] : [PDCalendarRowCell cellHeight]);
+    return (indexPath.row == 0 ? [[self headerCellClass] cellHeight] : [[self rowCellClass] cellHeight]);
 }
 
 @end

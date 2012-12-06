@@ -28,10 +28,18 @@
     _calendar = calendar;
     NSString *languageCode = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
     self.layoutDirection = [NSLocale characterDirectionForLanguage:languageCode];
+    self.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
     
+    static CGSize shadowOffset;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shadowOffset = CGSizeMake(0.0f, 1.0f / UIScreen.mainScreen.scale);
+    });
+    self.shadowOffset = shadowOffset;
+    self.textColor = [UIColor colorWithRed:0.47f green:0.5f blue:0.53f alpha:1.0f];
+
     return self;
 }
-
 
 + (CGFloat)cellHeight;
 {
@@ -98,31 +106,6 @@
         start += width + margin;
     }
 
-}
-
-@end
-
-
-@implementation PDCalendarCell (Styling)
-
-+ (UIColor *)standardTextColor;
-{
-    return [UIColor colorWithRed:0.47f green:0.5f blue:0.53f alpha:1.0f];
-}
-
-+ (UIColor *)backgroundColor;
-{
-    return [UIColor colorWithWhite:0.8f alpha:1.0f];
-}
-
-+ (CGSize)standardShadowOffset;
-{
-    static CGSize shadowOffset;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        shadowOffset = CGSizeMake(0.0f, 1.0f / UIScreen.mainScreen.scale);
-    });
-    return shadowOffset;
 }
 
 @end
