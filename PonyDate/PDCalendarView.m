@@ -54,7 +54,7 @@
 - (Class)headerCellClass;
 {
     if (!_headerCellClass) {
-        return [PDCalendarMonthHeaderCell class];
+        self.headerCellClass = [PDCalendarMonthHeaderCell class];
     }
     return _headerCellClass;
 }
@@ -62,7 +62,7 @@
 - (Class)rowCellClass;
 {
     if (!_rowCellClass) {
-        return [PDCalendarRowCell class];
+        self.rowCellClass = [PDCalendarRowCell class];
     }
     return _rowCellClass;
 }
