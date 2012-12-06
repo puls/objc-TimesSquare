@@ -3,10 +3,12 @@
 PonyDate is a library to display a calendar in a view in your iPhone or iPad app. We wrote it after searching high and low for a better way and finding none.
 
 ## Usage
+![Gregorian Calendar](https://github.com/square/objc-PonyDate/raw/master/Documentation/gregorian.png)
 
 Easy: create an instance of `PDCalendarView`. Set its `firstDate` and `lastDate` properties to give yourself a range of dates.
 
 ## Calendars
+![Hebrew Calendar](https://github.com/square/objc-PonyDate/raw/master/Documentation/hebrew.png)
 
 While we fully expect you'll use it to display a Gregorian calendar most of the time, PonyDate is just as happy displaying any of the calendars `NSCalendar` supports. The included test app shows you how to do this.
 
@@ -19,3 +21,13 @@ The way `PDCalendarView` works is similar to the way `UITableView` works. (In fa
 You can (and should) subclass `PDCalendarRowCell` to provide your own background images; additionally, you can set the cell's text color and shadow offsets.
 
 Since you'll likely want to lay out views of whatever type you create in seven columns, `PDCalendarCell` has a `-layoutViewsForColumnAtIndex:inRect:` method that your subclass should implement. It properly takes in to account things like right-to-left layout and dividing 320 by 7 and rounding to the right integer.
+
+## Contributing
+
+We're glad you're interested in PonyDate, and we'd love to see where you take it.
+
+Any contributors to the master PonyDate repository must sign the [Individual Contributor License Agreement (CLA)](https://spreadsheets.google.com/spreadsheet/viewform?formkey=dDViT2xzUHAwRkI3X3k5Z0lQM091OGc6MQ&ndplr=1). It's a short form that covers our bases and makes sure you're eligible to contribute.
+
+When you have a change you'd like to see in the master repository, [send a pull request](https://github.com/square/objc-PonyDate/pulls). Before we merge your request, we'll make sure you're in the list of people who have signed a CLA.
+
+Thanks, and happy testing!
