@@ -1,6 +1,6 @@
 //
-//  PDCalendarState.h
-//  PonyDate
+//  TSQCalendarState.h
+//  TimesSquare
 //
 //  Created by Jim Puls on 11/14/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
@@ -10,16 +10,16 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol PDCalendarViewDelegate;
+@protocol TSQCalendarViewDelegate;
 
 
-@interface PDCalendarView : UIView
+@interface TSQCalendarView : UIView
 
 @property (nonatomic, strong) NSDate *firstDate;
 @property (nonatomic, strong) NSDate *lastDate;
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (nonatomic, strong) NSCalendar *calendar;
-@property (nonatomic, weak) id<PDCalendarViewDelegate> delegate;
+@property (nonatomic, weak) id<TSQCalendarViewDelegate> delegate;
 
 @property (nonatomic, strong) Class headerCellClass;
 @property (nonatomic, strong) Class rowCellClass;
@@ -27,10 +27,10 @@
 @end
 
 
-@protocol PDCalendarViewDelegate <NSObject>
+@protocol TSQCalendarViewDelegate <NSObject>
 
 @optional
-- (BOOL)calendarView:(PDCalendarView *)calendarView shouldSelectDate:(NSDate *)date;
-- (void)calendarView:(PDCalendarView *)calendarView didSelectDate:(NSDate *)date;
+- (BOOL)calendarView:(TSQCalendarView *)calendarView shouldSelectDate:(NSDate *)date;
+- (void)calendarView:(TSQCalendarView *)calendarView didSelectDate:(NSDate *)date;
 
 @end

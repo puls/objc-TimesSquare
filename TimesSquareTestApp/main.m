@@ -1,6 +1,6 @@
 //
-//  PDTAAppDelegate.h
-//  PonyDateTestApp
+//  main.m
+//  TimesSquareTestApp
 //
 //  Created by Jim Puls on 12/5/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
@@ -9,8 +9,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PDTAAppDelegate : UIResponder <UIApplicationDelegate>
+#import "TSQTAAppDelegate.h"
 
-@property (strong, nonatomic) UIWindow *window;
-
-@end
+int main(int argc, char *argv[])
+{
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([TSQTAAppDelegate class]));
+    }
+}

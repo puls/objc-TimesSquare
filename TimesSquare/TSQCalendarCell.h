@@ -1,6 +1,6 @@
 //
-//  PDCalendarCell.h
-//  PonyDate
+//  TSQCalendarCell.h
+//  TimesSquare
 //
 //  Created by Jim Puls on 11/15/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PDCalendarCell : UITableViewCell
+@interface TSQCalendarCell : UITableViewCell
 
 + (CGFloat)cellHeight;
 

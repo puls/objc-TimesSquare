@@ -1,15 +1,15 @@
 //
-//  PonyDateTests.m
-//  PonyDateTests
+//  TimesSquareTests.m
+//  TimesSquareTests
 //
 //  Created by Jim Puls on 12/5/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
 //  See the LICENSE file distributed with this work for the terms under
 //  which Square, Inc. licenses this file to you.
 
-#import "PonyDateTests.h"
+#import "TimesSquareTests.h"
 
-@implementation PonyDateTests
+@implementation TimesSquareTests
 
 - (void)setUp
 {
@@ -27,7 +27,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in PonyDateTests");
+    STFail(@"Unit tests are not implemented yet in TimesSquareTests");
 }
 
 @end

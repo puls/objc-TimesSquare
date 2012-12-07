@@ -1,6 +1,6 @@
 //
-//  PonyDateTests.h
-//  PonyDateTests
+//  TimesSquareTests.h
+//  TimesSquareTests
 //
 //  Created by Jim Puls on 12/5/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
@@ -9,6 +9,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface PonyDateTests : SenTestCase
+@interface TimesSquareTests : SenTestCase
 
 @end

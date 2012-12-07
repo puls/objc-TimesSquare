@@ -1,24 +1,24 @@
 //
-//  PDCalendarState.m
-//  PonyDate
+//  TSQCalendarState.m
+//  TimesSquare
 //
 //  Created by Jim Puls on 11/14/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
 //  See the LICENSE file distributed with this work for the terms under
 //  which Square, Inc. licenses this file to you.
 
-#import "PDCalendarView.h"
-#import "PDCalendarMonthHeaderCell.h"
-#import "PDCalendarRowCell.h"
+#import "TSQCalendarView.h"
+#import "TSQCalendarMonthHeaderCell.h"
+#import "TSQCalendarRowCell.h"
 
-@interface PDCalendarView () <UITableViewDataSource, UITableViewDelegate>
+@interface TSQCalendarView () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
 
 
-@implementation PDCalendarView
+@implementation TSQCalendarView
 
 - (id)initWithFrame:(CGRect)frame;
 {
@@ -54,7 +54,7 @@
 - (Class)headerCellClass;
 {
     if (!_headerCellClass) {
-        self.headerCellClass = [PDCalendarMonthHeaderCell class];
+        self.headerCellClass = [TSQCalendarMonthHeaderCell class];
     }
     return _headerCellClass;
 }
@@ -62,7 +62,7 @@
 - (Class)rowCellClass;
 {
     if (!_rowCellClass) {
-        self.rowCellClass = [PDCalendarRowCell class];
+        self.rowCellClass = [TSQCalendarRowCell class];
     }
     return _rowCellClass;
 }
@@ -125,9 +125,9 @@
     return [self.calendar dateByAddingComponents:offset toDate:self.firstDate options:0];
 }
 
-- (PDCalendarRowCell *)cellForRowAtDate:(NSDate *)date;
+- (TSQCalendarRowCell *)cellForRowAtDate:(NSDate *)date;
 {
-    return (PDCalendarRowCell *)[self.tableView cellForRowAtIndexPath:[self indexPathForRowAtDate:date]];
+    return (TSQCalendarRowCell *)[self.tableView cellForRowAtIndexPath:[self indexPathForRowAtDate:date]];
 }
 
 - (NSIndexPath *)indexPathForRowAtDate:(NSDate *)date;
@@ -174,7 +174,7 @@
     if (indexPath.row == 0) {
         // month header
         static NSString *identifier = @"header";
-        PDCalendarMonthHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        TSQCalendarMonthHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
             cell = [[[self headerCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
             cell.backgroundColor = self.backgroundColor;
@@ -182,7 +182,7 @@
         return cell;
     } else {
         static NSString *identifier = @"row";
-        PDCalendarRowCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        TSQCalendarRowCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
             cell = [[[self rowCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
             cell.backgroundColor = self.backgroundColor;
@@ -197,17 +197,17 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     NSDate *firstOfMonth = [self firstOfMonthForSection:indexPath.section];
-    [(PDCalendarCell *)cell setFirstOfMonth:firstOfMonth];
+    [(TSQCalendarCell *)cell setFirstOfMonth:firstOfMonth];
     if (indexPath.row > 0) {
         NSInteger ordinalityOfFirstDay = [self.calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:firstOfMonth];
         NSDateComponents *dateComponents = [NSDateComponents new];
         dateComponents.day = 1 - ordinalityOfFirstDay;
         dateComponents.week = indexPath.row - 1;
-        [(PDCalendarRowCell *)cell setBeginningDate:[self.calendar dateByAddingComponents:dateComponents toDate:firstOfMonth options:0]];
-        [(PDCalendarRowCell *)cell selectButtonForDate:self.selectedDate];
+        [(TSQCalendarRowCell *)cell setBeginningDate:[self.calendar dateByAddingComponents:dateComponents toDate:firstOfMonth options:0]];
+        [(TSQCalendarRowCell *)cell selectButtonForDate:self.selectedDate];
         
         BOOL isBottomRow = (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1);
-        [(PDCalendarRowCell *)cell setBottomRow:isBottomRow];
+        [(TSQCalendarRowCell *)cell setBottomRow:isBottomRow];
     }
 }
 

@@ -1,19 +1,19 @@
 //
-//  PDCalendarMonthHeaderCell.m
-//  PonyDate
+//  TSQCalendarMonthHeaderCell.m
+//  TimesSquare
 //
 //  Created by Jim Puls on 11/14/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
 //  See the LICENSE file distributed with this work for the terms under
 //  which Square, Inc. licenses this file to you.
 
-#import "PDCalendarMonthHeaderCell.h"
+#import "TSQCalendarMonthHeaderCell.h"
 
 
-static const CGFloat PDCalendarMonthHeaderCellMonthsHeight = 20.f;
+static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
 
 
-@interface PDCalendarMonthHeaderCell ()
+@interface TSQCalendarMonthHeaderCell ()
 
 @property (nonatomic, strong) NSArray *headerLabels;
 @property (nonatomic, strong) NSDateFormatter *monthDateFormatter;
@@ -21,7 +21,7 @@ static const CGFloat PDCalendarMonthHeaderCellMonthsHeight = 20.f;
 @end
 
 
-@implementation PDCalendarMonthHeaderCell
+@implementation TSQCalendarMonthHeaderCell
 
 - (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier;
 {
@@ -97,7 +97,7 @@ static const CGFloat PDCalendarMonthHeaderCellMonthsHeight = 20.f;
     [super layoutSubviews];
 
     CGRect bounds = self.contentView.bounds;
-    bounds.size.height -= PDCalendarMonthHeaderCellMonthsHeight;
+    bounds.size.height -= TSQCalendarMonthHeaderCellMonthsHeight;
     self.textLabel.frame = CGRectOffset(bounds, 0.0f, 5.0f);
 }
 
@@ -105,8 +105,8 @@ static const CGFloat PDCalendarMonthHeaderCellMonthsHeight = 20.f;
 {
     UILabel *label = self.headerLabels[index];
     CGRect labelFrame = rect;
-    labelFrame.size.height = PDCalendarMonthHeaderCellMonthsHeight;
-    labelFrame.origin.y = self.bounds.size.height - PDCalendarMonthHeaderCellMonthsHeight;
+    labelFrame.size.height = TSQCalendarMonthHeaderCellMonthsHeight;
+    labelFrame.origin.y = self.bounds.size.height - TSQCalendarMonthHeaderCellMonthsHeight;
     label.frame = labelFrame;
 }
 

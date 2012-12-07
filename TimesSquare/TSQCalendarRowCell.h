@@ -1,22 +1,22 @@
 //
-//  PDCalendarRowCell.h
-//  PonyDate
+//  TSQCalendarRowCell.h
+//  TimesSquare
 //
 //  Created by Jim Puls on 11/14/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
 //  See the LICENSE file distributed with this work for the terms under
 //  which Square, Inc. licenses this file to you.
 
-#import "PDCalendarCell.h"
+#import "TSQCalendarCell.h"
 
 
-@class PDCalendarView;
+@class TSQCalendarView;
 
 
-@interface PDCalendarRowCell : PDCalendarCell
+@interface TSQCalendarRowCell : TSQCalendarCell
 
 @property (nonatomic, strong) NSDate *beginningDate;
-@property (nonatomic, weak) PDCalendarView *calendarView;
+@property (nonatomic, weak) TSQCalendarView *calendarView;
 @property (nonatomic, getter = isBottomRow) BOOL bottomRow;
 
 @property (nonatomic, weak, readonly) UIImage *todayBackgroundImage;

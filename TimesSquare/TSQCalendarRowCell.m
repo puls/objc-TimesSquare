@@ -1,17 +1,17 @@
 //
-//  PDCalendarRowCell.m
-//  PonyDate
+//  TSQCalendarRowCell.m
+//  TimesSquare
 //
 //  Created by Jim Puls on 11/14/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
 //  See the LICENSE file distributed with this work for the terms under
 //  which Square, Inc. licenses this file to you.
 
-#import "PDCalendarRowCell.h"
-#import "PDCalendarView.h"
+#import "TSQCalendarRowCell.h"
+#import "TSQCalendarView.h"
 
 
-@interface PDCalendarRowCell ()
+@interface TSQCalendarRowCell ()
 
 @property (nonatomic, strong) NSArray *dayButtons;
 @property (nonatomic, strong) NSArray *notThisMonthButtons;
@@ -29,7 +29,7 @@
 @end
 
 
-@implementation PDCalendarRowCell
+@implementation TSQCalendarRowCell
 
 - (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier;
 {

@@ -1,30 +1,30 @@
 //
-//  PDTAAppDelegate.m
-//  PonyDateTestApp
+//  TSQTAAppDelegate.m
+//  TimesSquareTestApp
 //
 //  Created by Jim Puls on 12/5/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
 //  See the LICENSE file distributed with this work for the terms under
 //  which Square, Inc. licenses this file to you.
 
-#import "PDTAAppDelegate.h"
-#import "PDTAViewController.h"
+#import "TSQTAAppDelegate.h"
+#import "TSQTAViewController.h"
 
-@implementation PDTAAppDelegate
+@implementation TSQTAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    PDTAViewController *gregorian = [[PDTAViewController alloc] init];
+    TSQTAViewController *gregorian = [[TSQTAViewController alloc] init];
     gregorian.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    PDTAViewController *hebrew = [[PDTAViewController alloc] init];
+    TSQTAViewController *hebrew = [[TSQTAViewController alloc] init];
     hebrew.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSHebrewCalendar];
-    PDTAViewController *islamic = [[PDTAViewController alloc] init];
+    TSQTAViewController *islamic = [[TSQTAViewController alloc] init];
     islamic.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSIslamicCalendar];
-    PDTAViewController *indian = [[PDTAViewController alloc] init];
+    TSQTAViewController *indian = [[TSQTAViewController alloc] init];
     indian.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSIndianCalendar];
-    PDTAViewController *persian = [[PDTAViewController alloc] init];
+    TSQTAViewController *persian = [[TSQTAViewController alloc] init];
     persian.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSPersianCalendar];
 
     UITabBarController *tabController = [[UITabBarController alloc] init];

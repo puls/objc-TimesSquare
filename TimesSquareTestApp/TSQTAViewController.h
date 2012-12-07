@@ -1,6 +1,6 @@
 //
-//  main.m
-//  PonyDateTestApp
+//  TSQTAViewController.h
+//  TimesSquare
 //
 //  Created by Jim Puls on 12/5/12.
 //  Licensed to Square, Inc. under one or more contributor license agreements.
@@ -9,11 +9,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PDTAAppDelegate.h"
+@interface TSQTAViewController : UIViewController
 
-int main(int argc, char *argv[])
-{
-    @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([PDTAAppDelegate class]));
-    }
-}
+@property (nonatomic, strong) NSCalendar *calendar;
+
+@end
