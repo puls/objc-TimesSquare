@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A806805F16700FD70071C71E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805E16700FD70071C71E /* Foundation.framework */; };
-		A806806416700FD70071C71E /* TimesSquare.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A806806316700FD70071C71E /* TimesSquare.h */; };
 		A806806E16700FD80071C71E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806806D16700FD80071C71E /* SenTestingKit.framework */; };
 		A806807016700FD80071C71E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806806F16700FD80071C71E /* UIKit.framework */; };
 		A806807116700FD80071C71E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805E16700FD70071C71E /* Foundation.framework */; };
@@ -47,6 +46,11 @@
 		A806813116702A6E0071C71E /* TSQTACalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A806813016702A6E0071C71E /* TSQTACalendarRowCell.m */; };
 		A80B62AB1672720C00792DFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806809E167012980071C71E /* CoreGraphics.framework */; };
 		A80B62AC1672722500792DFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806809E167012980071C71E /* CoreGraphics.framework */; };
+		EFD8DE6D167AF77B00F87FBE /* TimesSquare.h in Headers */ = {isa = PBXBuildFile; fileRef = A806806316700FD70071C71E /* TimesSquare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFD8DE6E167AF78100F87FBE /* TSQCalendarCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A8068086167010030071C71E /* TSQCalendarCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFD8DE6F167AF78600F87FBE /* TSQCalendarMonthHeaderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A8068088167010030071C71E /* TSQCalendarMonthHeaderCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFD8DE70167AF78C00F87FBE /* TSQCalendarRowCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A806808A167010030071C71E /* TSQCalendarRowCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFD8DE71167AF79000F87FBE /* TSQCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = A806808C167010030071C71E /* TSQCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +77,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				A806806416700FD70071C71E /* TimesSquare.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +102,7 @@
 		A806808B167010030071C71E /* TSQCalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarRowCell.m; sourceTree = "<group>"; };
 		A806808C167010030071C71E /* TSQCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQCalendarView.h; sourceTree = "<group>"; };
 		A806808D167010030071C71E /* TSQCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarView.m; sourceTree = "<group>"; };
-		A806809A167012980071C71E /* TimeSquareTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeSquareTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A806809A167012980071C71E /* TimesSquareTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimesSquareTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A806809E167012980071C71E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A80680A2167012980071C71E /* TimesSquareTestApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TimesSquareTestApp-Info.plist"; sourceTree = "<group>"; };
 		A80680A4167012980071C71E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -178,7 +181,7 @@
 			children = (
 				A806805B16700FD70071C71E /* libTimesSquare.a */,
 				A806806C16700FD80071C71E /* TimesSquareTests.octest */,
-				A806809A167012980071C71E /* TimeSquareTestApp.app */,
+				A806809A167012980071C71E /* TimesSquareTestApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,11 +289,27 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		EFD8DE6B167AF77100F87FBE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFD8DE6D167AF77B00F87FBE /* TimesSquare.h in Headers */,
+				EFD8DE6E167AF78100F87FBE /* TSQCalendarCell.h in Headers */,
+				EFD8DE6F167AF78600F87FBE /* TSQCalendarMonthHeaderCell.h in Headers */,
+				EFD8DE70167AF78C00F87FBE /* TSQCalendarRowCell.h in Headers */,
+				EFD8DE71167AF79000F87FBE /* TSQCalendarView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		A806805A16700FD70071C71E /* TimesSquare */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A806808016700FD80071C71E /* Build configuration list for PBXNativeTarget "TimesSquare" */;
 			buildPhases = (
+				EFD8DE6B167AF77100F87FBE /* Headers */,
 				A806805716700FD70071C71E /* Sources */,
 				A806805816700FD70071C71E /* Frameworks */,
 				A806805916700FD70071C71E /* CopyFiles */,
@@ -338,7 +357,7 @@
 			);
 			name = TimesSquareTestApp;
 			productName = PonyDateTestApp;
-			productReference = A806809A167012980071C71E /* TimeSquareTestApp.app */;
+			productReference = A806809A167012980071C71E /* TimesSquareTestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -541,6 +560,7 @@
 				GCC_PREFIX_HEADER = "TimesSquare/TimesSquare-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/TimesSquare;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -554,6 +574,7 @@
 				GCC_PREFIX_HEADER = "TimesSquare/TimesSquare-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/TimesSquare;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
