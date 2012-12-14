@@ -195,6 +195,7 @@
         if (!cell) {
             cell = [[[self headerCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
             cell.backgroundColor = self.backgroundColor;
+            cell.calendarView = self;
         }
         return cell;
     } else {
@@ -230,7 +231,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    return (indexPath.row == 0 ? [[self headerCellClass] cellHeight] : [[self rowCellClass] cellHeight]);
+    return [(id)[self tableView:tableView cellForRowAtIndexPath:indexPath] cellHeight];
 }
 
 @end

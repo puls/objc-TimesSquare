@@ -10,13 +10,9 @@
 #import "TSQCalendarCell.h"
 
 
-@class TSQCalendarView;
-
-
 @interface TSQCalendarRowCell : TSQCalendarCell
 
 @property (nonatomic, strong) NSDate *beginningDate;
-@property (nonatomic, weak) TSQCalendarView *calendarView;
 @property (nonatomic, getter = isBottomRow) BOOL bottomRow;
 
 @property (nonatomic, weak, readonly) UIImage *todayBackgroundImage;

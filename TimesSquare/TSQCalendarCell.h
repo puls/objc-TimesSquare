@@ -9,9 +9,14 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class TSQCalendarView;
+
+
 @interface TSQCalendarCell : UITableViewCell
 
 + (CGFloat)cellHeight;
+- (CGFloat)cellHeight;
 
 @property (nonatomic, strong) NSDate *firstOfMonth;
 @property (nonatomic, readonly) NSUInteger daysInWeek;
@@ -19,6 +24,8 @@
 
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic) CGSize shadowOffset;
+
+@property (nonatomic, weak) TSQCalendarView *calendarView;
 
 - (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)layoutViewsForColumnAtIndex:(NSUInteger)index inRect:(CGRect)rect;

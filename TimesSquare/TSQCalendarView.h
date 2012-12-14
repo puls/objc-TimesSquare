@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, weak) id<TSQCalendarViewDelegate> delegate;
+@property (nonatomic) UIEdgeInsets contentInset;
 
 @property (nonatomic, strong) Class headerCellClass;
 @property (nonatomic, strong) Class rowCellClass;

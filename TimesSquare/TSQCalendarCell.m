@@ -8,6 +8,7 @@
 //  which Square, Inc. licenses this file to you.
 
 #import "TSQCalendarCell.h"
+#import "TSQCalendarView.h"
 
 
 @interface TSQCalendarCell ()
@@ -47,6 +48,11 @@
     return 46.0f;
 }
 
+- (CGFloat)cellHeight;
+{
+    return [[self class] cellHeight];
+}
+
 - (NSUInteger)daysInWeek;
 {
     static NSUInteger daysInWeek = 0;
@@ -80,22 +86,26 @@
 {
     [super layoutSubviews];
     
-    CGFloat increment = floorf(self.bounds.size.width / self.daysInWeek);
+    UIEdgeInsets insets = self.calendarView.contentInset;
+    
+    
+    CGFloat increment = (self.bounds.size.width - insets.left - insets.right) / self.daysInWeek;
+    increment = floorf(increment);
     CGFloat margin = 1.0f;
-    CGFloat __block start = 0.f;
+    CGFloat __block start = insets.left;
     BOOL isHighRes = [UIScreen mainScreen].scale > 1.0f;
     if (isHighRes) {
-        start = 0.5f;
-        margin = 0.5f;
+//        start += 0.5f;
+//        margin = 0.5f;
     }
     CGFloat height = self.bounds.size.height - 2 * margin;
     
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         CGFloat width = increment;
         if ((index == 0 || index == self.daysInWeek - 1) && isHighRes) {
-            width += 0.5f;
+//            width += 0.5f;
         } else if (!isHighRes && index == self.daysInWeek - 1) {
-            start -= 1.0f;
+//            start -= 1.0f;
         }
         
         NSUInteger displayIndex = index;
