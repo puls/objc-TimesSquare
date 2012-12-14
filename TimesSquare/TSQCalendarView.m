@@ -20,21 +20,38 @@
 
 @implementation TSQCalendarView
 
+- (id)initWithCoder:(NSCoder *)aDecoder;
+{
+    self = [super initWithCoder:aDecoder];
+    if (!self) {
+        return nil;
+    }
+
+    [self _TSQCalendarView_commonInit];
+
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame;
 {
     self = [super initWithFrame:frame];
     if (!self) {
         return nil;
     }
+
+    [self _TSQCalendarView_commonInit];
     
+    return self;
+}
+
+- (void)_TSQCalendarView_commonInit;
+{
     _tableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    [self addSubview:_tableView];
-
-    return self;
+    [self addSubview:_tableView];    
 }
 
 - (void)dealloc;
