@@ -115,8 +115,8 @@
         return;
     }
     
-    [[self cellForRowAtDate:_selectedDate] selectButtonForDate:nil];
-    [[self cellForRowAtDate:newSelectedDate] selectButtonForDate:newSelectedDate];
+    [[self cellForRowAtDate:_selectedDate] selectColumnForDate:nil];
+    [[self cellForRowAtDate:newSelectedDate] selectColumnForDate:newSelectedDate];
     NSIndexPath *newIndexPath = [self indexPathForRowAtDate:newSelectedDate];
     CGRect newIndexPathRect = [self.tableView rectForRowAtIndexPath:newIndexPath];
     CGRect scrollBounds = self.tableView.bounds;
@@ -222,7 +222,7 @@
         dateComponents.day = 1 - ordinalityOfFirstDay;
         dateComponents.week = indexPath.row - 1;
         [(TSQCalendarRowCell *)cell setBeginningDate:[self.calendar dateByAddingComponents:dateComponents toDate:firstOfMonth options:0]];
-        [(TSQCalendarRowCell *)cell selectButtonForDate:self.selectedDate];
+        [(TSQCalendarRowCell *)cell selectColumnForDate:self.selectedDate];
         
         BOOL isBottomRow = (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1);
         [(TSQCalendarRowCell *)cell setBottomRow:isBottomRow];

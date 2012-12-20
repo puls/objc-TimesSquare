@@ -304,6 +304,23 @@
 		};
 /* End PBXHeadersBuildPhase section */
 
+/* Begin PBXLegacyTarget section */
+		A81E05F71682A0E000E79A2B /* TimesSquare Documentation */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "--exit-threshold 2 --logformat xcode --output /tmp/tsq-docs --project-name TimesSquare --project-version 1.0 --project-company \"Square, Inc.\" --company-id com.squareup --no-repeat-first-par --no-search-undocumented-doc TimesSquare/";
+			buildConfigurationList = A81E05F81682A0E000E79A2B /* Build configuration list for PBXLegacyTarget "TimesSquare Documentation" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/appledoc;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = "TimesSquare Documentation";
+			passBuildSettingsInEnvironment = 0;
+			productName = "TimesSquare Documentation";
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		A806805A16700FD70071C71E /* TimesSquare */ = {
 			isa = PBXNativeTarget;
@@ -384,6 +401,7 @@
 				A806805A16700FD70071C71E /* TimesSquare */,
 				A806806B16700FD80071C71E /* TimesSquareTests */,
 				A8068099167012980071C71E /* TimesSquareTestApp */,
+				A81E05F71682A0E000E79A2B /* TimesSquare Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -650,6 +668,38 @@
 			};
 			name = Release;
 		};
+		A81E05F91682A0E000E79A2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUGGING_SYMBOLS = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A81E05FA1682A0E000E79A2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -685,6 +735,15 @@
 			buildConfigurations = (
 				A80680B3167012980071C71E /* Debug */,
 				A80680B4167012980071C71E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A81E05F81682A0E000E79A2B /* Build configuration list for PBXLegacyTarget "TimesSquare Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A81E05F91682A0E000E79A2B /* Debug */,
+				A81E05FA1682A0E000E79A2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

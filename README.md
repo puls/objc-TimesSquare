@@ -12,15 +12,9 @@ Easy: create an instance of `TSQCalendarView`. Set its `firstDate` and `lastDate
 
 While we fully expect you'll use it to display a Gregorian calendar most of the time, TimesSquare is just as happy displaying any of the calendars `NSCalendar` supports. The included test app shows you how to do this.
 
-## Customization
+## Further documentation
 
-The main reason none of the other calendar libraries out there worked for us was that they couldn't be customized to get the look we wanted.
-
-The way `TSQCalendarView` works is similar to the way `UITableView` works. (In fact, it's implemented internally using a `UITableView`, though that doesn't particularly matter.) It uses two cell classes, one for the month headers and one for the week rows.
-
-You can (and should) subclass `TSQCalendarRowCell` to provide your own background images; additionally, you can set the cell's text color and shadow offsets.
-
-Since you'll likely want to lay out views of whatever type you create in seven columns, `TSQCalendarCell` has a `-layoutViewsForColumnAtIndex:inRect:` method that your subclass should implement. It properly takes in to account things like right-to-left layout and dividing 320 by 7 and rounding to the right integer.
+If you install [appledoc](http://gentlebytes.com/appledoc/) ("`brew install appledoc`") you can build the "TimesSquare Documentation" target in Xcode and see (and search!) the full API in your documentation window.
 
 ## Contributing
 

@@ -218,7 +218,7 @@
     }
 }
 
-- (void)selectButtonForDate:(NSDate *)date;
+- (void)selectColumnForDate:(NSDate *)date;
 {
     if (!date && self.indexOfSelectedButton == -1) {
         return;

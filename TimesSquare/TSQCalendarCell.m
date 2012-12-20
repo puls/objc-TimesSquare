@@ -43,14 +43,9 @@
     return self;
 }
 
-+ (CGFloat)cellHeight;
-{
-    return 46.0f;
-}
-
 - (CGFloat)cellHeight;
 {
-    return [[self class] cellHeight];
+    return 46.0f;
 }
 
 - (NSUInteger)daysInWeek;
