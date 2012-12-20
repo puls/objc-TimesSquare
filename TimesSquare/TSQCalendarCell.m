@@ -32,12 +32,15 @@
     self.layoutDirection = [NSLocale characterDirectionForLanguage:languageCode];
     self.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
     
+    CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
+    
     static CGSize shadowOffset;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        shadowOffset = CGSizeMake(0.0f, 1.0f / UIScreen.mainScreen.scale);
+        shadowOffset = CGSizeMake(0.0f, onePixel);
     });
     self.shadowOffset = shadowOffset;
+    self.columnSpacing = onePixel;
     self.textColor = [UIColor colorWithRed:0.47f green:0.5f blue:0.53f alpha:1.0f];
 
     return self;
@@ -84,23 +87,24 @@
     UIEdgeInsets insets = self.calendarView.contentInset;
     
     
-    CGFloat increment = (self.bounds.size.width - insets.left - insets.right) / self.daysInWeek;
-    increment = floorf(increment);
-    CGFloat margin = 1.0f;
+    CGRect insetRect = UIEdgeInsetsInsetRect(self.bounds, insets);
+    insetRect.origin.y = CGRectGetMinY(self.bounds);
+    insetRect.size.height = CGRectGetHeight(self.bounds);
+    CGFloat increment = (CGRectGetWidth(insetRect) - (self.daysInWeek - 1) * self.columnSpacing) / self.daysInWeek;
+    increment = roundf(increment);
     CGFloat __block start = insets.left;
-    BOOL isHighRes = [UIScreen mainScreen].scale > 1.0f;
-    if (isHighRes) {
-//        start += 0.5f;
-//        margin = 0.5f;
-    }
-    CGFloat height = self.bounds.size.height - 2 * margin;
+    
+    CGFloat extraSpace = (CGRectGetWidth(insetRect) - (self.daysInWeek - 1) * self.columnSpacing) - (increment * self.daysInWeek);
+    
+    // Divide the extra space out over the outer columns in increments of the column spacing
+    NSInteger columnsWithExtraSpace = (NSInteger)fabsf(extraSpace / self.columnSpacing);
+    NSInteger columnsOnLeftWithExtraSpace = columnsWithExtraSpace / 2;
+    NSInteger columnsOnRightWithExtraSpace = columnsWithExtraSpace - columnsOnLeftWithExtraSpace;
     
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         CGFloat width = increment;
-        if ((index == 0 || index == self.daysInWeek - 1) && isHighRes) {
-//            width += 0.5f;
-        } else if (!isHighRes && index == self.daysInWeek - 1) {
-//            start -= 1.0f;
+        if (index < columnsOnLeftWithExtraSpace || index >= self.daysInWeek - columnsOnRightWithExtraSpace) {
+            width += self.columnSpacing;
         }
         
         NSUInteger displayIndex = index;
@@ -108,8 +112,11 @@
             displayIndex = self.daysInWeek - index - 1;
         }
         
-        [self layoutViewsForColumnAtIndex:displayIndex inRect:CGRectMake(start, margin, width, height)];
-        start += width + margin;
+        CGRect columnBounds = self.bounds;
+        columnBounds.origin.x = start;
+        columnBounds.size.width = width;
+        [self layoutViewsForColumnAtIndex:displayIndex inRect:columnBounds];
+        start += width + self.columnSpacing;
     }
 
 }

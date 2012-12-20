@@ -38,11 +38,6 @@
         return nil;
     }
     
-    [self createDayButtons];
-    [self createNotThisMonthButtons];
-    [self createTodayButton];
-    [self createSelectedButton];
-    
     return self;
 }
 
@@ -189,6 +184,13 @@
 
 - (void)layoutSubviews;
 {
+    if (!self.dayButtons) {
+        [self createDayButtons];
+        [self createNotThisMonthButtons];
+        [self createTodayButton];
+        [self createSelectedButton];
+    }
+    
     if (!self.backgroundView) {
         [self setBottomRow:NO];
     }
@@ -203,18 +205,14 @@
     UIButton *dayButton = self.dayButtons[index];
     UIButton *notThisMonthButton = self.notThisMonthButtons[index];
     
-    CGRect buttonFrame = rect;
-    if (!self.bottomRow) {
-        buttonFrame.size.height += 1.f / [UIScreen mainScreen].scale;
-    }
-    dayButton.frame = buttonFrame;
-    notThisMonthButton.frame = buttonFrame;
+    dayButton.frame = rect;
+    notThisMonthButton.frame = rect;
 
     if (self.indexOfTodayButton == (NSInteger)index) {
-        self.todayButton.frame = buttonFrame;
+        self.todayButton.frame = rect;
     }
     if (self.indexOfSelectedButton == (NSInteger)index) {
-        self.selectedButton.frame = buttonFrame;
+        self.selectedButton.frame = rect;
     }
 }
 

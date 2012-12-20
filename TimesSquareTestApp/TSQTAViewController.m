@@ -36,6 +36,8 @@
     calendarView.firstDate = [NSDate date];
     calendarView.lastDate = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * 365 * 5];
     calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
+    CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
+    calendarView.contentInset = UIEdgeInsetsMake(0.0f, onePixel, 0.0f, onePixel);
 
     self.view = calendarView;
 }

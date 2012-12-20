@@ -65,6 +65,12 @@
  */
 @property (nonatomic) CGSize shadowOffset;
 
+/** The spacing between columns.
+ 
+ This defaults to one pixel or `1.0 / [UIScreen mainScreen].scale`.
+ */
+@property (nonatomic) CGFloat columnSpacing;
+
 /** @name Initialization */
 
 /** Initializes the cell.
