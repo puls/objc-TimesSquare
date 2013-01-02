@@ -104,7 +104,7 @@
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         CGFloat width = increment;
         if (index < columnsOnLeftWithExtraSpace || index >= self.daysInWeek - columnsOnRightWithExtraSpace) {
-            width += self.columnSpacing;
+            width += (extraSpace / columnsWithExtraSpace);
         }
         
         NSUInteger displayIndex = index;
