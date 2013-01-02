@@ -22,6 +22,7 @@
 @property (nonatomic, assign) NSInteger indexOfSelectedButton;
 
 @property (nonatomic, strong) NSDateFormatter *dayFormatter;
+@property (nonatomic, strong) NSDateFormatter *accessibilityFormatter;
 
 @property (nonatomic, strong) NSDateComponents *todayDateComponents;
 @property (nonatomic) NSInteger monthOfBeginningDate;
@@ -124,8 +125,11 @@
     
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         NSString *title = [self.dayFormatter stringFromDate:date];
+        NSString *accessibilityLabel = [self.accessibilityFormatter stringFromDate:date];
         [self.dayButtons[index] setTitle:title forState:UIControlStateNormal];
+        [self.dayButtons[index] setAccessibilityLabel:accessibilityLabel];
         [self.notThisMonthButtons[index] setTitle:title forState:UIControlStateNormal];
+        [self.notThisMonthButtons[index] setAccessibilityLabel:accessibilityLabel];
         
         NSDateComponents *thisDateComponents = [self.calendar components:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit fromDate:date];
         
@@ -140,6 +144,7 @@
             if ([self.todayDateComponents isEqual:thisDateComponents]) {
                 self.todayButton.hidden = NO;
                 [self.todayButton setTitle:title forState:UIControlStateNormal];
+                [self.todayButton setAccessibilityLabel:accessibilityLabel];
                 self.indexOfTodayButton = index;
             } else {
                 UIButton *button = self.dayButtons[index];
@@ -238,6 +243,7 @@
     if (newIndexOfSelectedButton >= 0) {
         self.selectedButton.hidden = NO;
         [self.selectedButton setTitle:[self.dayButtons[newIndexOfSelectedButton] currentTitle] forState:UIControlStateNormal];
+        [self.selectedButton setAccessibilityLabel:[self.dayButtons[newIndexOfSelectedButton] accessibilityLabel]];
     } else {
         self.selectedButton.hidden = YES;
     }
@@ -253,6 +259,16 @@
         _dayFormatter.dateFormat = @"d";
     }
     return _dayFormatter;
+}
+
+- (NSDateFormatter *)accessibilityFormatter;
+{
+    if (!_accessibilityFormatter) {
+        _accessibilityFormatter = [NSDateFormatter new];
+        _accessibilityFormatter.calendar = self.calendar;
+        _accessibilityFormatter.dateStyle = NSDateFormatterLongStyle;
+    }
+    return _accessibilityFormatter;
 }
 
 - (NSInteger)monthOfBeginningDate;

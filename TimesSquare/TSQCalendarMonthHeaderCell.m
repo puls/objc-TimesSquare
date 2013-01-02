@@ -113,6 +113,7 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
 {
     [super setFirstOfMonth:firstOfMonth];
     self.textLabel.text = [self.monthDateFormatter stringFromDate:firstOfMonth];
+    self.accessibilityLabel = self.textLabel.text;
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor;
