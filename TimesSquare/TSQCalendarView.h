@@ -60,6 +60,18 @@
  */
 @property (nonatomic, weak) id<TSQCalendarViewDelegate> delegate;
 
+/** Whether to pin the header to the top of the view.
+ 
+ If you're trying to emulate the built-in calendar app, set this to `YES`. Default value is `NO`.
+ */
+@property (nonatomic) BOOL pinsHeaderToTop;
+
+/** Whether or not the calendar snaps to begin a month at the top of its bounds.
+ 
+ This property is roughly equivalent to the one defined on `UIScrollView` except the snapping is to months rather than integer multiples of the view's bounds.
+ */
+@property (nonatomic) BOOL pagingEnabled;
+
 /** The distance from the edges of the view to where the content begins.
  
  This property is equivalent to the one defined on `UIScrollView`.
