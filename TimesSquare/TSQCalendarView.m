@@ -180,9 +180,11 @@
     NSDate *weekBeforeLastOfMonth = [self.calendar dateByAddingComponents:offset toDate:firstOfMonth options:0];
 
     NSInteger firstWeek = [self.calendar components:NSWeekOfYearCalendarUnit fromDate:firstOfMonth].weekOfYear;
-    NSInteger nextToLastWeek = [self.calendar components:NSWeekOfYearCalendarUnit fromDate:weekBeforeLastOfMonth].weekOfYear;
 
-    // Work around the fact that the last week of the year inexplicably comes up as the first week of next year instead
+    // -[NSDateComponents weekOfYear] doesn't explicitly specify what its valid range is. In the Gregorian case, it appears to be [1,52], which means the last day of December is probably going to be week 1 of next year. The same logic extends to other calendars.
+    // To account for the wrap, we simply go a week earlier and add one to the difference.
+    NSInteger nextToLastWeek = [self.calendar components:NSWeekOfYearCalendarUnit fromDate:weekBeforeLastOfMonth].weekOfYear;
+    
     return 3 + nextToLastWeek - firstWeek;
 }
 
