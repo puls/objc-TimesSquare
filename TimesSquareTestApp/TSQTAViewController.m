@@ -9,7 +9,7 @@
 
 #import "TSQTAViewController.h"
 #import "TSQTACalendarRowCell.h"
-#import "TimesSquare.h"
+#import <TimesSquare/TimesSquare.h>
 
 
 @interface TSQTAViewController ()

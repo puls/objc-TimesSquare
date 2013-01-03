@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A8068099167012980071C71E"
-               BuildableName = "TimesSquareTestApp.app"
-               BlueprintName = "TimesSquareTestApp"
+               BlueprintIdentifier = "A81E05F71682A0E000E79A2B"
+               BuildableName = "TimesSquare Documentation"
+               BlueprintName = "TimesSquare Documentation"
                ReferencedContainer = "container:TimesSquare.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A8068099167012980071C71E"
-            BuildableName = "TimesSquareTestApp.app"
-            BlueprintName = "TimesSquareTestApp"
-            ReferencedContainer = "container:TimesSquare.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -48,15 +39,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A8068099167012980071C71E"
-            BuildableName = "TimesSquareTestApp.app"
-            BlueprintName = "TimesSquareTestApp"
-            ReferencedContainer = "container:TimesSquare.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -66,15 +48,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A8068099167012980071C71E"
-            BuildableName = "TimesSquareTestApp.app"
-            BlueprintName = "TimesSquareTestApp"
-            ReferencedContainer = "container:TimesSquare.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

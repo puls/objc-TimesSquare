@@ -7,7 +7,7 @@
 //  See the LICENSE file distributed with this work for the terms under
 //  which Square, Inc. licenses this file to you.
 
-#import "TSQCalendarRowCell.h"
+#import <TimesSquare/TimesSquare.h>
 
 @interface TSQTACalendarRowCell : TSQCalendarRowCell
 
