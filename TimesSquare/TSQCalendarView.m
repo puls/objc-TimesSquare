@@ -100,15 +100,13 @@
 - (void)setFirstDate:(NSDate *)firstDate;
 {
     // clamp to the beginning of its month
-    NSDateComponents *components = [self.calendar components:NSMonthCalendarUnit|NSYearCalendarUnit fromDate:firstDate];
-    _firstDate = [self.calendar dateFromComponents:components];
+    _firstDate = [self clampDate:firstDate toComponents:NSMonthCalendarUnit|NSYearCalendarUnit];
 }
 
 - (void)setLastDate:(NSDate *)lastDate;
 {
     // clamp to the end of its month
-    NSDateComponents *components = [self.calendar components:NSMonthCalendarUnit|NSYearCalendarUnit fromDate:lastDate];
-    NSDate *firstOfMonth = [self.calendar dateFromComponents:components];
+    NSDate *firstOfMonth = [self clampDate:lastDate toComponents:NSMonthCalendarUnit|NSYearCalendarUnit];
     
     NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
     offsetComponents.month = 1;
@@ -118,25 +116,34 @@
 
 - (void)setSelectedDate:(NSDate *)newSelectedDate;
 {
-    if ([self.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)] && ![self.delegate calendarView:self shouldSelectDate:newSelectedDate]) {
+    // clamp to beginning of its day
+    NSDate *startOfDay = [self clampDate:newSelectedDate toComponents:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit];
+    
+    if ([self.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)] && ![self.delegate calendarView:self shouldSelectDate:startOfDay]) {
         return;
     }
     
     [[self cellForRowAtDate:_selectedDate] selectColumnForDate:nil];
-    [[self cellForRowAtDate:newSelectedDate] selectColumnForDate:newSelectedDate];
-    NSIndexPath *newIndexPath = [self indexPathForRowAtDate:newSelectedDate];
+    [[self cellForRowAtDate:startOfDay] selectColumnForDate:startOfDay];
+    NSIndexPath *newIndexPath = [self indexPathForRowAtDate:startOfDay];
     CGRect newIndexPathRect = [self.tableView rectForRowAtIndexPath:newIndexPath];
     CGRect scrollBounds = self.tableView.bounds;
-    if (CGRectGetMinY(scrollBounds) > CGRectGetMinY(newIndexPathRect)) {
-        [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    } else if (CGRectGetMaxY(scrollBounds) < CGRectGetMaxY(newIndexPathRect)) {
-        [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+    if (self.pagingEnabled) {
+        CGRect sectionRect = [self.tableView rectForSection:newIndexPath.section];
+        [self.tableView setContentOffset:sectionRect.origin animated:YES];
+    } else {
+        if (CGRectGetMinY(scrollBounds) > CGRectGetMinY(newIndexPathRect)) {
+            [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        } else if (CGRectGetMaxY(scrollBounds) < CGRectGetMaxY(newIndexPathRect)) {
+            [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        }
     }
     
-    _selectedDate = newSelectedDate;
+    _selectedDate = startOfDay;
     
     if ([self.delegate respondsToSelector:@selector(calendarView:didSelectDate:)]) {
-        [self.delegate calendarView:self didSelectDate:newSelectedDate];
+        [self.delegate calendarView:self didSelectDate:startOfDay];
     }
 }
 
@@ -300,6 +307,12 @@
         TSQCalendarCell *cell = self.tableView.visibleCells[0];
         self.headerView.firstOfMonth = cell.firstOfMonth;
     }
+}
+
+- (NSDate *)clampDate:(NSDate *)date toComponents:(NSUInteger)unitFlags
+{
+    NSDateComponents *components = [self.calendar components:unitFlags fromDate:date];
+    return [self.calendar dateFromComponents:components];
 }
 
 @end
