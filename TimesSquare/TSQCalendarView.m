@@ -296,7 +296,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 {
-    if (self.pinsHeaderToTop) {
+    if (self.pinsHeaderToTop && self.tableView.visibleCells.count > 0) {
         TSQCalendarCell *cell = self.tableView.visibleCells[0];
         self.headerView.firstOfMonth = cell.firstOfMonth;
     }
