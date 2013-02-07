@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "objc-TimesSquare"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "TimesSquare is an Objective-C calendar view for your apps."
   s.homepage     = "https://github.com/square/objc-TimesSquare"
   s.license      = 'Apache License, Version 2.0'
