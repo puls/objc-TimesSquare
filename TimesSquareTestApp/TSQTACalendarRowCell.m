@@ -39,4 +39,9 @@
     return [UIImage imageNamed:[NSString stringWithFormat:@"CalendarRow%@.png", self.bottomRow ? @"Bottom" : @""]];
 }
 
+- (UIColor *)textColor
+{
+    return [UIColor colorWithRed:0.2 green:0.26 blue:0.35 alpha:1];
+}
+
 @end

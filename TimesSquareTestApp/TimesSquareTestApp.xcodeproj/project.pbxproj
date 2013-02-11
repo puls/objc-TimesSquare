@@ -7,33 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A885A9771694FCDD00CA6E1B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A9761694FCDD00CA6E1B /* UIKit.framework */; };
-		A885A9791694FCDD00CA6E1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A9781694FCDD00CA6E1B /* Foundation.framework */; };
-		A885A97B1694FCDD00CA6E1B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A97A1694FCDD00CA6E1B /* CoreGraphics.framework */; };
 		A885A9951694FCDD00CA6E1B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A9941694FCDD00CA6E1B /* SenTestingKit.framework */; };
-		A885A9961694FCDD00CA6E1B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A9761694FCDD00CA6E1B /* UIKit.framework */; };
-		A885A9971694FCDD00CA6E1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A9781694FCDD00CA6E1B /* Foundation.framework */; };
 		A885A99F1694FCDD00CA6E1B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A885A99D1694FCDD00CA6E1B /* InfoPlist.strings */; };
 		A885A9A21694FCDD00CA6E1B /* TimesSquareTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A885A9A11694FCDD00CA6E1B /* TimesSquareTestAppTests.m */; };
 		A885A9B61694FD5400CA6E1B /* TSQTAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A885A9681694FC8A00CA6E1B /* TSQTAAppDelegate.m */; };
-		A885A9B81694FD5400CA6E1B /* TSQTACalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A885A96A1694FC8A00CA6E1B /* TSQTACalendarRowCell.m */; };
 		A885A9BA1694FD5400CA6E1B /* TSQTAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A885A96C1694FC8A00CA6E1B /* TSQTAViewController.m */; };
-		A885A9BB1694FDE000CA6E1B /* CalendarPreviousMonth.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A9541694FC8A00CA6E1B /* CalendarPreviousMonth.png */; };
-		A885A9BC1694FDE000CA6E1B /* CalendarPreviousMonth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A9551694FC8A00CA6E1B /* CalendarPreviousMonth@2x.png */; };
-		A885A9BD1694FDE000CA6E1B /* CalendarRow.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A9561694FC8A00CA6E1B /* CalendarRow.png */; };
-		A885A9BE1694FDE000CA6E1B /* CalendarRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A9571694FC8A00CA6E1B /* CalendarRow@2x.png */; };
-		A885A9BF1694FDE000CA6E1B /* CalendarRowBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A9581694FC8A00CA6E1B /* CalendarRowBottom.png */; };
-		A885A9C01694FDE000CA6E1B /* CalendarRowBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A9591694FC8A00CA6E1B /* CalendarRowBottom@2x.png */; };
-		A885A9C11694FDE000CA6E1B /* CalendarSelectedDate.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A95A1694FC8A00CA6E1B /* CalendarSelectedDate.png */; };
-		A885A9C21694FDE000CA6E1B /* CalendarSelectedDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A95B1694FC8A00CA6E1B /* CalendarSelectedDate@2x.png */; };
-		A885A9C31694FDE000CA6E1B /* CalendarTodaysDate.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A95C1694FC8A00CA6E1B /* CalendarTodaysDate.png */; };
-		A885A9C41694FDE000CA6E1B /* CalendarTodaysDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A95D1694FC8A00CA6E1B /* CalendarTodaysDate@2x.png */; };
 		A885A9C51694FDE000CA6E1B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A95E1694FC8A00CA6E1B /* Default-568h@2x.png */; };
 		A885A9C61694FDE000CA6E1B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A95F1694FC8A00CA6E1B /* Default.png */; };
 		A885A9C71694FDE000CA6E1B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A885A9601694FC8A00CA6E1B /* Default@2x.png */; };
 		A885A9C81694FDE400CA6E1B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A885A9621694FC8A00CA6E1B /* InfoPlist.strings */; };
-		A885A9C91694FEDA00CA6E1B /* libTimesSquare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A9B21694FD3900CA6E1B /* libTimesSquare.a */; };
 		A885AA841695023500CA6E1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A885A9641694FC8A00CA6E1B /* main.m */; };
+		B8CD1AC016C6C6AC008C3F60 /* CalendarPreviousMonth.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1AB616C6C6AC008C3F60 /* CalendarPreviousMonth.png */; };
+		B8CD1AC116C6C6AC008C3F60 /* CalendarPreviousMonth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1AB716C6C6AC008C3F60 /* CalendarPreviousMonth@2x.png */; };
+		B8CD1AC216C6C6AC008C3F60 /* CalendarRow.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1AB816C6C6AC008C3F60 /* CalendarRow.png */; };
+		B8CD1AC316C6C6AC008C3F60 /* CalendarRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1AB916C6C6AC008C3F60 /* CalendarRow@2x.png */; };
+		B8CD1AC416C6C6AC008C3F60 /* CalendarRowBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1ABA16C6C6AC008C3F60 /* CalendarRowBottom.png */; };
+		B8CD1AC516C6C6AC008C3F60 /* CalendarRowBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1ABB16C6C6AC008C3F60 /* CalendarRowBottom@2x.png */; };
+		B8CD1AC616C6C6AC008C3F60 /* CalendarSelectedDate.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1ABC16C6C6AC008C3F60 /* CalendarSelectedDate.png */; };
+		B8CD1AC716C6C6AC008C3F60 /* CalendarSelectedDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1ABD16C6C6AC008C3F60 /* CalendarSelectedDate@2x.png */; };
+		B8CD1AC816C6C6AC008C3F60 /* CalendarTodaysDate.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1ABE16C6C6AC008C3F60 /* CalendarTodaysDate.png */; };
+		B8CD1AC916C6C6AC008C3F60 /* CalendarTodaysDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CD1ABF16C6C6AC008C3F60 /* CalendarTodaysDate@2x.png */; };
+		B8CD1ACC16C6CB45008C3F60 /* TSQTACalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CD1ACB16C6CB45008C3F60 /* TSQTACalendarRowCell.m */; };
+		B8CD1AD316C986C0008C3F60 /* TSQTACalendarMonthHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CD1AD216C986BF008C3F60 /* TSQTACalendarMonthHeaderCell.m */; };
+		B8CFCB2516C4B89A004CFD58 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CFCB2416C4B89A004CFD58 /* UIKit.framework */; };
+		B8CFCB2716C4B8A0004CFD58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CFCB2616C4B8A0004CFD58 /* Foundation.framework */; };
+		B8CFCB2916C4BCA5004CFD58 /* libTimesSquare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A9B21694FD3900CA6E1B /* libTimesSquare.a */; };
+		B8CFCB2C16C4BCDC004CFD58 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CFCB2A16C4BCC7004CFD58 /* CoreGraphics.framework */; };
+		B8CFCB2F16C4C3DA004CFD58 /* TimesSquareResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB2116C4B838004CFD58 /* TimesSquareResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,19 +58,23 @@
 			remoteGlobalIDString = A806805A16700FD70071C71E;
 			remoteInfo = TimesSquare;
 		};
+		B8CFCB2016C4B838004CFD58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A885A9A91694FD3900CA6E1B /* TimesSquare.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B8CFCAFC16C4B4B1004CFD58;
+			remoteInfo = TimesSquareResources;
+		};
+		B8CFCB2D16C4C3AD004CFD58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A885A9A91694FD3900CA6E1B /* TimesSquare.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B8CFCAFB16C4B4B1004CFD58;
+			remoteInfo = TimesSquareResources;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A885A9541694FC8A00CA6E1B /* CalendarPreviousMonth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarPreviousMonth.png; sourceTree = "<group>"; };
-		A885A9551694FC8A00CA6E1B /* CalendarPreviousMonth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarPreviousMonth@2x.png"; sourceTree = "<group>"; };
-		A885A9561694FC8A00CA6E1B /* CalendarRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarRow.png; sourceTree = "<group>"; };
-		A885A9571694FC8A00CA6E1B /* CalendarRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarRow@2x.png"; sourceTree = "<group>"; };
-		A885A9581694FC8A00CA6E1B /* CalendarRowBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarRowBottom.png; sourceTree = "<group>"; };
-		A885A9591694FC8A00CA6E1B /* CalendarRowBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarRowBottom@2x.png"; sourceTree = "<group>"; };
-		A885A95A1694FC8A00CA6E1B /* CalendarSelectedDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarSelectedDate.png; sourceTree = "<group>"; };
-		A885A95B1694FC8A00CA6E1B /* CalendarSelectedDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarSelectedDate@2x.png"; sourceTree = "<group>"; };
-		A885A95C1694FC8A00CA6E1B /* CalendarTodaysDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarTodaysDate.png; sourceTree = "<group>"; };
-		A885A95D1694FC8A00CA6E1B /* CalendarTodaysDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarTodaysDate@2x.png"; sourceTree = "<group>"; };
 		A885A95E1694FC8A00CA6E1B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A885A95F1694FC8A00CA6E1B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A885A9601694FC8A00CA6E1B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -80,14 +84,9 @@
 		A885A9661694FC8A00CA6E1B /* TimesSquareTestApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TimesSquareTestApp-Prefix.pch"; sourceTree = "<group>"; };
 		A885A9671694FC8A00CA6E1B /* TSQTAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSQTAAppDelegate.h; sourceTree = "<group>"; };
 		A885A9681694FC8A00CA6E1B /* TSQTAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSQTAAppDelegate.m; sourceTree = "<group>"; };
-		A885A9691694FC8A00CA6E1B /* TSQTACalendarRowCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSQTACalendarRowCell.h; sourceTree = "<group>"; };
-		A885A96A1694FC8A00CA6E1B /* TSQTACalendarRowCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSQTACalendarRowCell.m; sourceTree = "<group>"; };
 		A885A96B1694FC8A00CA6E1B /* TSQTAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSQTAViewController.h; sourceTree = "<group>"; };
 		A885A96C1694FC8A00CA6E1B /* TSQTAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSQTAViewController.m; sourceTree = "<group>"; };
 		A885A9731694FCDD00CA6E1B /* TimesSquareTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimesSquareTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A885A9761694FCDD00CA6E1B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		A885A9781694FCDD00CA6E1B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		A885A97A1694FCDD00CA6E1B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		A885A9931694FCDD00CA6E1B /* TimesSquareTestAppTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimesSquareTestAppTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A885A9941694FCDD00CA6E1B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A885A99C1694FCDD00CA6E1B /* TimesSquareTestAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TimesSquareTestAppTests-Info.plist"; sourceTree = "<group>"; };
@@ -95,6 +94,23 @@
 		A885A9A01694FCDD00CA6E1B /* TimesSquareTestAppTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimesSquareTestAppTests.h; sourceTree = "<group>"; };
 		A885A9A11694FCDD00CA6E1B /* TimesSquareTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimesSquareTestAppTests.m; sourceTree = "<group>"; };
 		A885A9A91694FD3900CA6E1B /* TimesSquare.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TimesSquare.xcodeproj; path = ../TimesSquare.xcodeproj; sourceTree = "<group>"; };
+		B8CD1AB616C6C6AC008C3F60 /* CalendarPreviousMonth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarPreviousMonth.png; sourceTree = "<group>"; };
+		B8CD1AB716C6C6AC008C3F60 /* CalendarPreviousMonth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarPreviousMonth@2x.png"; sourceTree = "<group>"; };
+		B8CD1AB816C6C6AC008C3F60 /* CalendarRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarRow.png; sourceTree = "<group>"; };
+		B8CD1AB916C6C6AC008C3F60 /* CalendarRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarRow@2x.png"; sourceTree = "<group>"; };
+		B8CD1ABA16C6C6AC008C3F60 /* CalendarRowBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarRowBottom.png; sourceTree = "<group>"; };
+		B8CD1ABB16C6C6AC008C3F60 /* CalendarRowBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarRowBottom@2x.png"; sourceTree = "<group>"; };
+		B8CD1ABC16C6C6AC008C3F60 /* CalendarSelectedDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarSelectedDate.png; sourceTree = "<group>"; };
+		B8CD1ABD16C6C6AC008C3F60 /* CalendarSelectedDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarSelectedDate@2x.png"; sourceTree = "<group>"; };
+		B8CD1ABE16C6C6AC008C3F60 /* CalendarTodaysDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarTodaysDate.png; sourceTree = "<group>"; };
+		B8CD1ABF16C6C6AC008C3F60 /* CalendarTodaysDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarTodaysDate@2x.png"; sourceTree = "<group>"; };
+		B8CD1ACA16C6CB45008C3F60 /* TSQTACalendarRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQTACalendarRowCell.h; sourceTree = "<group>"; };
+		B8CD1ACB16C6CB45008C3F60 /* TSQTACalendarRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQTACalendarRowCell.m; sourceTree = "<group>"; };
+		B8CD1AD116C986BF008C3F60 /* TSQTACalendarMonthHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQTACalendarMonthHeaderCell.h; sourceTree = "<group>"; };
+		B8CD1AD216C986BF008C3F60 /* TSQTACalendarMonthHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQTACalendarMonthHeaderCell.m; sourceTree = "<group>"; };
+		B8CFCB2416C4B89A004CFD58 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		B8CFCB2616C4B8A0004CFD58 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B8CFCB2A16C4BCC7004CFD58 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +118,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A885A9C91694FEDA00CA6E1B /* libTimesSquare.a in Frameworks */,
-				A885A9771694FCDD00CA6E1B /* UIKit.framework in Frameworks */,
-				A885A9791694FCDD00CA6E1B /* Foundation.framework in Frameworks */,
-				A885A97B1694FCDD00CA6E1B /* CoreGraphics.framework in Frameworks */,
+				B8CFCB2916C4BCA5004CFD58 /* libTimesSquare.a in Frameworks */,
+				B8CFCB2716C4B8A0004CFD58 /* Foundation.framework in Frameworks */,
+				B8CFCB2516C4B89A004CFD58 /* UIKit.framework in Frameworks */,
+				B8CFCB2C16C4BCDC004CFD58 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,8 +130,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A885A9951694FCDD00CA6E1B /* SenTestingKit.framework in Frameworks */,
-				A885A9961694FCDD00CA6E1B /* UIKit.framework in Frameworks */,
-				A885A9971694FCDD00CA6E1B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +155,10 @@
 				A885A9661694FC8A00CA6E1B /* TimesSquareTestApp-Prefix.pch */,
 				A885A9671694FC8A00CA6E1B /* TSQTAAppDelegate.h */,
 				A885A9681694FC8A00CA6E1B /* TSQTAAppDelegate.m */,
-				A885A9691694FC8A00CA6E1B /* TSQTACalendarRowCell.h */,
-				A885A96A1694FC8A00CA6E1B /* TSQTACalendarRowCell.m */,
+				B8CD1AD116C986BF008C3F60 /* TSQTACalendarMonthHeaderCell.h */,
+				B8CD1AD216C986BF008C3F60 /* TSQTACalendarMonthHeaderCell.m */,
+				B8CD1ACA16C6CB45008C3F60 /* TSQTACalendarRowCell.h */,
+				B8CD1ACB16C6CB45008C3F60 /* TSQTACalendarRowCell.m */,
 				A885A96B1694FC8A00CA6E1B /* TSQTAViewController.h */,
 				A885A96C1694FC8A00CA6E1B /* TSQTAViewController.m */,
 			);
@@ -152,17 +168,17 @@
 		A885A96D1694FCA700CA6E1B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B8CD1AB616C6C6AC008C3F60 /* CalendarPreviousMonth.png */,
+				B8CD1AB716C6C6AC008C3F60 /* CalendarPreviousMonth@2x.png */,
+				B8CD1AB816C6C6AC008C3F60 /* CalendarRow.png */,
+				B8CD1AB916C6C6AC008C3F60 /* CalendarRow@2x.png */,
+				B8CD1ABA16C6C6AC008C3F60 /* CalendarRowBottom.png */,
+				B8CD1ABB16C6C6AC008C3F60 /* CalendarRowBottom@2x.png */,
+				B8CD1ABC16C6C6AC008C3F60 /* CalendarSelectedDate.png */,
+				B8CD1ABD16C6C6AC008C3F60 /* CalendarSelectedDate@2x.png */,
+				B8CD1ABE16C6C6AC008C3F60 /* CalendarTodaysDate.png */,
+				B8CD1ABF16C6C6AC008C3F60 /* CalendarTodaysDate@2x.png */,
 				A885A9621694FC8A00CA6E1B /* InfoPlist.strings */,
-				A885A9541694FC8A00CA6E1B /* CalendarPreviousMonth.png */,
-				A885A9551694FC8A00CA6E1B /* CalendarPreviousMonth@2x.png */,
-				A885A9561694FC8A00CA6E1B /* CalendarRow.png */,
-				A885A9571694FC8A00CA6E1B /* CalendarRow@2x.png */,
-				A885A9581694FC8A00CA6E1B /* CalendarRowBottom.png */,
-				A885A9591694FC8A00CA6E1B /* CalendarRowBottom@2x.png */,
-				A885A95A1694FC8A00CA6E1B /* CalendarSelectedDate.png */,
-				A885A95B1694FC8A00CA6E1B /* CalendarSelectedDate@2x.png */,
-				A885A95C1694FC8A00CA6E1B /* CalendarTodaysDate.png */,
-				A885A95D1694FC8A00CA6E1B /* CalendarTodaysDate@2x.png */,
 				A885A95E1694FC8A00CA6E1B /* Default-568h@2x.png */,
 				A885A95F1694FC8A00CA6E1B /* Default.png */,
 				A885A9601694FC8A00CA6E1B /* Default@2x.png */,
@@ -174,9 +190,9 @@
 			isa = PBXGroup;
 			children = (
 				A885A9A91694FD3900CA6E1B /* TimesSquare.xcodeproj */,
-				A885A9761694FCDD00CA6E1B /* UIKit.framework */,
-				A885A9781694FCDD00CA6E1B /* Foundation.framework */,
-				A885A97A1694FCDD00CA6E1B /* CoreGraphics.framework */,
+				B8CFCB2616C4B8A0004CFD58 /* Foundation.framework */,
+				B8CFCB2A16C4BCC7004CFD58 /* CoreGraphics.framework */,
+				B8CFCB2416C4B89A004CFD58 /* UIKit.framework */,
 				A885A9941694FCDD00CA6E1B /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
@@ -215,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				A885A9B21694FD3900CA6E1B /* libTimesSquare.a */,
+				B8CFCB2116C4B838004CFD58 /* TimesSquareResources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -233,6 +250,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B8CFCB2E16C4C3AD004CFD58 /* PBXTargetDependency */,
 				A885A9B41694FD4700CA6E1B /* PBXTargetDependency */,
 			);
 			name = TimesSquareTestApp;
@@ -299,6 +317,13 @@
 			remoteRef = A885A9B11694FD3900CA6E1B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B8CFCB2116C4B838004CFD58 /* TimesSquareResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TimesSquareResources.bundle;
+			remoteRef = B8CFCB2016C4B838004CFD58 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -306,20 +331,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A885A9BB1694FDE000CA6E1B /* CalendarPreviousMonth.png in Resources */,
-				A885A9BC1694FDE000CA6E1B /* CalendarPreviousMonth@2x.png in Resources */,
-				A885A9BD1694FDE000CA6E1B /* CalendarRow.png in Resources */,
-				A885A9BE1694FDE000CA6E1B /* CalendarRow@2x.png in Resources */,
-				A885A9BF1694FDE000CA6E1B /* CalendarRowBottom.png in Resources */,
-				A885A9C01694FDE000CA6E1B /* CalendarRowBottom@2x.png in Resources */,
-				A885A9C11694FDE000CA6E1B /* CalendarSelectedDate.png in Resources */,
-				A885A9C21694FDE000CA6E1B /* CalendarSelectedDate@2x.png in Resources */,
-				A885A9C31694FDE000CA6E1B /* CalendarTodaysDate.png in Resources */,
-				A885A9C41694FDE000CA6E1B /* CalendarTodaysDate@2x.png in Resources */,
+				B8CFCB2F16C4C3DA004CFD58 /* TimesSquareResources.bundle in Resources */,
 				A885A9C51694FDE000CA6E1B /* Default-568h@2x.png in Resources */,
 				A885A9C61694FDE000CA6E1B /* Default.png in Resources */,
 				A885A9C71694FDE000CA6E1B /* Default@2x.png in Resources */,
 				A885A9C81694FDE400CA6E1B /* InfoPlist.strings in Resources */,
+				B8CD1AC016C6C6AC008C3F60 /* CalendarPreviousMonth.png in Resources */,
+				B8CD1AC116C6C6AC008C3F60 /* CalendarPreviousMonth@2x.png in Resources */,
+				B8CD1AC216C6C6AC008C3F60 /* CalendarRow.png in Resources */,
+				B8CD1AC316C6C6AC008C3F60 /* CalendarRow@2x.png in Resources */,
+				B8CD1AC416C6C6AC008C3F60 /* CalendarRowBottom.png in Resources */,
+				B8CD1AC516C6C6AC008C3F60 /* CalendarRowBottom@2x.png in Resources */,
+				B8CD1AC616C6C6AC008C3F60 /* CalendarSelectedDate.png in Resources */,
+				B8CD1AC716C6C6AC008C3F60 /* CalendarSelectedDate@2x.png in Resources */,
+				B8CD1AC816C6C6AC008C3F60 /* CalendarTodaysDate.png in Resources */,
+				B8CD1AC916C6C6AC008C3F60 /* CalendarTodaysDate@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,9 +381,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A885A9B61694FD5400CA6E1B /* TSQTAAppDelegate.m in Sources */,
-				A885A9B81694FD5400CA6E1B /* TSQTACalendarRowCell.m in Sources */,
 				A885A9BA1694FD5400CA6E1B /* TSQTAViewController.m in Sources */,
 				A885AA841695023500CA6E1B /* main.m in Sources */,
+				B8CD1ACC16C6CB45008C3F60 /* TSQTACalendarRowCell.m in Sources */,
+				B8CD1AD316C986C0008C3F60 /* TSQTACalendarMonthHeaderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +408,11 @@
 			isa = PBXTargetDependency;
 			name = TimesSquare;
 			targetProxy = A885A9B31694FD4700CA6E1B /* PBXContainerItemProxy */;
+		};
+		B8CFCB2E16C4C3AD004CFD58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TimesSquareResources;
+			targetProxy = B8CFCB2D16C4C3AD004CFD58 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -408,12 +440,14 @@
 		A885A94D1694FC4500CA6E1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
 		A885A94E1694FC4500CA6E1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -445,7 +479,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/TimesSquareTestApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -474,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/TimesSquareTestApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

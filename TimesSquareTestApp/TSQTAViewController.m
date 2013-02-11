@@ -9,6 +9,8 @@
 
 #import "TSQTAViewController.h"
 #import "TSQTACalendarRowCell.h"
+#import "TSQTACalendarMonthHeaderCell.h"
+
 #import <TimesSquare/TimesSquare.h>
 
 
@@ -31,11 +33,12 @@
 - (void)loadView;
 {
     TSQCalendarView *calendarView = [[TSQCalendarView alloc] init];
+    calendarView.headerCellClass = self.headerCellClass;
+    calendarView.rowCellClass = self.rowCellClass;
     calendarView.calendar = self.calendar;
-    calendarView.rowCellClass = [TSQTACalendarRowCell class];
     calendarView.firstDate = [NSDate date];
     calendarView.lastDate = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * 365 * 5];
-    calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
+    
     calendarView.pagingEnabled = YES;
     CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
     calendarView.contentInset = UIEdgeInsetsMake(0.0f, onePixel, 0.0f, onePixel);
@@ -64,6 +67,7 @@
     [self.timer invalidate];
     self.timer = nil;
 }
+
 
 - (void)scroll;
 {

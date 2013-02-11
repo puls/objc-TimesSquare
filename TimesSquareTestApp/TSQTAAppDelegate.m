@@ -10,6 +10,11 @@
 #import "TSQTAAppDelegate.h"
 #import "TSQTAViewController.h"
 
+#import "TSQTACalendarMonthHeaderCell.h"
+#import "TSQTACalendarRowCell.h"
+
+#import <TimesSquare/TimesSquare.h>
+
 @implementation TSQTAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -18,6 +23,8 @@
     
     TSQTAViewController *gregorian = [[TSQTAViewController alloc] init];
     gregorian.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    gregorian.rowCellClass = [TSQTACalendarRowCell class];
+    gregorian.headerCellClass = [TSQTACalendarMonthHeaderCell class];
     TSQTAViewController *hebrew = [[TSQTAViewController alloc] init];
     hebrew.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSHebrewCalendar];
     TSQTAViewController *islamic = [[TSQTAViewController alloc] init];
@@ -26,7 +33,7 @@
     indian.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSIndianCalendar];
     TSQTAViewController *persian = [[TSQTAViewController alloc] init];
     persian.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSPersianCalendar];
-
+    
     UITabBarController *tabController = [[UITabBarController alloc] init];
     tabController.viewControllers = @[gregorian, hebrew, islamic, indian, persian];
     self.window.rootViewController = tabController;
