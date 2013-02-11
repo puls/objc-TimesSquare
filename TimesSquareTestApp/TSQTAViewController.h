@@ -12,5 +12,7 @@
 @interface TSQTAViewController : UIViewController
 
 @property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic, strong) Class rowCellClass;
+@property (nonatomic, strong) Class headerCellClass;
 
 @end

@@ -2,6 +2,31 @@
 
 TimesSquare is a library to display a calendar in a view in your iPhone or iPad app. We wrote it after searching high and low for a better way and finding none.
 
+## Installation
+
+### Using CocoaPods
+
+In your Podfile:
+
+```pod 'TimeSquare', :tag => '<repo-tag>'```
+
+or if you want to live straight of this repository:
+
+``` pod 'TimeSquare', :git => 'https://github.com/square/objc-TimesSquare.git', :tag='<repo-tag>'```
+
+where ```repo-tag``` is the tagged version of the project that you want your application to depend on. 
+
+This will take care of adding both the code and the resource bundle for the default look into the pod for your application. 
+
+### Using submodules
+
+```git submodule add git://github.com/square/objc-TimesSquare.git TimesSquare```
+
+Then drag the ```TimesSquare``` project into your workspace. 
+
+Open up the ```Products``` folder in the TimesSquare project and drag the TimesSquare product into the ```Target Dependencies``` phase of your application target Build Phases. In order to get the default resource in your application, also drag the TimesSquareResources product into the ```Copy Bundle Resources``` Build Phase for your application target. 
+
+
 ## Usage
 ![Gregorian Calendar](https://github.com/square/objc-TimesSquare/raw/master/Documentation/gregorian.png)
 

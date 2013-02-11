@@ -20,6 +20,20 @@
                ReferencedContainer = "container:TimesSquareTestApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B8CFCAFB16C4B4B1004CFD58"
+               BuildableName = "TimesSquareResources.bundle"
+               BlueprintName = "TimesSquareResources"
+               ReferencedContainer = "container:../TimesSquare.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

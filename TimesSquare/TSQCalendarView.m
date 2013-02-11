@@ -9,7 +9,7 @@
 
 #import "TSQCalendarView.h"
 #import "TSQCalendarMonthHeaderCell.h"
-#import "TSQCalendarRowCell.h"
+#import "TSQCalendarDefaultRowCell.h"
 
 @interface TSQCalendarView () <UITableViewDataSource, UITableViewDelegate>
 
@@ -80,7 +80,7 @@
 - (Class)rowCellClass;
 {
     if (!_rowCellClass) {
-        self.rowCellClass = [TSQCalendarRowCell class];
+        self.rowCellClass = [TSQCalendarDefaultRowCell class];
     }
     return _rowCellClass;
 }

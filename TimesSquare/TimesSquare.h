@@ -9,4 +9,5 @@
 
 #import <TimesSquare/TSQCalendarMonthHeaderCell.h>
 #import <TimesSquare/TSQCalendarRowCell.h>
+#import <TimesSquare/TSQCalendarDefaultRowCell.h>
 #import <TimesSquare/TSQCalendarView.h>

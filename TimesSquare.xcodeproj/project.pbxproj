@@ -13,6 +13,19 @@
 		A8068092167010030071C71E /* TSQCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808B167010030071C71E /* TSQCalendarRowCell.m */; };
 		A8068094167010030071C71E /* TSQCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808D167010030071C71E /* TSQCalendarView.m */; };
 		A80B62AB1672720C00792DFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806809E167012980071C71E /* CoreGraphics.framework */; };
+		B8CD1ACF16C970A9008C3F60 /* TSQCalendarDefaultRowCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B8CD1ACD16C970A9008C3F60 /* TSQCalendarDefaultRowCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8CD1AD016C970A9008C3F60 /* TSQCalendarDefaultRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CD1ACE16C970A9008C3F60 /* TSQCalendarDefaultRowCell.m */; };
+		B8CFCAFE16C4B4B1004CFD58 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CFCAFD16C4B4B1004CFD58 /* CoreFoundation.framework */; };
+		B8CFCB1316C4B670004CFD58 /* CalendarPreviousMonth.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB0916C4B670004CFD58 /* CalendarPreviousMonth.png */; };
+		B8CFCB1416C4B670004CFD58 /* CalendarPreviousMonth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB0A16C4B670004CFD58 /* CalendarPreviousMonth@2x.png */; };
+		B8CFCB1516C4B670004CFD58 /* CalendarRow.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB0B16C4B670004CFD58 /* CalendarRow.png */; };
+		B8CFCB1616C4B670004CFD58 /* CalendarRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB0C16C4B670004CFD58 /* CalendarRow@2x.png */; };
+		B8CFCB1716C4B670004CFD58 /* CalendarRowBottom.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB0D16C4B670004CFD58 /* CalendarRowBottom.png */; };
+		B8CFCB1816C4B670004CFD58 /* CalendarRowBottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB0E16C4B670004CFD58 /* CalendarRowBottom@2x.png */; };
+		B8CFCB1916C4B670004CFD58 /* CalendarSelectedDate.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB0F16C4B670004CFD58 /* CalendarSelectedDate.png */; };
+		B8CFCB1A16C4B670004CFD58 /* CalendarSelectedDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB1016C4B670004CFD58 /* CalendarSelectedDate@2x.png */; };
+		B8CFCB1B16C4B670004CFD58 /* CalendarTodaysDate.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB1116C4B670004CFD58 /* CalendarTodaysDate.png */; };
+		B8CFCB1C16C4B670004CFD58 /* CalendarTodaysDate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8CFCB1216C4B670004CFD58 /* CalendarTodaysDate@2x.png */; };
 		EFD8DE6D167AF77B00F87FBE /* TimesSquare.h in Headers */ = {isa = PBXBuildFile; fileRef = A806806316700FD70071C71E /* TimesSquare.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EFD8DE6E167AF78100F87FBE /* TSQCalendarCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A8068086167010030071C71E /* TSQCalendarCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EFD8DE6F167AF78600F87FBE /* TSQCalendarMonthHeaderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A8068088167010030071C71E /* TSQCalendarMonthHeaderCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,6 +61,22 @@
 		A806808C167010030071C71E /* TSQCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQCalendarView.h; sourceTree = "<group>"; };
 		A806808D167010030071C71E /* TSQCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarView.m; sourceTree = "<group>"; };
 		A806809E167012980071C71E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B8CD1ACD16C970A9008C3F60 /* TSQCalendarDefaultRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQCalendarDefaultRowCell.h; sourceTree = "<group>"; };
+		B8CD1ACE16C970A9008C3F60 /* TSQCalendarDefaultRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarDefaultRowCell.m; sourceTree = "<group>"; };
+		B8CFCAFC16C4B4B1004CFD58 /* TimesSquareResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimesSquareResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8CFCAFD16C4B4B1004CFD58 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		B8CFCB0116C4B4B1004CFD58 /* TimesSquareResources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TimesSquareResources-Info.plist"; sourceTree = "<group>"; };
+		B8CFCB0516C4B4B1004CFD58 /* TimesSquareResources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TimesSquareResources-Prefix.pch"; sourceTree = "<group>"; };
+		B8CFCB0916C4B670004CFD58 /* CalendarPreviousMonth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarPreviousMonth.png; sourceTree = "<group>"; };
+		B8CFCB0A16C4B670004CFD58 /* CalendarPreviousMonth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarPreviousMonth@2x.png"; sourceTree = "<group>"; };
+		B8CFCB0B16C4B670004CFD58 /* CalendarRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarRow.png; sourceTree = "<group>"; };
+		B8CFCB0C16C4B670004CFD58 /* CalendarRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarRow@2x.png"; sourceTree = "<group>"; };
+		B8CFCB0D16C4B670004CFD58 /* CalendarRowBottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarRowBottom.png; sourceTree = "<group>"; };
+		B8CFCB0E16C4B670004CFD58 /* CalendarRowBottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarRowBottom@2x.png"; sourceTree = "<group>"; };
+		B8CFCB0F16C4B670004CFD58 /* CalendarSelectedDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarSelectedDate.png; sourceTree = "<group>"; };
+		B8CFCB1016C4B670004CFD58 /* CalendarSelectedDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarSelectedDate@2x.png"; sourceTree = "<group>"; };
+		B8CFCB1116C4B670004CFD58 /* CalendarTodaysDate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarTodaysDate.png; sourceTree = "<group>"; };
+		B8CFCB1216C4B670004CFD58 /* CalendarTodaysDate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarTodaysDate@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +89,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B8CFCAF916C4B4B1004CFD58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8CFCAFE16C4B4B1004CFD58 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				A806806016700FD70071C71E /* TimesSquare */,
+				B8CFCAFF16C4B4B1004CFD58 /* TimesSquareResources */,
 				A806805D16700FD70071C71E /* Frameworks */,
 				A806805C16700FD70071C71E /* Products */,
 			);
@@ -76,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				A806805B16700FD70071C71E /* libTimesSquare.a */,
+				B8CFCAFC16C4B4B1004CFD58 /* TimesSquareResources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +126,7 @@
 				A806806D16700FD80071C71E /* SenTestingKit.framework */,
 				A806806F16700FD80071C71E /* UIKit.framework */,
 				A806809E167012980071C71E /* CoreGraphics.framework */,
+				B8CFCAFD16C4B4B1004CFD58 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,6 +141,8 @@
 				A8068089167010030071C71E /* TSQCalendarMonthHeaderCell.m */,
 				A806808A167010030071C71E /* TSQCalendarRowCell.h */,
 				A806808B167010030071C71E /* TSQCalendarRowCell.m */,
+				B8CD1ACD16C970A9008C3F60 /* TSQCalendarDefaultRowCell.h */,
+				B8CD1ACE16C970A9008C3F60 /* TSQCalendarDefaultRowCell.m */,
 				A806808C167010030071C71E /* TSQCalendarView.h */,
 				A806808D167010030071C71E /* TSQCalendarView.m */,
 				A806806116700FD70071C71E /* Supporting Files */,
@@ -116,6 +158,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B8CFCAFF16C4B4B1004CFD58 /* TimesSquareResources */ = {
+			isa = PBXGroup;
+			children = (
+				B8CFCB0916C4B670004CFD58 /* CalendarPreviousMonth.png */,
+				B8CFCB0A16C4B670004CFD58 /* CalendarPreviousMonth@2x.png */,
+				B8CFCB0B16C4B670004CFD58 /* CalendarRow.png */,
+				B8CFCB0C16C4B670004CFD58 /* CalendarRow@2x.png */,
+				B8CFCB0D16C4B670004CFD58 /* CalendarRowBottom.png */,
+				B8CFCB0E16C4B670004CFD58 /* CalendarRowBottom@2x.png */,
+				B8CFCB0F16C4B670004CFD58 /* CalendarSelectedDate.png */,
+				B8CFCB1016C4B670004CFD58 /* CalendarSelectedDate@2x.png */,
+				B8CFCB1116C4B670004CFD58 /* CalendarTodaysDate.png */,
+				B8CFCB1216C4B670004CFD58 /* CalendarTodaysDate@2x.png */,
+				B8CFCB0016C4B4B1004CFD58 /* Supporting Files */,
+			);
+			path = TimesSquareResources;
+			sourceTree = "<group>";
+		};
+		B8CFCB0016C4B4B1004CFD58 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B8CFCB0116C4B4B1004CFD58 /* TimesSquareResources-Info.plist */,
+				B8CFCB0516C4B4B1004CFD58 /* TimesSquareResources-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -127,6 +196,7 @@
 				EFD8DE6E167AF78100F87FBE /* TSQCalendarCell.h in Headers */,
 				EFD8DE6F167AF78600F87FBE /* TSQCalendarMonthHeaderCell.h in Headers */,
 				EFD8DE70167AF78C00F87FBE /* TSQCalendarRowCell.h in Headers */,
+				B8CD1ACF16C970A9008C3F60 /* TSQCalendarDefaultRowCell.h in Headers */,
 				EFD8DE71167AF79000F87FBE /* TSQCalendarView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +239,23 @@
 			productReference = A806805B16700FD70071C71E /* libTimesSquare.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		B8CFCAFB16C4B4B1004CFD58 /* TimesSquareResources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8CFCB0816C4B4B1004CFD58 /* Build configuration list for PBXNativeTarget "TimesSquareResources" */;
+			buildPhases = (
+				B8CFCAF816C4B4B1004CFD58 /* Sources */,
+				B8CFCAF916C4B4B1004CFD58 /* Frameworks */,
+				B8CFCAFA16C4B4B1004CFD58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimesSquareResources;
+			productName = TimesSquareResources;
+			productReference = B8CFCAFC16C4B4B1004CFD58 /* TimesSquareResources.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -192,9 +279,30 @@
 			targets = (
 				A806805A16700FD70071C71E /* TimesSquare */,
 				A81E05F71682A0E000E79A2B /* TimesSquare Documentation */,
+				B8CFCAFB16C4B4B1004CFD58 /* TimesSquareResources */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B8CFCAFA16C4B4B1004CFD58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8CFCB1316C4B670004CFD58 /* CalendarPreviousMonth.png in Resources */,
+				B8CFCB1416C4B670004CFD58 /* CalendarPreviousMonth@2x.png in Resources */,
+				B8CFCB1516C4B670004CFD58 /* CalendarRow.png in Resources */,
+				B8CFCB1616C4B670004CFD58 /* CalendarRow@2x.png in Resources */,
+				B8CFCB1716C4B670004CFD58 /* CalendarRowBottom.png in Resources */,
+				B8CFCB1816C4B670004CFD58 /* CalendarRowBottom@2x.png in Resources */,
+				B8CFCB1916C4B670004CFD58 /* CalendarSelectedDate.png in Resources */,
+				B8CFCB1A16C4B670004CFD58 /* CalendarSelectedDate@2x.png in Resources */,
+				B8CFCB1B16C4B670004CFD58 /* CalendarTodaysDate.png in Resources */,
+				B8CFCB1C16C4B670004CFD58 /* CalendarTodaysDate@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A806805716700FD70071C71E /* Sources */ = {
@@ -205,6 +313,14 @@
 				A8068090167010030071C71E /* TSQCalendarMonthHeaderCell.m in Sources */,
 				A8068092167010030071C71E /* TSQCalendarRowCell.m in Sources */,
 				A8068094167010030071C71E /* TSQCalendarView.m in Sources */,
+				B8CD1AD016C970A9008C3F60 /* TSQCalendarDefaultRowCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8CFCAF816C4B4B1004CFD58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +437,45 @@
 			};
 			name = Release;
 		};
+		B8CFCB0616C4B4B1004CFD58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				COMBINE_HIDPI_IMAGES = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TimesSquareResources/TimesSquareResources-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "TimesSquareResources/TimesSquareResources-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		B8CFCB0716C4B4B1004CFD58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				COMBINE_HIDPI_IMAGES = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TimesSquareResources/TimesSquareResources-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "TimesSquareResources/TimesSquareResources-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -347,6 +502,15 @@
 			buildConfigurations = (
 				A81E05F91682A0E000E79A2B /* Debug */,
 				A81E05FA1682A0E000E79A2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8CFCB0816C4B4B1004CFD58 /* Build configuration list for PBXNativeTarget "TimesSquareResources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8CFCB0616C4B4B1004CFD58 /* Debug */,
+				B8CFCB0716C4B4B1004CFD58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
