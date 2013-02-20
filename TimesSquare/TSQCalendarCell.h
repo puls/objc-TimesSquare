@@ -47,11 +47,11 @@
 
 /** @name Display Properties */
 
-/** The preferred height for this cell.
+/** The preferred height for instances of this cell.
  
  The built-in implementation in `TSQCalendarCell` returns `46.0f`. Your subclass may want to return something else, whether it is a constant or it is based on other properties of the cell.
  */
-@property (nonatomic, readonly) CGFloat cellHeight;
++ (CGFloat) cellHeight;
 
 /** The text color.
  

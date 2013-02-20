@@ -85,6 +85,15 @@
     return _rowCellClass;
 }
 
+- (Class)cellClassForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    if (indexPath.row == 0 && !self.pinsHeaderToTop) {
+        return [self headerCellClass];
+    } else {
+        return [self rowCellClass];
+    }
+}
+
 - (void)setBackgroundColor:(UIColor *)backgroundColor;
 {
     [super setBackgroundColor:backgroundColor];
@@ -202,7 +211,7 @@
         CGRect bounds = self.bounds;
         CGRect headerRect;
         CGRect tableRect;
-        CGRectDivide(bounds, &headerRect, &tableRect, [self.headerView cellHeight], CGRectMinYEdge);
+        CGRectDivide(bounds, &headerRect, &tableRect, [[self headerCellClass] cellHeight], CGRectMinYEdge);
         self.headerView.frame = headerRect;
         self.tableView.frame = tableRect;
     } else {
@@ -282,7 +291,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    return [(id)[self tableView:tableView cellForRowAtIndexPath:indexPath] cellHeight];
+    return [[self cellClassForRowAtIndexPath: indexPath] cellHeight];
 }
 
 #pragma mark UIScrollViewDelegate
