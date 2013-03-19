@@ -98,6 +98,13 @@
  */
 @property (nonatomic, strong) Class rowCellClass;
 
+/** Scrolls the receiver until the specified date month is completely visible.
+
+ @param date A date that identifies the month that will be visible.
+ @param animated YES if you want to animate the change in position, NO if it should be immediate.
+ */
+- (void)scrollToDate:(NSDate *)date animated:(BOOL)animated;
+
 @end
 
 /** The methods in the `TSQCalendarViewDelegate` protocol allow the adopting delegate to either prevent a day from being selected or respond to it.

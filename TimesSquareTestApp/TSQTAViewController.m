@@ -33,7 +33,7 @@
     TSQCalendarView *calendarView = [[TSQCalendarView alloc] init];
     calendarView.calendar = self.calendar;
     calendarView.rowCellClass = [TSQTACalendarRowCell class];
-    calendarView.firstDate = [NSDate date];
+    calendarView.firstDate = [NSDate dateWithTimeIntervalSinceNow:-60 * 60 * 24 * 365 * 1];
     calendarView.lastDate = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * 365 * 5];
     calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
     calendarView.pagingEnabled = YES;
@@ -49,6 +49,12 @@
     
     self.navigationItem.title = calendar.calendarIdentifier;
     self.tabBarItem.title = calendar.calendarIdentifier;
+}
+
+- (void)viewDidLayoutSubviews;
+{
+  // Set the calendar view to show today date on start
+  [(TSQCalendarView *)self.view scrollToDate:[NSDate date] animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated;
