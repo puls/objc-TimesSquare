@@ -35,7 +35,7 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
 }
 
 
-- (CGFloat)cellHeight;
++ (CGFloat)cellHeight;
 {
     return 65.0f;
 }
