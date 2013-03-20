@@ -46,7 +46,7 @@
     return self;
 }
 
-- (CGFloat)cellHeight;
++ (CGFloat)cellHeight;
 {
     return 46.0f;
 }
