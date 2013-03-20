@@ -49,7 +49,7 @@
 
 /** The preferred height for instances of this cell.
  
- The built-in implementation in `TSQCalendarCell` returns `46.0f`. Your subclass may want to return something else, whether it is a constant or it is based on other properties of the cell.
+ The built-in implementation in `TSQCalendarCell` returns `46.0f`. Your subclass may want to return another value.
  */
 + (CGFloat) cellHeight;
 

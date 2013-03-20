@@ -291,7 +291,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    return [[self cellClassForRowAtIndexPath: indexPath] cellHeight];
+    return [[self cellClassForRowAtIndexPath:indexPath] cellHeight];
 }
 
 #pragma mark UIScrollViewDelegate
