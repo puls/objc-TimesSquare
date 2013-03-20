@@ -38,8 +38,7 @@
 /** The currently-selected date on the calendar.
  
  Set this property to any `NSDate`; `TSQCalendarView` will only look at the month, day, and year.
- You can read and write this property; the delegate method `calendarView:didSelectDate:` will be called
- when a new date is selected from the UI but *not* when this method is called manually.
+ You can read and write this property; the delegate method `calendarView:didSelectDate:` will be called both when a new date is selected from the UI and when this method is called manually.
  */
 @property (nonatomic, strong) NSDate *selectedDate;
 
