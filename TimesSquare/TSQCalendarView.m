@@ -156,6 +156,14 @@
     }
 }
 
+- (BOOL)isDateVisible:(NSDate *)date
+{
+    NSIndexPath *dateIndexPath = [self indexPathForRowAtDate:date];
+    NSArray *visibleRows = self.tableView.indexPathsForVisibleRows;
+    if ([visibleRows containsObject:dateIndexPath]) return YES;
+    return NO; 
+}
+
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated
 {
     NSIndexPath *dateIndexPath;
