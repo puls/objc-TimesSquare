@@ -97,6 +97,15 @@
  */
 @property (nonatomic, strong) Class rowCellClass;
 
+/** Returns whether the date's month is currently visible.
+ 
+ Call this to check whether a given date is in the section currently scrolled to.
+ 
+ @param date the date to be checked.
+ @return whether the date is the currently active section.
+ */
+- (BOOL)isDateVisible:(NSDate *)date; 
+
 /** Scrolls the receiver until the specified date month is completely visible.
 
  @param date A date that identifies the month that will be visible.
