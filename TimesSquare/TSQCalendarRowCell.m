@@ -128,19 +128,19 @@
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         NSString *title = [self.dayFormatter stringFromDate:date];
         NSString *accessibilityLabel = [self.accessibilityFormatter stringFromDate:date];
-        [self.dayButtons[index] setTitle:title forState:UIControlStateNormal];
-        [self.dayButtons[index] setAccessibilityLabel:accessibilityLabel];
-        [self.notThisMonthButtons[index] setTitle:title forState:UIControlStateNormal];
-        [self.notThisMonthButtons[index] setAccessibilityLabel:accessibilityLabel];
+        [[self.dayButtons objectAtIndex:index] setTitle:title forState:UIControlStateNormal];
+        [[self.dayButtons objectAtIndex:index] setAccessibilityLabel:accessibilityLabel];
+        [[self.notThisMonthButtons objectAtIndex:index] setTitle:title forState:UIControlStateNormal];
+        [[self.notThisMonthButtons objectAtIndex:index] setAccessibilityLabel:accessibilityLabel];
         
         NSDateComponents *thisDateComponents = [self.calendar components:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit fromDate:date];
         
-        [self.dayButtons[index] setHidden:YES];
-        [self.notThisMonthButtons[index] setHidden:YES];
+        [[self.dayButtons objectAtIndex:index] setHidden:YES];
+        [[self.notThisMonthButtons objectAtIndex:index] setHidden:YES];
 
         NSInteger thisDayMonth = thisDateComponents.month;
         if (self.monthOfBeginningDate != thisDayMonth) {
-            [self.notThisMonthButtons[index] setHidden:NO];
+            [[self.notThisMonthButtons objectAtIndex:index] setHidden:NO];
         } else {
 
             if ([self.todayDateComponents isEqual:thisDateComponents]) {
@@ -149,7 +149,7 @@
                 [self.todayButton setAccessibilityLabel:accessibilityLabel];
                 self.indexOfTodayButton = index;
             } else {
-                UIButton *button = self.dayButtons[index];
+                UIButton *button = [self.dayButtons objectAtIndex:index];
                 button.enabled = ![self.calendarView.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)] || [self.calendarView.delegate calendarView:self.calendarView shouldSelectDate:date];
                 button.hidden = NO;
             }
@@ -209,8 +209,8 @@
 
 - (void)layoutViewsForColumnAtIndex:(NSUInteger)index inRect:(CGRect)rect;
 {
-    UIButton *dayButton = self.dayButtons[index];
-    UIButton *notThisMonthButton = self.notThisMonthButtons[index];
+    UIButton *dayButton = [self.dayButtons objectAtIndex:index];
+    UIButton *notThisMonthButton = [self.notThisMonthButtons objectAtIndex:index];
     
     dayButton.frame = rect;
     notThisMonthButton.frame = rect;
@@ -244,8 +244,8 @@
     
     if (newIndexOfSelectedButton >= 0) {
         self.selectedButton.hidden = NO;
-        [self.selectedButton setTitle:[self.dayButtons[newIndexOfSelectedButton] currentTitle] forState:UIControlStateNormal];
-        [self.selectedButton setAccessibilityLabel:[self.dayButtons[newIndexOfSelectedButton] accessibilityLabel]];
+        [self.selectedButton setTitle:[[self.dayButtons objectAtIndex:newIndexOfSelectedButton] currentTitle] forState:UIControlStateNormal];
+        [self.selectedButton setAccessibilityLabel:[[self.dayButtons objectAtIndex: newIndexOfSelectedButton] accessibilityLabel]];
     } else {
         self.selectedButton.hidden = YES;
     }

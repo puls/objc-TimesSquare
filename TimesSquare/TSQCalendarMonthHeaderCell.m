@@ -78,7 +78,7 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
         label.shadowColor = [UIColor whiteColor];
         label.shadowOffset = self.shadowOffset;
         [label sizeToFit];
-        headerLabels[ordinality - 1] = label;
+        [headerLabels replaceObjectAtIndex:ordinality - 1 withObject:label];
         [self.contentView addSubview:label];
         
         referenceDate = [self.calendar dateByAddingComponents:offset toDate:referenceDate options:0];
@@ -102,7 +102,7 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
 
 - (void)layoutViewsForColumnAtIndex:(NSUInteger)index inRect:(CGRect)rect;
 {
-    UILabel *label = self.headerLabels[index];
+    UILabel *label = [self.headerLabels objectAtIndex:index];
     CGRect labelFrame = rect;
     labelFrame.size.height = TSQCalendarMonthHeaderCellMonthsHeight;
     labelFrame.origin.y = self.bounds.size.height - TSQCalendarMonthHeaderCellMonthsHeight;
