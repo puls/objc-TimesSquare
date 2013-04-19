@@ -125,6 +125,11 @@
 
 - (void)setSelectedDate:(NSDate *)newSelectedDate;
 {
+    if (newSelectedDate == nil) {
+        [self deselectDate];
+        return;
+    }
+    
     // clamp to beginning of its day
     NSDate *startOfDay = [self clampDate:newSelectedDate toComponents:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit];
     
@@ -154,6 +159,12 @@
     if ([self.delegate respondsToSelector:@selector(calendarView:didSelectDate:)]) {
         [self.delegate calendarView:self didSelectDate:startOfDay];
     }
+}
+
+- (void) deselectDate
+{
+    [[self cellForRowAtDate:_selectedDate] selectColumnForDate:nil];
+    _selectedDate = nil;
 }
 
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated
