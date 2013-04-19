@@ -173,7 +173,7 @@
     } else {
         dateIndexPath = [self indexPathForRowAtDate:date]; 
     }
-  [self.tableView scrollToRowAtIndexPath:dateIndexPath atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    [self.tableView scrollToRowAtIndexPath:dateIndexPath atScrollPosition:UITableViewScrollPositionTop animated:animated];
 }
 
 - (TSQCalendarMonthHeaderCell *)makeHeaderCellWithIdentifier:(NSString *)identifier;
