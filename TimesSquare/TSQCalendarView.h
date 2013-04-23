@@ -9,6 +9,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    TSQCalendarSelectionDay = 0,
+    TSQCalendarSelectionDateRange
+} TSQCalendarSelectionType;
+
 
 @protocol TSQCalendarViewDelegate;
 
@@ -41,6 +46,33 @@
  You can read and write this property; the delegate method `calendarView:didSelectDate:` will be called both when a new date is selected from the UI and when this method is called manually.
  */
 @property (nonatomic, strong) NSDate *selectedDate;
+
+/** The currently-selected dates on the calendar.
+  
+ This property is read-only.
+ */
+@property (nonatomic, readonly) NSArray *selectedDates;
+
+/** The selection mode used for the calendar.
+ 
+ Defaults to `TSQCalendarSelectionDay`, which is the normal, single date selection.
+ Set to `TSQCalendarSelectionDateRange` to allow selecting a range of dates.
+ */
+@property (nonatomic, assign) TSQCalendarSelectionType selectionType;
+
+/** The start date of the currently-selected date range on the calendar.
+ 
+ Set this property to any `NSDate`; `TSQCalendarView` will only look at the month, day, and year.
+ You can read and write this property.
+ */
+@property (nonatomic, strong) NSDate *selectedStartDate;
+
+/** The end date of the currently-selected date range on the calendar.
+ 
+ Set this property to any `NSDate`; `TSQCalendarView` will only look at the month, day, and year.
+ You can read and write this property.
+ */
+@property (nonatomic, strong) NSDate *selectedEndDate;
 
 /** @name Calendar Configuration */
 
