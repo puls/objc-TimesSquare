@@ -163,4 +163,30 @@ typedef enum {
  */
 - (void)calendarView:(TSQCalendarView *)calendarView didSelectDate:(NSDate *)date;
 
+/** Tells the delegate that a start date was selected for a range of dates.
+ 
+ @param calendarView The calendar view that is selecting a date.
+ @param date Midnight on the date being selected.
+ */
+- (void)calendarView:(TSQCalendarView *)calendarView didSelectStartDate:(NSDate *)date;
+
+/** Tells the delegate that an end date was deselected for a range of dates.
+ 
+ @param calendarView The calendar view that is deselecting a date.
+ */
+- (void)calendarViewDidDeselectStartDate:(TSQCalendarView *)calendarView;
+
+/** Tells the delegate that an end date was selected for a range of dates.
+ 
+ @param calendarView The calendar view that is selecting a date.
+ @param date Midnight on the date being selected.
+ */
+- (void)calendarView:(TSQCalendarView *)calendarView didSelectEndDate:(NSDate *)date;
+
+/** Tells the delegate that an end date was deselected for a range of dates.
+ 
+ @param calendarView The calendar view that is deselecting a date.
+ */
+- (void)calendarViewDidDeselectEndDate:(TSQCalendarView *)calendarView;
+
 @end
