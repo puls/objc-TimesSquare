@@ -13,7 +13,7 @@
 
 @interface TSQCalendarRowCell ()
 {
-    int selectedButtonIndices[7];
+    int buttonStates[7];
 }
 
 @property (nonatomic, strong) NSArray *dayButtons;
@@ -50,6 +50,23 @@
     button.adjustsImageWhenDisabled = NO;
     [button setTitleColor:self.textColor forState:UIControlStateNormal];
     [button setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setBackgroundImage:nil forState:UIControlStateNormal];
+}
+
+- (void)configureSelectedButton:(UIButton *)button;
+{
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
+    [button setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
+    button.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
+}
+
+- (void)configureTodayButton:(UIButton *)button;
+{
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setBackgroundImage:[self todayBackgroundImage] forState:UIControlStateNormal];
+    [button setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
+    button.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
 }
 
 - (void)createDayButtons;
@@ -118,7 +135,7 @@
         }
 
         date = [self.calendar dateByAddingComponents:offset toDate:date options:0];
-        selectedButtonIndices[index] = 0;
+        buttonStates[index] = 0;
     }
 }
 
@@ -143,16 +160,17 @@
     NSDate *selectedDate = [self.calendar dateByAddingComponents:offset toDate:self.beginningDate options:0];
     
     if (self.calendarView.selectionType == TSQCalendarSelectionDay) {
-        self.calendarView.selectedDate = selectedDate;
+        self.calendarView.selectedDate = ([self.calendarView.selectedDate isEqual:selectedDate]) ? nil : selectedDate;
     } else {
         if (self.calendarView.selectedEndDate) {
             self.calendarView.selectedStartDate = selectedDate;
         } else if (self.calendarView.selectedStartDate && ([selectedDate compare:self.calendarView.selectedStartDate] == NSOrderedDescending)) {
             self.calendarView.selectedEndDate = selectedDate;
+        } else if ([self.calendarView.selectedStartDate isEqual:selectedDate]) {
+            self.calendarView.selectedStartDate = nil;
         } else {
             self.calendarView.selectedStartDate = selectedDate;
         }
-        NSLog(@"%@ - %@", self.calendarView.selectedStartDate, self.calendarView.selectedEndDate);
     }
 }
 
@@ -180,28 +198,22 @@
     dayButton.frame = rect;
     notThisMonthButton.frame = rect;
 
-    if (selectedButtonIndices[index] == 1) {
-        [dayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [dayButton setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
-        [dayButton setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
-        dayButton.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
+    if (buttonStates[index] == 1) {
+        [self configureSelectedButton:dayButton];
     } else if (self.indexOfTodayButton == (NSInteger)index) {
-        [self configureButton:dayButton];
-        [dayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [dayButton setBackgroundImage:[self todayBackgroundImage] forState:UIControlStateNormal];
-        [dayButton setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
-        dayButton.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
+        [self configureTodayButton:dayButton];
     } else {
         [self configureButton:dayButton];
-        [dayButton setBackgroundImage:nil forState:UIControlStateNormal];
     }
 }
 
 - (void)deselectColumnForDate:(NSDate *)date;
 {
+    if (!date) return;
+    
     NSInteger indexOfButtonForDate = [self indexOfColumnForDate:date];
     if (indexOfButtonForDate >= 0) {
-        selectedButtonIndices[indexOfButtonForDate] = 0;
+        buttonStates[indexOfButtonForDate] = 0;
     }
     
     [self setNeedsLayout];
@@ -209,13 +221,11 @@
 
 - (void)selectColumnForDate:(NSDate *)date;
 {
-    if (!date) {
-        return;
-    }
+    if (!date) return;
     
     NSInteger indexOfButtonForDate = [self indexOfColumnForDate:date];
     if (indexOfButtonForDate >= 0) {
-        selectedButtonIndices[indexOfButtonForDate] = 1;
+        buttonStates[indexOfButtonForDate] = 1;
     }
     
     [self setNeedsLayout];
