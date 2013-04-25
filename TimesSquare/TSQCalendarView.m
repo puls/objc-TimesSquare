@@ -131,7 +131,13 @@
 
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition;
 {
-    NSIndexPath *path = [self indexPathForRowAtDate:date];
+    NSIndexPath *path;
+    if (self.pinsHeaderToTop) {
+        NSInteger section = [self sectionForDate:date];
+        path = [NSIndexPath indexPathForRow:0 inSection:section];
+    } else {
+        path = [self indexPathForRowAtDate:date];
+    }
     if (path) {
         [self.tableView scrollToRowAtIndexPath:path atScrollPosition:scrollPosition animated:animated];
     }
