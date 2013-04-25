@@ -124,10 +124,17 @@
     _lastDate = [self.calendar dateByAddingComponents:offsetComponents toDate:firstOfMonth options:0];
 }
 
-- (void)scrollToDate:(NSDate *)date animated:(BOOL)animated
+- (void)scrollToDate:(NSDate *)date animated:(BOOL)animated;
 {
-  NSInteger section = [self sectionForDate:date];
-  [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    [self scrollToDate:date animated:animated atScrollPosition:UITableViewScrollPositionTop];
+}
+
+- (void)scrollToDate:(NSDate *)date animated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition;
+{
+    NSIndexPath *path = [self indexPathForRowAtDate:date];
+    if (path) {
+        [self.tableView scrollToRowAtIndexPath:path atScrollPosition:scrollPosition animated:animated];
+    }
 }
 
 - (TSQCalendarMonthHeaderCell *)makeHeaderCellWithIdentifier:(NSString *)identifier;

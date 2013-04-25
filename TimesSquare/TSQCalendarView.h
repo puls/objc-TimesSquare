@@ -129,12 +129,20 @@ typedef enum {
  */
 @property (nonatomic, strong) Class rowCellClass;
 
-/** Scrolls the receiver until the specified date month is completely visible.
+/** Scrolls the receiver until the specified date month is completely visible at the top of the view.
 
  @param date A date that identifies the month that will be visible.
  @param animated YES if you want to animate the change in position, NO if it should be immediate.
  */
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated;
+
+/** Scrolls the receiver until the specified date month is completely visible.
+ 
+ @param date A date that identifies the month that will be visible.
+ @param animated YES if you want to animate the change in position, NO if it should be immediate.
+ @param scrollPosition The scroll position you want the view to use.
+ */
+- (void)scrollToDate:(NSDate *)date animated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition;
 
 @end
 
