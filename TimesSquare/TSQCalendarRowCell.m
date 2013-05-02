@@ -65,9 +65,9 @@
 
 - (void)configureTodayButton:(UIButton *)button;
 {
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitleColor:self.todayTextColor forState:UIControlStateNormal];
     [button setBackgroundImage:[self todayBackgroundImage] forState:UIControlStateNormal];
-    [button setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
+    [button setTitleShadowColor:self.todayShadowColor forState:UIControlStateNormal];
     button.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
 }
 
@@ -121,10 +121,15 @@
         NSDateComponents *thisDateComponents = [self.calendar components:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit fromDate:date];
 
         [self.notThisMonthButtons[index] setHidden:YES];
-
+        [self.dayButtons[index] setHidden:NO];
+        
         NSInteger thisDayMonth = thisDateComponents.month;
         if (self.monthOfBeginningDate != thisDayMonth) {
-            [self.notThisMonthButtons[index] setHidden:NO];
+            if (self.showsNotThisMonth) {
+                [self.notThisMonthButtons[index] setHidden:NO];
+            } else {
+                [self.dayButtons[index] setHidden:YES];
+            }
         } else {
             if ([self.todayDateComponents isEqual:thisDateComponents]) {
                 self.indexOfTodayButton = index;
