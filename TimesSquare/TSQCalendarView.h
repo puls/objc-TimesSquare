@@ -9,6 +9,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    TSQCalendarSelectionDay = 0,
+    TSQCalendarSelectionDateRange
+} TSQCalendarSelectionType;
+
 
 @protocol TSQCalendarViewDelegate;
 
@@ -41,6 +46,33 @@
  You can read and write this property; the delegate method `calendarView:didSelectDate:` will be called both when a new date is selected from the UI and when this method is called manually.
  */
 @property (nonatomic, strong) NSDate *selectedDate;
+
+/** The currently-selected dates on the calendar.
+  
+ This property is read-only.
+ */
+@property (nonatomic, readonly) NSArray *selectedDates;
+
+/** The selection mode used for the calendar.
+ 
+ Defaults to `TSQCalendarSelectionDay`, which is the normal, single date selection.
+ Set to `TSQCalendarSelectionDateRange` to allow selecting a range of dates.
+ */
+@property (nonatomic, assign) TSQCalendarSelectionType selectionType;
+
+/** The start date of the currently-selected date range on the calendar.
+ 
+ Set this property to any `NSDate`; `TSQCalendarView` will only look at the month, day, and year.
+ You can read and write this property.
+ */
+@property (nonatomic, strong) NSDate *selectedStartDate;
+
+/** The end date of the currently-selected date range on the calendar.
+ 
+ Set this property to any `NSDate`; `TSQCalendarView` will only look at the month, day, and year.
+ You can read and write this property.
+ */
+@property (nonatomic, strong) NSDate *selectedEndDate;
 
 /** @name Calendar Configuration */
 
@@ -97,12 +129,20 @@
  */
 @property (nonatomic, strong) Class rowCellClass;
 
-/** Scrolls the receiver until the specified date month is completely visible.
+/** Scrolls the receiver until the specified date month is completely visible at the top of the view.
 
  @param date A date that identifies the month that will be visible.
  @param animated YES if you want to animate the change in position, NO if it should be immediate.
  */
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated;
+
+/** Scrolls the receiver until the specified date month is completely visible.
+ 
+ @param date A date that identifies the month that will be visible.
+ @param animated YES if you want to animate the change in position, NO if it should be immediate.
+ @param scrollPosition The scroll position you want the view to use.
+ */
+- (void)scrollToDate:(NSDate *)date animated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition;
 
 @end
 
@@ -130,5 +170,31 @@
  @param date Midnight on the date being selected.
  */
 - (void)calendarView:(TSQCalendarView *)calendarView didSelectDate:(NSDate *)date;
+
+/** Tells the delegate that a start date was selected for a range of dates.
+ 
+ @param calendarView The calendar view that is selecting a date.
+ @param date Midnight on the date being selected.
+ */
+- (void)calendarView:(TSQCalendarView *)calendarView didSelectStartDate:(NSDate *)date;
+
+/** Tells the delegate that an end date was deselected for a range of dates.
+ 
+ @param calendarView The calendar view that is deselecting a date.
+ */
+- (void)calendarViewDidDeselectStartDate:(TSQCalendarView *)calendarView;
+
+/** Tells the delegate that an end date was selected for a range of dates.
+ 
+ @param calendarView The calendar view that is selecting a date.
+ @param date Midnight on the date being selected.
+ */
+- (void)calendarView:(TSQCalendarView *)calendarView didSelectEndDate:(NSDate *)date;
+
+/** Tells the delegate that an end date was deselected for a range of dates.
+ 
+ @param calendarView The calendar view that is deselecting a date.
+ */
+- (void)calendarViewDidDeselectEndDate:(TSQCalendarView *)calendarView;
 
 @end
