@@ -16,9 +16,6 @@
     int buttonStates[7];
 }
 
-@property (nonatomic, strong) NSArray *dayButtons;
-@property (nonatomic, strong) NSArray *notThisMonthButtons;
-
 @property (nonatomic, assign) NSInteger indexOfTodayButton;
 @property (nonatomic, assign) NSInteger indexOfSelectedButton;
 

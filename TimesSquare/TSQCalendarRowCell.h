@@ -73,4 +73,7 @@
  */
 - (void)deselectColumnForDate:(NSDate *)date;
 
+@property (nonatomic, strong) NSArray *dayButtons;
+@property (nonatomic, strong) NSArray *notThisMonthButtons;
+
 @end
