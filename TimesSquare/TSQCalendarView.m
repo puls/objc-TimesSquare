@@ -162,6 +162,16 @@
   [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:animated];
 }
 
+- (BOOL)shouldDisplayEventMarkerForDate:(NSDate *)date
+{
+    if ([self.delegate respondsToSelector:@selector(calendarView:shouldDisplayEventMarkerForDate:)])
+    {
+        return [self.delegate calendarView:self shouldDisplayEventMarkerForDate:date];
+    }
+    
+    return NO;
+}
+
 - (TSQCalendarMonthHeaderCell *)makeHeaderCellWithIdentifier:(NSString *)identifier;
 {
     TSQCalendarMonthHeaderCell *cell = [[[self headerCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];

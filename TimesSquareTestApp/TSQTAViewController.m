@@ -12,7 +12,7 @@
 #import <TimesSquare/TimesSquare.h>
 
 
-@interface TSQTAViewController ()
+@interface TSQTAViewController () <TSQCalendarViewDelegate>
 
 @property (nonatomic, retain) NSTimer *timer;
 
@@ -39,6 +39,7 @@
     calendarView.pagingEnabled = YES;
     CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
     calendarView.contentInset = UIEdgeInsetsMake(0.0f, onePixel, 0.0f, onePixel);
+    calendarView.delegate = self;
 
     self.view = calendarView;
 }
@@ -79,6 +80,14 @@
     
     [tableView setContentOffset:CGPointMake(0.f, atTop ? 10000.f : 0.f) animated:YES];
     atTop = !atTop;
+}
+
+- (BOOL)calendarView:(TSQCalendarView *)calendarView shouldDisplayEventMarkerForDate:(NSDate *)date
+{
+    NSDateComponents *components = [calendarView.calendar components:NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
+    
+    // This gives a nice pattern
+    return (components.day%9 == components.month%9) || (components.day%11 == components.month%11);
 }
 
 @end

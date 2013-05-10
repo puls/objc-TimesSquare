@@ -18,6 +18,8 @@
 		EFD8DE6F167AF78600F87FBE /* TSQCalendarMonthHeaderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A8068088167010030071C71E /* TSQCalendarMonthHeaderCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EFD8DE70167AF78C00F87FBE /* TSQCalendarRowCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A806808A167010030071C71E /* TSQCalendarRowCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EFD8DE71167AF79000F87FBE /* TSQCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = A806808C167010030071C71E /* TSQCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6C9C449173D29C3004EA826 /* TSQCalendarRowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = F6C9C447173D29C3004EA826 /* TSQCalendarRowButton.h */; };
+		F6C9C44A173D29C3004EA826 /* TSQCalendarRowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C9C448173D29C3004EA826 /* TSQCalendarRowButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +50,8 @@
 		A806808C167010030071C71E /* TSQCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQCalendarView.h; sourceTree = "<group>"; };
 		A806808D167010030071C71E /* TSQCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarView.m; sourceTree = "<group>"; };
 		A806809E167012980071C71E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F6C9C447173D29C3004EA826 /* TSQCalendarRowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSQCalendarRowButton.h; sourceTree = "<group>"; };
+		F6C9C448173D29C3004EA826 /* TSQCalendarRowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSQCalendarRowButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 				A8068087167010030071C71E /* TSQCalendarCell.m */,
 				A8068088167010030071C71E /* TSQCalendarMonthHeaderCell.h */,
 				A8068089167010030071C71E /* TSQCalendarMonthHeaderCell.m */,
+				F6C9C447173D29C3004EA826 /* TSQCalendarRowButton.h */,
+				F6C9C448173D29C3004EA826 /* TSQCalendarRowButton.m */,
 				A806808A167010030071C71E /* TSQCalendarRowCell.h */,
 				A806808B167010030071C71E /* TSQCalendarRowCell.m */,
 				A806808C167010030071C71E /* TSQCalendarView.h */,
@@ -128,6 +134,7 @@
 				EFD8DE6F167AF78600F87FBE /* TSQCalendarMonthHeaderCell.h in Headers */,
 				EFD8DE70167AF78C00F87FBE /* TSQCalendarRowCell.h in Headers */,
 				EFD8DE71167AF79000F87FBE /* TSQCalendarView.h in Headers */,
+				F6C9C449173D29C3004EA826 /* TSQCalendarRowButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +212,7 @@
 				A8068090167010030071C71E /* TSQCalendarMonthHeaderCell.m in Sources */,
 				A8068092167010030071C71E /* TSQCalendarRowCell.m in Sources */,
 				A8068094167010030071C71E /* TSQCalendarView.m in Sources */,
+				F6C9C44A173D29C3004EA826 /* TSQCalendarRowButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
