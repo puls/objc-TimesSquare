@@ -42,22 +42,23 @@
     return self;
 }
 
-- (void)configureButton:(TSQCalendarRowButton *)button;
+- (Class)rowButtonClass;
 {
-    button.titleLabel.shadowOffset = self.shadowOffset;
-    [button setTitleColor:self.textColor forState:UIControlStateNormal];
-    button.subtitleLabel.shadowOffset = self.shadowOffset;
+    if (!_rowButtonClass) {
+        self.rowButtonClass = [TSQCalendarRowButton class];
+    }
+    return _rowButtonClass;
 }
 
 - (void)createDayButtons;
 {
     NSMutableArray *dayButtons = [NSMutableArray arrayWithCapacity:self.daysInWeek];
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
-        TSQCalendarRowButton *button = [[TSQCalendarRowButton alloc] initWithFrame:self.contentView.bounds];
+        TSQCalendarRowButton *button = [[self.rowButtonClass alloc] initWithFrame:self.contentView.bounds];
         [button addTarget:self action:@selector(dateButtonPressed:) forControlEvents:UIControlEventTouchDown];
         [dayButtons addObject:button];
         [self.contentView addSubview:button];
-        [self configureButton:button];
+        [button configureWithRowCell:self];
         [button setTitleColor:[self.textColor colorWithAlphaComponent:0.5f] forState:UIControlStateDisabled];
     }
     self.dayButtons = dayButtons;
@@ -67,10 +68,10 @@
 {
     NSMutableArray *notThisMonthButtons = [NSMutableArray arrayWithCapacity:self.daysInWeek];
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
-        TSQCalendarRowButton *button = [[TSQCalendarRowButton alloc] initWithFrame:self.contentView.bounds];
+        TSQCalendarRowButton *button = [[self.rowButtonClass alloc] initWithFrame:self.contentView.bounds];
         [notThisMonthButtons addObject:button];
         [self.contentView addSubview:button];
-        [self configureButton:button];
+        [button configureWithRowCell:self];
 
         button.enabled = NO;
         UIColor *backgroundPattern = [UIColor colorWithPatternImage:[self notThisMonthBackgroundImage]];
@@ -82,9 +83,9 @@
 
 - (void)createTodayButton;
 {
-    self.todayButton = [[TSQCalendarRowButton alloc] initWithFrame:self.contentView.bounds];
+    self.todayButton = [[self.rowButtonClass alloc] initWithFrame:self.contentView.bounds];
     [self.contentView addSubview:self.todayButton];
-    [self configureButton:self.todayButton];
+    [self.todayButton configureWithRowCell:self];
     [self.todayButton addTarget:self action:@selector(todayButtonPressed:) forControlEvents:UIControlEventTouchDown];
     
     [self.todayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -96,9 +97,9 @@
 
 - (void)createSelectedButton;
 {
-    self.selectedButton = [[TSQCalendarRowButton alloc] initWithFrame:self.contentView.bounds];
+    self.selectedButton = [[self.rowButtonClass alloc] initWithFrame:self.contentView.bounds];
     [self.contentView addSubview:self.selectedButton];
-    [self configureButton:self.selectedButton];
+    [self.selectedButton configureWithRowCell:self];
     
     [self.selectedButton setAccessibilityTraits:UIAccessibilityTraitSelected|self.selectedButton.accessibilityTraits];
     

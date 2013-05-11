@@ -9,6 +9,7 @@
 
 
 #import <UIKit/UIKit.h>
+#import "TSQCalendarRowCell.h"
 
 /** The `TSQCalendarRowButton` class is a button that represents single day in the calendar.
  
@@ -22,5 +23,12 @@
  
  */
 @property (nonatomic, strong, readonly) UILabel *subtitleLabel;
+
+/** Configures the button according to the given row's properties
+
+ The button is set up using the text color and shadow offset of the row
+ 
+ */
+- (void)configureWithRowCell:(TSQCalendarRowCell *)rowCell;
 
 @end

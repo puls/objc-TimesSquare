@@ -23,12 +23,20 @@
         
         _subtitleLabel = [[UILabel alloc] init];
         _subtitleLabel.backgroundColor = [UIColor clearColor];
+        _subtitleLabel.font = self.titleLabel.font;
         _subtitleLabel.textAlignment = UITextAlignmentCenter;
         [self addSubview:_subtitleLabel];
         
         [self updateSubtitleLabel];
     }
     return self;
+}
+
+- (void)configureWithRowCell:(TSQCalendarRowCell *)rowCell
+{
+    [self setTitleColor:rowCell.textColor forState:UIControlStateNormal];
+    self.titleLabel.shadowOffset = rowCell.shadowOffset;
+    [self updateSubtitleLabel];
 }
 
 - (void)layoutSubviews
@@ -43,7 +51,6 @@
 
 - (void)updateSubtitleLabel
 {
-    self.subtitleLabel.font = self.titleLabel.font;
     self.subtitleLabel.textColor = self.currentTitleColor;
     self.subtitleLabel.shadowColor = self.currentTitleShadowColor;
     self.subtitleLabel.shadowOffset = self.titleLabel.shadowOffset;
