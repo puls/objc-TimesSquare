@@ -12,11 +12,10 @@
 
 @implementation TSQCalendarRowButton
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame;
 {
     self = [super initWithFrame:frame];
-    if (self)
-    {
+    if (self) {
         self.titleLabel.font = [UIFont boldSystemFontOfSize:19.f];
         self.adjustsImageWhenDisabled = NO;
         [self setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -32,14 +31,14 @@
     return self;
 }
 
-- (void)configureWithRowCell:(TSQCalendarRowCell *)rowCell
+- (void)configureWithRowCell:(TSQCalendarRowCell *)rowCell;
 {
     [self setTitleColor:rowCell.textColor forState:UIControlStateNormal];
     self.titleLabel.shadowOffset = rowCell.shadowOffset;
     [self updateSubtitleLabel];
 }
 
-- (void)layoutSubviews
+- (void)layoutSubviews;
 {
     [super layoutSubviews];
 
@@ -49,32 +48,32 @@
     self.subtitleLabel.frame = subtitleFrame;
 }
 
-- (void)updateSubtitleLabel
+- (void)updateSubtitleLabel;
 {
     self.subtitleLabel.textColor = self.currentTitleColor;
     self.subtitleLabel.shadowColor = self.currentTitleShadowColor;
     self.subtitleLabel.shadowOffset = self.titleLabel.shadowOffset;
 }
 
-- (void)setTitleShadowColor:(UIColor *)color forState:(UIControlState)state
+- (void)setTitleShadowColor:(UIColor *)color forState:(UIControlState)state;
 {
     [super setTitleShadowColor:color forState:state];
     [self updateSubtitleLabel];
 }
 
-- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state
+- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state;
 {
     [super setTitleColor:color forState:state];
     [self updateSubtitleLabel];
 }
 
-- (void)setHighlighted:(BOOL)highlighted
+- (void)setHighlighted:(BOOL)highlighted;
 {
     [super setHighlighted:highlighted];
     [self updateSubtitleLabel];
 }
 
-- (void)setSelected:(BOOL)selected
+- (void)setSelected:(BOOL)selected;
 {
     [super setSelected:selected];
     [self updateSubtitleLabel];
