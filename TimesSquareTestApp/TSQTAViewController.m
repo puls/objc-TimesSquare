@@ -82,12 +82,12 @@
     atTop = !atTop;
 }
 
-- (BOOL)calendarView:(TSQCalendarView *)calendarView shouldDisplayEventMarkerForDate:(NSDate *)date
+- (BOOL)calendarView:(TSQCalendarView *)calendarView shouldDisplayEventMarkerForDate:(NSDate *)date;
 {
     NSDateComponents *components = [calendarView.calendar components:NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
     
     // This gives a nice pattern
-    return (components.day%9 == components.month%9) || (components.day%11 == components.month%11);
+    return (components.day % 9 == components.month % 9) || (components.day % 11 == components.month % 11);
 }
 
 @end

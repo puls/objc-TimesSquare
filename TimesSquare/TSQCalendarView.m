@@ -162,10 +162,9 @@
   [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:animated];
 }
 
-- (BOOL)shouldDisplayEventMarkerForDate:(NSDate *)date
+- (BOOL)shouldDisplayEventMarkerForDate:(NSDate *)date;
 {
-    if ([self.delegate respondsToSelector:@selector(calendarView:shouldDisplayEventMarkerForDate:)])
-    {
+    if ([self.delegate respondsToSelector:@selector(calendarView:shouldDisplayEventMarkerForDate:)]) {
         return [self.delegate calendarView:self shouldDisplayEventMarkerForDate:date];
     }
     
