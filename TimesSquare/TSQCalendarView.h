@@ -71,6 +71,13 @@
  */
 @property (nonatomic) BOOL pagingEnabled;
 
+/** Whether or not the calendar snaps the nearest edge of a row to the top of its bounds.
+ 
+ This property is similar to `pagingEnabled`, except the snapping is to rows rather than months.
+ Paging takes precedence over snapping to row boundaries.
+ */
+@property (nonatomic) BOOL snapsToRows;
+
 /** The distance from the edges of the view to where the content begins.
  
  This property is equivalent to the one defined on `UIScrollView`.
