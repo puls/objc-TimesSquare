@@ -61,7 +61,7 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
     
     NSDateFormatter *dayFormatter = [NSDateFormatter new];
     dayFormatter.calendar = self.calendar;
-    dayFormatter.dateFormat = @"cccccc";
+    dayFormatter.dateFormat = @"E";
     
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         [headerLabels addObject:@""];
