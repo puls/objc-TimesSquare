@@ -296,6 +296,12 @@
 
 #pragma mark UIScrollViewDelegate
 
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
+{
+    [self scrollToDate:[self firstOfMonthForSection:[self sectionForDate:[NSDate date]]] animated:YES];
+    return NO;
+}
+
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset;
 {
     if (self.pagingEnabled) {
