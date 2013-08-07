@@ -13,11 +13,11 @@
 		A8068092167010030071C71E /* TSQCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808B167010030071C71E /* TSQCalendarRowCell.m */; };
 		A8068094167010030071C71E /* TSQCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808D167010030071C71E /* TSQCalendarView.m */; };
 		A80B62AB1672720C00792DFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806809E167012980071C71E /* CoreGraphics.framework */; };
-		EFD8DE6D167AF77B00F87FBE /* TimesSquare.h in Headers */ = {isa = PBXBuildFile; fileRef = A806806316700FD70071C71E /* TimesSquare.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EFD8DE6E167AF78100F87FBE /* TSQCalendarCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A8068086167010030071C71E /* TSQCalendarCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EFD8DE6F167AF78600F87FBE /* TSQCalendarMonthHeaderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A8068088167010030071C71E /* TSQCalendarMonthHeaderCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EFD8DE70167AF78C00F87FBE /* TSQCalendarRowCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A806808A167010030071C71E /* TSQCalendarRowCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EFD8DE71167AF79000F87FBE /* TSQCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = A806808C167010030071C71E /* TSQCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC0A147617314AEE0080B096 /* TSQCalendarCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A8068086167010030071C71E /* TSQCalendarCell.h */; };
+		AC0A147717314AEE0080B096 /* TSQCalendarMonthHeaderCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A8068088167010030071C71E /* TSQCalendarMonthHeaderCell.h */; };
+		AC0A147817314AEE0080B096 /* TSQCalendarRowCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A806808A167010030071C71E /* TSQCalendarRowCell.h */; };
+		AC0A147917314AEE0080B096 /* TSQCalendarView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A806808C167010030071C71E /* TSQCalendarView.h */; };
+		AC0A147A173164B30080B096 /* TimesSquare.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A806806316700FD70071C71E /* TimesSquare.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +27,11 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				AC0A147A173164B30080B096 /* TimesSquare.h in CopyFiles */,
+				AC0A147617314AEE0080B096 /* TSQCalendarCell.h in CopyFiles */,
+				AC0A147717314AEE0080B096 /* TSQCalendarMonthHeaderCell.h in CopyFiles */,
+				AC0A147817314AEE0080B096 /* TSQCalendarRowCell.h in CopyFiles */,
+				AC0A147917314AEE0080B096 /* TSQCalendarView.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,11 +128,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFD8DE6D167AF77B00F87FBE /* TimesSquare.h in Headers */,
-				EFD8DE6E167AF78100F87FBE /* TSQCalendarCell.h in Headers */,
-				EFD8DE6F167AF78600F87FBE /* TSQCalendarMonthHeaderCell.h in Headers */,
-				EFD8DE70167AF78C00F87FBE /* TSQCalendarRowCell.h in Headers */,
-				EFD8DE71167AF79000F87FBE /* TSQCalendarView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +175,7 @@
 		A806805216700FD70071C71E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Square;
 			};
 			buildConfigurationList = A806805516700FD70071C71E /* Build configuration list for PBXProject "TimesSquare" */;
@@ -293,6 +293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUGGING_SYMBOLS = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -310,6 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

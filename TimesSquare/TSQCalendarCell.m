@@ -42,7 +42,11 @@
     self.shadowOffset = shadowOffset;
     self.columnSpacing = onePixel;
     self.textColor = [UIColor colorWithRed:0.47f green:0.5f blue:0.53f alpha:1.0f];
-
+    self.shadowColor = [UIColor whiteColor];
+    self.todayTextColor = [UIColor whiteColor];
+    self.todayShadowColor = [UIColor colorWithWhite:0.0f alpha:0.75f];
+    self.showsNotThisMonth = YES;
+    
     return self;
 }
 
