@@ -27,10 +27,13 @@
 
 @implementation TSQTAViewController
 
-- (void)viewDidLoad
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 {
-    [super viewDidLoad];
-    self.selectionType = TSQCalendarSelectionDay;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.selectionType = TSQCalendarSelectionDateRange;
+    }
+    return self;
 }
 
 - (void)loadView;
