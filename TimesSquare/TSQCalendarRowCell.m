@@ -13,7 +13,7 @@
 
 @interface TSQCalendarRowCell ()
 {
-    int buttonStates[7];
+    NSUInteger buttonStates[7];
 }
 
 @property (nonatomic, assign) NSInteger indexOfTodayButton;
