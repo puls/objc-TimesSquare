@@ -153,6 +153,24 @@
 
 #pragma mark Date selections
 
+- (void)setSelectionType:(TSQCalendarSelectionType)selectionType
+{
+    if (selectionType == _selectionType) return;
+    TSQCalendarSelectionType previousSelectionType = _selectionType;
+    _selectionType = selectionType;
+    
+    if (previousSelectionType == TSQCalendarSelectionDateRange) {
+        NSDate *startDate = self.selectedStartDate;
+        self.selectedStartDate = nil;
+        self.selectedEndDate = nil;
+        self.selectedDate = startDate;
+    } else if (previousSelectionType == TSQCalendarSelectionDay) {
+        NSDate *selectedDate = self.selectedDate;
+        self.selectedDate = nil;
+        self.selectedStartDate = selectedDate;
+    }
+}
+
 - (void)resetSelectedDates
 {
     for (NSDate *date in _selectedDates) {
