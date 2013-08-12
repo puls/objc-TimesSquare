@@ -170,7 +170,7 @@
         [[self cellForRowAtDate:date] deselectColumnForDate:date];
     }
     _selectedEndDate = nil;
-    _selectedDates = @[_selectedStartDate];
+    _selectedDates = _selectedStartDate ? @[_selectedStartDate] : @[];
     [[self cellForRowAtDate:_selectedStartDate] selectColumnForDate:_selectedStartDate];
 }
 
