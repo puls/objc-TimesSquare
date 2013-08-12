@@ -13,6 +13,6 @@
 @interface TSQTAViewController : UIViewController
 
 @property (nonatomic, strong) NSCalendar *calendar;
-@property (nonatomic, assign) TSQCalendarSelectionType selectionType;
+@property (nonatomic, assign) TSQCalendarSelectionMode selectionMode;
 
 @end

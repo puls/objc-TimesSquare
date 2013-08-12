@@ -168,7 +168,7 @@
     offset.day = [self.dayButtons indexOfObject:sender];
     NSDate *selectedDate = [self.calendar dateByAddingComponents:offset toDate:self.beginningDate options:0];
     
-    if (self.calendarView.selectionType == TSQCalendarSelectionDay) {
+    if (self.calendarView.selectionMode == TSQCalendarSelectionModeDay) {
         self.calendarView.selectedDate = ([self.calendarView.selectedDate isEqual:selectedDate]) ? nil : selectedDate;
     } else {
         if (self.calendarView.selectedEndDate) {

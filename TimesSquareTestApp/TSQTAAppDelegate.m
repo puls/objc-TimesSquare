@@ -39,7 +39,7 @@
     TSQTAViewController *dateRange = [[TSQTAViewController alloc] init];
     dateRange.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     dateRange.calendar.locale = [NSLocale currentLocale];
-    dateRange.selectionType = TSQCalendarSelectionDateRange;
+    dateRange.selectionMode = TSQCalendarSelectionModeDateRange;
     
     UITabBarController *tabController = [[UITabBarController alloc] init];
     tabController.viewControllers = @[gregorian, hebrew, islamic, indian, persian, dateRange];

@@ -52,7 +52,7 @@
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    _selectionType = TSQCalendarSelectionDay;
+    _selectionMode = TSQCalendarSelectionModeDay;
     [self addSubview:_tableView];    
 }
 
@@ -153,18 +153,18 @@
 
 #pragma mark Date selections
 
-- (void)setSelectionType:(TSQCalendarSelectionType)selectionType
+- (void)setSelectionMode:(TSQCalendarSelectionMode)selectionMode
 {
-    if (selectionType == _selectionType) return;
-    TSQCalendarSelectionType previousSelectionType = _selectionType;
-    _selectionType = selectionType;
+    if (selectionMode == _selectionMode) return;
+    TSQCalendarSelectionMode previousSelectionMode = _selectionMode;
+    _selectionMode = selectionMode;
     
-    if (previousSelectionType == TSQCalendarSelectionDateRange) {
+    if (previousSelectionMode == TSQCalendarSelectionModeDateRange) {
         NSDate *startDate = self.selectedStartDate;
         self.selectedStartDate = nil;
         self.selectedEndDate = nil;
         self.selectedDate = startDate;
-    } else if (previousSelectionType == TSQCalendarSelectionDay) {
+    } else if (previousSelectionMode == TSQCalendarSelectionModeDay) {
         NSDate *selectedDate = self.selectedDate;
         self.selectedDate = nil;
         self.selectedStartDate = selectedDate;
@@ -413,7 +413,7 @@
         dateComponents.week = indexPath.row - (self.pinsHeaderToTop ? 0 : 1);
         [(TSQCalendarRowCell *)cell setBeginningDate:[self.calendar dateByAddingComponents:dateComponents toDate:firstOfMonth options:0]];
         
-        if (self.selectionType == TSQCalendarSelectionDay) {
+        if (self.selectionMode == TSQCalendarSelectionModeDay) {
             [(TSQCalendarRowCell *)cell selectColumnForDate:self.selectedDate];
         } else {
             for (NSDate *date in _selectedDates) {

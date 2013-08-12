@@ -10,9 +10,9 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    TSQCalendarSelectionDay = 0,
-    TSQCalendarSelectionDateRange
-} TSQCalendarSelectionType;
+    TSQCalendarSelectionModeDay = 0,
+    TSQCalendarSelectionModeDateRange
+} TSQCalendarSelectionMode;
 
 
 @protocol TSQCalendarViewDelegate;
@@ -55,10 +55,10 @@ typedef enum {
 
 /** The selection mode used for the calendar.
  
- Defaults to `TSQCalendarSelectionDay`, which is the normal, single date selection.
- Set to `TSQCalendarSelectionDateRange` to allow selecting a range of dates.
+ Defaults to `TSQCalendarSelectionModeDay`, which is the normal, single date selection.
+ Set to `TSQCalendarSelectionModeDateRange` to allow selecting a range of dates.
  */
-@property (nonatomic, assign) TSQCalendarSelectionType selectionType;
+@property (nonatomic, assign) TSQCalendarSelectionMode selectionMode;
 
 /** The start date of the currently-selected date range on the calendar.
  
