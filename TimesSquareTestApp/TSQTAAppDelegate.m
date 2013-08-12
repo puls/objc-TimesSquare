@@ -36,8 +36,13 @@
     persian.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSPersianCalendar];
     persian.calendar.locale = [NSLocale currentLocale];
 
+    TSQTAViewController *dateRange = [[TSQTAViewController alloc] init];
+    dateRange.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    dateRange.calendar.locale = [NSLocale currentLocale];
+    dateRange.selectionMode = TSQCalendarSelectionModeDateRange;
+    
     UITabBarController *tabController = [[UITabBarController alloc] init];
-    tabController.viewControllers = @[gregorian, hebrew, islamic, indian, persian];
+    tabController.viewControllers = @[gregorian, hebrew, islamic, indian, persian, dateRange];
     self.window.rootViewController = tabController;
     
     [self.window makeKeyAndVisible];

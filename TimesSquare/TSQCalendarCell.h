@@ -59,17 +59,41 @@
  */
 @property (nonatomic, strong) UIColor *textColor;
 
+/** The text shadow color.
+ 
+ This is used for all text the cell draws; default is white.
+ */
+@property (nonatomic, strong) UIColor *shadowColor;
+
 /** The text shadow offset.
  
  This is as you would set on `UILabel`.
  */
 @property (nonatomic) CGSize shadowOffset;
 
+/** The text color for today's date.
+ 
+ White by default.
+ */
+@property (nonatomic, strong) UIColor *todayTextColor;
+
+/** The text shadow color for today's date.
+ 
+ Black by default.
+ */
+@property (nonatomic, strong) UIColor *todayShadowColor;
+
 /** The spacing between columns.
  
  This defaults to one pixel or `1.0 / [UIScreen mainScreen].scale`.
  */
 @property (nonatomic) CGFloat columnSpacing;
+
+/** Whether or not to display days that occur outside of the current month.
+ 
+ Defaults to YES.
+ */
+@property (nonatomic) BOOL showsNotThisMonth;
 
 /** @name Initialization */
 

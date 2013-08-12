@@ -52,6 +52,7 @@
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    _selectionMode = TSQCalendarSelectionModeDay;
     [self addSubview:_tableView];    
 }
 
@@ -123,21 +124,90 @@
     _lastDate = [self.calendar dateByAddingComponents:offsetComponents toDate:firstOfMonth options:0];
 }
 
+- (void)scrollToDate:(NSDate *)date animated:(BOOL)animated;
+{
+    [self scrollToDate:date animated:animated atScrollPosition:UITableViewScrollPositionTop];
+}
+
+- (void)scrollToDate:(NSDate *)date animated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition;
+{
+    NSIndexPath *path;
+    if (self.pinsHeaderToTop) {
+        NSInteger section = [self sectionForDate:date];
+        path = [NSIndexPath indexPathForRow:0 inSection:section];
+    } else {
+        path = [self indexPathForRowAtDate:date];
+    }
+    if (path) {
+        [self.tableView scrollToRowAtIndexPath:path atScrollPosition:scrollPosition animated:animated];
+    }
+}
+
+- (TSQCalendarMonthHeaderCell *)makeHeaderCellWithIdentifier:(NSString *)identifier;
+{
+    TSQCalendarMonthHeaderCell *cell = [[[self headerCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
+    cell.backgroundColor = self.backgroundColor;
+    cell.calendarView = self;
+    return cell;
+}
+
+#pragma mark Date selections
+
+- (void)setSelectionMode:(TSQCalendarSelectionMode)selectionMode
+{
+    if (selectionMode == _selectionMode) return;
+    TSQCalendarSelectionMode previousSelectionMode = _selectionMode;
+    _selectionMode = selectionMode;
+    
+    if (previousSelectionMode == TSQCalendarSelectionModeDateRange) {
+        NSDate *startDate = self.selectedStartDate;
+        self.selectedStartDate = nil;
+        self.selectedEndDate = nil;
+        self.selectedDate = startDate;
+    } else if (previousSelectionMode == TSQCalendarSelectionModeDay) {
+        NSDate *selectedDate = self.selectedDate;
+        self.selectedDate = nil;
+        self.selectedStartDate = selectedDate;
+    }
+}
+
+- (void)resetSelectedDates
+{
+    for (NSDate *date in _selectedDates) {
+        [[self cellForRowAtDate:date] deselectColumnForDate:date];
+    }
+    _selectedDates = @[];
+    _selectedDate = nil;
+    _selectedStartDate = nil;
+    _selectedEndDate = nil;
+}
+
+- (void)resetSelectedDateRange
+{
+    for (NSDate *date in _selectedDates) {
+        [[self cellForRowAtDate:date] deselectColumnForDate:date];
+    }
+    _selectedEndDate = nil;
+    _selectedDates = _selectedStartDate ? @[_selectedStartDate] : @[];
+    [[self cellForRowAtDate:_selectedStartDate] selectColumnForDate:_selectedStartDate];
+}
+
 - (void)setSelectedDate:(NSDate *)newSelectedDate;
 {
-    // clamp to beginning of its day
-    NSDate *startOfDay = [self clampDate:newSelectedDate toComponents:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit];
-    
-    if ([self.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)] && ![self.delegate calendarView:self shouldSelectDate:startOfDay]) {
+    if (newSelectedDate == nil) {
+        [self resetSelectedDates];
         return;
     }
     
-    [[self cellForRowAtDate:_selectedDate] selectColumnForDate:nil];
-    [[self cellForRowAtDate:startOfDay] selectColumnForDate:startOfDay];
+    // clamp to beginning of its day
+    NSDate *startOfDay = [self clampDate:newSelectedDate toComponents:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit];
+    if ([self.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)] && ![self.delegate calendarView:self shouldSelectDate:startOfDay]) {
+        return;
+    }
+        
     NSIndexPath *newIndexPath = [self indexPathForRowAtDate:startOfDay];
     CGRect newIndexPathRect = [self.tableView rectForRowAtIndexPath:newIndexPath];
-    CGRect scrollBounds = self.tableView.bounds;
-    
+    CGRect scrollBounds = self.tableView.bounds;    
     if (self.pagingEnabled) {
         CGRect sectionRect = [self.tableView rectForSection:newIndexPath.section];
         [self.tableView setContentOffset:sectionRect.origin animated:YES];
@@ -149,25 +219,71 @@
         }
     }
     
+    [self resetSelectedDates];
     _selectedDate = startOfDay;
+    _selectedDates = @[_selectedDate];
+    [self updateSelectedDates];
     
     if ([self.delegate respondsToSelector:@selector(calendarView:didSelectDate:)]) {
         [self.delegate calendarView:self didSelectDate:startOfDay];
     }
 }
 
-- (void)scrollToDate:(NSDate *)date animated:(BOOL)animated
+- (void)setSelectedStartDate:(NSDate *)newSelectedStartDate
 {
-  NSInteger section = [self sectionForDate:date];
-  [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    if (newSelectedStartDate == nil) {
+        [self resetSelectedDates];
+        if ([self.delegate respondsToSelector:@selector(calendarView:didSelectStartDate:)]) {
+            [self.delegate calendarView:self didSelectStartDate:nil];
+        }
+        return;
+    }
+    
+    NSDate *startOfDay = [self clampDate:newSelectedStartDate toComponents:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit];
+    if ([self.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)] && ![self.delegate calendarView:self shouldSelectDate:startOfDay]) {
+        return;
+    }
+    
+    [self resetSelectedDates];
+    _selectedStartDate = startOfDay;
+    _selectedDates = @[startOfDay];
+    [self updateSelectedDates];
+    
+    if ([self.delegate respondsToSelector:@selector(calendarView:didSelectStartDate:)]) {
+        [self.delegate calendarView:self didSelectStartDate:startOfDay];
+    }
 }
 
-- (TSQCalendarMonthHeaderCell *)makeHeaderCellWithIdentifier:(NSString *)identifier;
+- (void)setSelectedEndDate:(NSDate *)newSelectedEndDate
 {
-    TSQCalendarMonthHeaderCell *cell = [[[self headerCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
-    cell.backgroundColor = self.backgroundColor;
-    cell.calendarView = self;
-    return cell;
+    if (newSelectedEndDate == nil) {
+        [self resetSelectedDateRange];
+        if ([self.delegate respondsToSelector:@selector(calendarView:didSelectEndDate:)]) {
+            [self.delegate calendarView:self didSelectEndDate:nil];
+        }
+        return;
+    }
+    
+    NSDate *startOfDay = [self clampDate:newSelectedEndDate toComponents:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit];
+    if ([self.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)] && ![self.delegate calendarView:self shouldSelectDate:startOfDay]) {
+        return;
+    }
+    
+    [self resetSelectedDateRange];
+    _selectedEndDate = startOfDay;
+    _selectedDates = [self datesBetweenStart:_selectedStartDate AndEnd:startOfDay];
+    [self updateSelectedDates];
+    
+    if ([self.delegate respondsToSelector:@selector(calendarView:didSelectEndDate:)]) {
+        [self.delegate calendarView:self didSelectEndDate:startOfDay];
+    }
+}
+
+- (void)updateSelectedDates
+{
+    for (NSDate *date in _selectedDates) {
+        [[self cellForRowAtDate:date] selectColumnForDate:date];
+    }
 }
 
 #pragma mark Calendar calculations
@@ -202,6 +318,20 @@
     NSInteger targetWeek = [self.calendar components:NSWeekOfMonthCalendarUnit fromDate:date].weekOfMonth;
     
     return [NSIndexPath indexPathForRow:(self.pinsHeaderToTop ? 0 : 1) + targetWeek - firstWeek inSection:section];
+}
+
+- (NSArray *)datesBetweenStart:(NSDate *)start AndEnd:(NSDate *)end
+{
+    NSMutableArray *dates = [NSMutableArray array];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    components.day = 1;
+    NSDate *current = start;
+    while ([end compare:current] != NSOrderedAscending) {
+        [dates addObject:current];
+        NSDate *nextDay = [self.calendar dateByAddingComponents:components toDate:current options:0];
+        current = [self clampDate:nextDay toComponents:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit];
+    }
+    return  dates;
 }
 
 #pragma mark UIView
@@ -281,7 +411,14 @@
         dateComponents.day = 1 - ordinalityOfFirstDay;
         dateComponents.week = indexPath.row - (self.pinsHeaderToTop ? 0 : 1);
         [(TSQCalendarRowCell *)cell setBeginningDate:[self.calendar dateByAddingComponents:dateComponents toDate:firstOfMonth options:0]];
-        [(TSQCalendarRowCell *)cell selectColumnForDate:self.selectedDate];
+        
+        if (self.selectionMode == TSQCalendarSelectionModeDay) {
+            [(TSQCalendarRowCell *)cell selectColumnForDate:self.selectedDate];
+        } else {
+            for (NSDate *date in _selectedDates) {
+                [(TSQCalendarRowCell *)cell selectColumnForDate:date];
+            }
+        }
         
         BOOL isBottomRow = (indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - (self.pinsHeaderToTop ? 0 : 1));
         [(TSQCalendarRowCell *)cell setBottomRow:isBottomRow];

@@ -9,7 +9,6 @@
 
 #import "TSQTAViewController.h"
 #import "TSQTACalendarRowCell.h"
-#import <TimesSquare/TimesSquare.h>
 
 
 @interface TSQTAViewController ()
@@ -28,6 +27,15 @@
 
 @implementation TSQTAViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.selectionMode = TSQCalendarSelectionModeDateRange;
+    }
+    return self;
+}
+
 - (void)loadView;
 {
     TSQCalendarView *calendarView = [[TSQCalendarView alloc] init];
@@ -37,6 +45,7 @@
     calendarView.lastDate = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * 365 * 5];
     calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
     calendarView.pagingEnabled = YES;
+    calendarView.selectionMode = self.selectionMode;
     CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
     calendarView.contentInset = UIEdgeInsetsMake(0.0f, onePixel, 0.0f, onePixel);
 

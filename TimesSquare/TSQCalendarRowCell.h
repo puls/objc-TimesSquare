@@ -43,6 +43,14 @@
  */
 @property (nonatomic, weak, readonly) UIImage *notThisMonthBackgroundImage;
 
+/** An array of `UIButton` objects wherein each button represents a day on the calendar.
+ */
+@property (nonatomic, strong, readonly) NSArray *dayButtons;
+
+/** An array of `UIButton` objects wherein each button represents a day that is outside of the current month being displayed on the calendar.
+ */
+@property (nonatomic, strong, readonly) NSArray *notThisMonthButtons;
+
 /** @name State Properties Set by Calendar View */
 
 /** The date at the beginning of the week for this cell.
@@ -64,5 +72,13 @@
  @param date The date to select, or nil to deselect all columns.
  */
 - (void)selectColumnForDate:(NSDate *)date;
+
+/** Method to select a specific date within the week.
+ 
+ This is funneled through and called by the calendar view, to facilitate deselection of other rows.
+ 
+ @param date The date to select, or nil to deselect all columns.
+ */
+- (void)deselectColumnForDate:(NSDate *)date;
 
 @end

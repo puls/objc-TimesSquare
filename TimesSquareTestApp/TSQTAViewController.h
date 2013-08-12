@@ -8,9 +8,11 @@
 //  which Square, Inc. licenses this file to you.
 
 #import <UIKit/UIKit.h>
+#import <TimesSquare/TimesSquare.h>
 
 @interface TSQTAViewController : UIViewController
 
 @property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic, assign) TSQCalendarSelectionMode selectionMode;
 
 @end
