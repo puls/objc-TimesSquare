@@ -233,8 +233,8 @@
 {
     if (newSelectedStartDate == nil) {
         [self resetSelectedDates];
-        if ([self.delegate respondsToSelector:@selector(calendarViewDidDeselectStartDate:)]) {
-            [self.delegate calendarViewDidDeselectStartDate:self];
+        if ([self.delegate respondsToSelector:@selector(calendarView:didSelectStartDate:)]) {
+            [self.delegate calendarView:self didSelectStartDate:nil];
         }
         return;
     }
@@ -258,8 +258,8 @@
 {
     if (newSelectedEndDate == nil) {
         [self resetSelectedDateRange];
-        if ([self.delegate respondsToSelector:@selector(calendarViewDidDeselectEndDate:)]) {
-            [self.delegate calendarViewDidDeselectEndDate:self];
+        if ([self.delegate respondsToSelector:@selector(calendarView:didSelectEndDate:)]) {
+            [self.delegate calendarView:self didSelectEndDate:nil];
         }
         return;
     }
