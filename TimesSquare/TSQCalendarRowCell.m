@@ -25,6 +25,9 @@
 @property (nonatomic, strong) NSDateComponents *todayDateComponents;
 @property (nonatomic) NSInteger monthOfBeginningDate;
 
+@property (nonatomic, strong, readwrite) NSArray *dayButtons;
+@property (nonatomic, strong, readwrite) NSArray *notThisMonthButtons;
+
 @end
 
 
