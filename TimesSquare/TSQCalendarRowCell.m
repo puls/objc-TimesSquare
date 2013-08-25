@@ -32,7 +32,7 @@
 
 @implementation TSQCalendarRowCell
 
-- (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier;
+- (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithCalendar:calendar reuseIdentifier:reuseIdentifier];
     if (!self) {
