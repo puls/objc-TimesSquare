@@ -263,7 +263,7 @@
     [(TSQCalendarRowCell *)cell setBeginningDate:[self.calendar dateByAddingComponents:dateComponents toDate:firstOfMonth options:0]];
     [(TSQCalendarRowCell *)cell selectColumnForDate:self.selectedDate];
     
-    BOOL isBottomRow = indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section];
+    BOOL isBottomRow = indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1;
     [(TSQCalendarRowCell *)cell setBottomRow:isBottomRow];
 }
 
