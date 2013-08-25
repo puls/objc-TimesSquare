@@ -77,7 +77,6 @@
         button.enabled = NO;
         UIColor *backgroundPattern = [UIColor colorWithPatternImage:[self notThisMonthBackgroundImage]];
         button.backgroundColor = backgroundPattern;
-        button.titleLabel.backgroundColor = backgroundPattern;
     }
     self.notThisMonthButtons = notThisMonthButtons;
 }
