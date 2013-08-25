@@ -274,12 +274,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 65.0f;
+    if (self.pinsHeaderToTop) {
+        return 0;
+    }
+    return [[self headerCellClass] cellHeight];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    // month header
+    if (self.pinsHeaderToTop) {
+        return nil;
+    }
+    
     static NSString *identifier = @"header";
     TSQCalendarMonthHeaderCell *cell = [tableView dequeueReusableHeaderFooterViewWithIdentifier:identifier];
     if (!cell) {
