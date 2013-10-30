@@ -42,9 +42,19 @@
     return self;
 }
 
+- (UIFont *)dayOfMonthFont
+{
+    return [UIFont boldSystemFontOfSize:19.0f];
+}
+
+- (UIColor *)todayTextColor
+{
+    return [UIColor whiteColor];
+}
+
 - (void)configureButton:(UIButton *)button;
 {
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:19.f];
+    button.titleLabel.font = [self dayOfMonthFont];
     button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
     [button setTitleColor:self.textColor forState:UIControlStateNormal];
@@ -73,7 +83,7 @@
         [notThisMonthButtons addObject:button];
         [self.contentView addSubview:button];
         [self configureButton:button];
-
+        [button setTitleColor:[self.textColor colorWithAlphaComponent:0.5f] forState:UIControlStateDisabled];
         button.enabled = NO;
         UIColor *backgroundPattern = [UIColor colorWithPatternImage:[self notThisMonthBackgroundImage]];
         button.backgroundColor = backgroundPattern;
@@ -88,7 +98,7 @@
     [self configureButton:self.todayButton];
     [self.todayButton addTarget:self action:@selector(todayButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.todayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.todayButton setTitleColor:[self todayTextColor] forState:UIControlStateNormal];
     [self.todayButton setBackgroundImage:[self todayBackgroundImage] forState:UIControlStateNormal];
     [self.todayButton setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
 

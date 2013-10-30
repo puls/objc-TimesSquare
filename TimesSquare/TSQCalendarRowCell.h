@@ -15,6 +15,22 @@
  */
 @interface TSQCalendarRowCell : TSQCalendarCell
 
+/** @name Text */
+
+/** The font used to display each day of the month.
+ 
+ This is the 19 point bold system font by default.
+ */
+@property (nonatomic, weak, readonly) UIFont *dayOfMonthFont;
+
+
+/** The text color for a day that's "today".
+
+This is white by default.
+*/
+@property (nonatomic, weak, readonly) UIColor *todayTextColor;
+
+
 /** @name Images */
 
 /** The background image for the entire row.
