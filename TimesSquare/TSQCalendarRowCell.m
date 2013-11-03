@@ -213,7 +213,13 @@
     
     [super layoutSubviews];
     
-    self.backgroundView.frame = self.bounds;
+    // Size the background view with horizontal insets
+    CGRect bounds = self.bounds;
+    UIEdgeInsets insets = self.calendarView.contentInset;
+    CGRect insetRect = UIEdgeInsetsInsetRect(bounds, insets);
+    insetRect.origin.y = bounds.origin.y;
+    insetRect.size.height = bounds.size.height;
+    self.backgroundView.frame = insetRect;
 }
 
 - (void)layoutViewsForColumnAtIndex:(NSUInteger)index inRect:(CGRect)rect;
