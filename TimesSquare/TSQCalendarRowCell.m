@@ -32,16 +32,6 @@
 
 @implementation TSQCalendarRowCell
 
-- (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier;
-{
-    self = [super initWithCalendar:calendar reuseIdentifier:reuseIdentifier];
-    if (!self) {
-        return nil;
-    }
-    
-    return self;
-}
-
 - (void)configureButton:(UIButton *)button;
 {
     button.titleLabel.font = [UIFont boldSystemFontOfSize:19.f];
@@ -104,9 +94,12 @@
     
     [self.selectedButton setAccessibilityTraits:UIAccessibilityTraitSelected|self.selectedButton.accessibilityTraits];
     
+    self.selectedButton.backgroundColor = self.selectedBackgroundColor;
+    [self.selectedButton setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
+    
     self.selectedButton.enabled = NO;
     [self.selectedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.selectedButton setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
+    
     [self.selectedButton setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
     
     self.selectedButton.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);

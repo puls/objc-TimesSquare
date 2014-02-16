@@ -10,6 +10,9 @@
 #import <UIKit/UIKit.h>
 
 
+@class TSQCalendarMonthHeaderCell;
+@class TSQCalendarRowCell;
+
 @protocol TSQCalendarViewDelegate;
 
 
@@ -130,5 +133,11 @@
  @param date Midnight on the date being selected.
  */
 - (void)calendarView:(TSQCalendarView *)calendarView didSelectDate:(NSDate *)date;
+
+- (void)calendarView:(TSQCalendarView *)calendarView didCreateMonthHeaderCell:(TSQCalendarMonthHeaderCell *)headerCell;
+- (void)calendarView:(TSQCalendarView *)calendarView didCreateDateRowCell:(TSQCalendarRowCell *)rowCell;
+
+- (void)calendarView:(TSQCalendarView *)calendarView willDisplayMonthHeaderCell:(TSQCalendarMonthHeaderCell *)headerCell;
+- (void)calendarView:(TSQCalendarView *)calendarView willDisplayDateRowCell:(TSQCalendarRowCell *)rowCell;
 
 @end

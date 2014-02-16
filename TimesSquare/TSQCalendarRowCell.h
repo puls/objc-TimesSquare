@@ -23,25 +23,27 @@
  
  You might, however, return a different image that includes both the grid line at the top and the one at the bottom if the `bottomRow` property is set to `YES`. You might even adjust the `cellHeight`.
  */
-@property (nonatomic, weak, readonly) UIImage *backgroundImage;
+@property (nonatomic, strong) UIImage *backgroundImage;
+
+@property (nonatomic, strong) UIColor *selectedBackgroundColor;
 
 /** The background image for a day that's selected.
  
  This is blue in the system's built-in Calendar app. You probably want to use a stretchable image.
  */
-@property (nonatomic, weak, readonly) UIImage *selectedBackgroundImage;
+@property (nonatomic, strong) UIImage *selectedBackgroundImage;
 
 /** The background image for a day that's "today".
  
  This is dark gray in the system's built-in Calendar app. You probably want to use a stretchable image.
  */
-@property (nonatomic, weak, readonly) UIImage *todayBackgroundImage;
+@property (nonatomic, strong) UIImage *todayBackgroundImage;
 
 /** The background image for a day that's not this month.
  
  These are the trailing days from the previous month or the leading days from the following month. This can be `nil`.
  */
-@property (nonatomic, weak, readonly) UIImage *notThisMonthBackgroundImage;
+@property (nonatomic, strong) UIImage *notThisMonthBackgroundImage;
 
 /** @name State Properties Set by Calendar View */
 

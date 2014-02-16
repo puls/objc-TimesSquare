@@ -32,7 +32,7 @@
     self.layoutDirection = [NSLocale characterDirectionForLanguage:languageCode];
     self.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
     
-    CGFloat onePixel = 1.0f / [UIScreen mainScreen].scale;
+    const CGFloat onePixel = (1.0f / [UIScreen mainScreen].scale);
     
     static CGSize shadowOffset;
     static dispatch_once_t onceToken;
@@ -85,7 +85,6 @@
     [super layoutSubviews];
     
     UIEdgeInsets insets = self.calendarView.contentInset;
-    
     
     CGRect insetRect = UIEdgeInsetsInsetRect(self.bounds, insets);
     insetRect.origin.y = CGRectGetMinY(self.bounds);

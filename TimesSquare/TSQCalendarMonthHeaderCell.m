@@ -25,6 +25,7 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
 - (id)initWithCalendar:(NSCalendar *)calendar reuseIdentifier:(NSString *)reuseIdentifier;
 {
     self = [super initWithCalendar:calendar reuseIdentifier:reuseIdentifier];
+    
     if (!self) {
         return nil;
     }
