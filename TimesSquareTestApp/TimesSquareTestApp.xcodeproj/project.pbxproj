@@ -265,7 +265,8 @@
 		A885A9481694FC4500CA6E1B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = A885A94B1694FC4500CA6E1B /* Build configuration list for PBXProject "TimesSquareTestApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -408,6 +409,7 @@
 		A885A94D1694FC4500CA6E1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
