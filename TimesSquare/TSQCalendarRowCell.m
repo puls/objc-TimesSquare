@@ -56,10 +56,10 @@
     NSMutableArray *dayButtons = [NSMutableArray arrayWithCapacity:self.daysInWeek];
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         UIButton *button = [[UIButton alloc] initWithFrame:self.contentView.bounds];
-        [button addTarget:self action:@selector(dateButtonPressedDown:) forControlEvents:UIControlEventTouchDown];
-        [button addTarget:self action:@selector(dateButtonPressedDragExit:) forControlEvents:UIControlEventTouchDragExit];
-        [button addTarget:self action:@selector(dateButtonPressedCancelled:) forControlEvents:UIControlEventTouchCancel];
-        [button addTarget:self action:@selector(dateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(dateButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
+        [button addTarget:self action:@selector(dateButtonTouchDragExit:) forControlEvents:UIControlEventTouchDragExit];
+        [button addTarget:self action:@selector(dateButtonTouchCancel:) forControlEvents:UIControlEventTouchCancel];
+        [button addTarget:self action:@selector(dateButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         [dayButtons addObject:button];
         [self.contentView addSubview:button];
         [self configureButton:button];
@@ -186,17 +186,17 @@
 
 - (void)resetDateButtonDisplay:(UIButton*)aButton;
 {
-    ((UIButton*)aButton).backgroundColor = nil;
-    [(UIButton*)aButton setTitleColor:self.textColor forState:UIControlStateNormal];
+    aButton.backgroundColor = nil;
+    [aButton setTitleColor:self.textColor forState:UIControlStateNormal];
 }
 
 - (void)markDateButtonSelected:(UIButton*)aButton;
 {
-    ((UIButton*)aButton).backgroundColor = [UIColor darkGrayColor];
-    [(UIButton*)aButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    aButton.backgroundColor = [UIColor darkGrayColor];
+    [aButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
-- (IBAction)dateButtonPressed:(id)sender;
+- (IBAction)dateButtonTouchUpInside:(id)sender;
 {
     NSDateComponents *offset = [NSDateComponents new];
     offset.day = [self.dayButtons indexOfObject:sender];
@@ -204,17 +204,17 @@
     self.calendarView.selectedDate = selectedDate;
 }
 
-- (IBAction)dateButtonPressedDown:(id)sender;
+- (IBAction)dateButtonTouchDown:(id)sender;
 {
     [self markDateButtonSelected:sender];
 }
 
-- (IBAction)dateButtonPressedDragExit:(id)sender;
+- (IBAction)dateButtonTouchDragExit:(id)sender;
 {
     [self resetDateButtonDisplay:sender];
 }
 
-- (IBAction)dateButtonPressedCancelled:(id)sender;
+- (IBAction)dateButtonTouchCancel:(id)sender;
 {
     [self resetDateButtonDisplay:sender];
 }
