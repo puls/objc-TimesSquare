@@ -15,6 +15,8 @@
  */
 @interface TSQCalendarMonthHeaderCell : TSQCalendarCell
 
+@property (nonatomic, strong) NSDateFormatter *monthDateFormatter;
+
 /** @name Day Labels */
 
 /** The day header labels.

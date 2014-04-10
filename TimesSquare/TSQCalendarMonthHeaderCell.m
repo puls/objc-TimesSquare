@@ -15,7 +15,7 @@ static const CGFloat TSQCalendarMonthHeaderCellMonthsHeight = 20.f;
 
 @interface TSQCalendarMonthHeaderCell ()
 
-@property (nonatomic, strong) NSDateFormatter *monthDateFormatter;
+
 
 @end
 
