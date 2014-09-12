@@ -52,7 +52,12 @@
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    [self addSubview:_tableView];    
+    
+    // WORKAROUND: In iOS8, scrolling randomly doesn't work in the calendar view when dragging on enabled buttons.
+    // The correct solution is to enable delaysContentTouches but this has been broken since iOS7: ( https://devforums.apple.com/thread/199755?start=0&tstart=0 ).
+    // The workaround here is to set delaysTouchesBegan on the panGestureRecognizer of the table itself.
+    _tableView.panGestureRecognizer.delaysTouchesBegan = YES;
+    [self addSubview:_tableView];
 }
 
 - (void)dealloc;
