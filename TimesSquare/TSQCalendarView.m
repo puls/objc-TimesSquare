@@ -264,7 +264,7 @@
     NSInteger ordinalityOfFirstDay = [self.calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:firstOfMonth];
     NSDateComponents *dateComponents = [NSDateComponents new];
     dateComponents.day = 1 - ordinalityOfFirstDay;
-    dateComponents.week = indexPath.row;
+    dateComponents.weekOfMonth = indexPath.row;
     [(TSQCalendarRowCell *)cell setBeginningDate:[self.calendar dateByAddingComponents:dateComponents toDate:firstOfMonth options:0]];
     [(TSQCalendarRowCell *)cell selectColumnForDate:self.selectedDate];
     
