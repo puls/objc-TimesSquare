@@ -20,6 +20,14 @@
     gregorian.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     gregorian.calendar.locale = [NSLocale currentLocale];
     
+    TSQTAViewController *gregorianMultiple = [[TSQTAViewController alloc] init];
+    gregorianMultiple.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    gregorianMultiple.calendar.locale = [NSLocale currentLocale];
+    gregorianMultiple.multipleSelection = YES;
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:gregorianMultiple];
+    navController.title = @"multiple";
+    
     TSQTAViewController *hebrew = [[TSQTAViewController alloc] init];
     hebrew.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSHebrewCalendar];
     hebrew.calendar.locale = [NSLocale currentLocale];
@@ -37,7 +45,7 @@
     persian.calendar.locale = [NSLocale currentLocale];
 
     UITabBarController *tabController = [[UITabBarController alloc] init];
-    tabController.viewControllers = @[gregorian, hebrew, islamic, indian, persian];
+    tabController.viewControllers = @[gregorian, navController, hebrew, islamic, indian, persian];
     self.window.rootViewController = tabController;
     
     [self.window makeKeyAndVisible];
