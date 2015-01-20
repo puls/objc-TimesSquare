@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E96734B1A6E6BAE00B6CAFC /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E96734A1A6E6BAE00B6CAFC /* Reveal.framework */; };
 		A885A9771694FCDD00CA6E1B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A9761694FCDD00CA6E1B /* UIKit.framework */; };
 		A885A9791694FCDD00CA6E1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A9781694FCDD00CA6E1B /* Foundation.framework */; };
 		A885A97B1694FCDD00CA6E1B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A885A97A1694FCDD00CA6E1B /* CoreGraphics.framework */; };
@@ -108,7 +107,6 @@
 				A885A9771694FCDD00CA6E1B /* UIKit.framework in Frameworks */,
 				A885A9791694FCDD00CA6E1B /* Foundation.framework in Frameworks */,
 				A885A97B1694FCDD00CA6E1B /* CoreGraphics.framework in Frameworks */,
-				7E96734B1A6E6BAE00B6CAFC /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,12 +452,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TimesSquareTestApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
@@ -490,12 +482,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TimesSquareTestApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
