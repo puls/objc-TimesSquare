@@ -34,13 +34,13 @@
 - (void)loadView;
 {
     self.firstDateInCurrentMonth = [self firstDateInMonthOfReferenceDate:[NSDate date]];
-    self.lastDateInCurrentMonth = [self lastDateInMonthOfReferenceDate:[NSDate date]];
+    self.lastDateInCurrentMonth = [self.firstDateInCurrentMonth dateByAddingTimeInterval:60 * 60 * 24 * 365];
     
     self.calendarView = [[TSQCalendarView alloc] init];
     self.calendarView.calendar = self.calendar;
     self.calendarView.rowCellClass = [TSQTACalendarRowCell class];
     self.calendarView.firstDate = self.firstDateInCurrentMonth;
-//    self.calendarView.lastDate = self.lastDateInCurrentMonth;
+    self.calendarView.lastDate = self.lastDateInCurrentMonth;
     self.calendarView.backgroundColor = [UIColor colorWithRed:0.84f green:0.85f blue:0.86f alpha:1.0f];
     self.calendarView.pagingEnabled = YES;
     self.calendarView.selectionMode = self.multipleSelection ? TSQSelectionModeMultiple : TSQSelectionModeSingle;
