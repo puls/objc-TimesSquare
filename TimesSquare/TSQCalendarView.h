@@ -41,6 +41,14 @@ typedef NS_ENUM(NSInteger, TSQSelectionMode) {
  */
 @property (nonatomic, strong) NSDate *lastDate;
 
+/** The first date that can be selected in the calendar view.
+ 
+ Set this property to any `NSDate`; `TSQCalendarView` will disable interaction of cells
+ for all dates before the `firstSelectableDate`, If `firstSelectableDate` is before or after
+ the bounds of `firstDate` and `lastDate` then this value will be ignored.
+ */
+@property (nonatomic, strong) NSDate *firstSelectableDate;
+
 /** The selection mode that the calendar supports i.e single or multiple
  
  Set this property to `TSQSelectionModeMultiple` or `TSQSelectionModeSingle`; `TSQSelectionModeMultiple` will allow mutliple selection of dates.

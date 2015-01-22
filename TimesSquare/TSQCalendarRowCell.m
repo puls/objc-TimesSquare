@@ -169,7 +169,7 @@
         [self.notThisMonthButtons[index] setHidden:YES];
 
         NSInteger thisDayMonth = thisDateComponents.month;
-        if (self.monthOfBeginningDate != thisDayMonth) {
+        if (self.monthOfBeginningDate != thisDayMonth || [self.calendarView.firstSelectableDate compare:date] == NSOrderedDescending) {
             [self.notThisMonthButtons[index] setHidden:NO];
         } else {
 

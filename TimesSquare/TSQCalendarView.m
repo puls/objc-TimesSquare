@@ -126,6 +126,11 @@
     _lastDate = [self.calendar dateByAddingComponents:offsetComponents toDate:firstOfMonth options:0];
 }
 
+- (void)setFirstSelectableDate:(NSDate *)firstSelectableDate
+{
+    _firstSelectableDate = [self clampDate:firstSelectableDate toComponents:NSMonthCalendarUnit|NSYearCalendarUnit|NSDayCalendarUnit];
+}
+
 - (void)setSelectedDate:(NSDate *)newSelectedDate;
 {
     NSAssert(self.selectionMode == TSQSelectionModeSingle, @"`selectionMode` must be set to `TSQSelectionModeSingle` to select a single date");
