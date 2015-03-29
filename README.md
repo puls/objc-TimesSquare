@@ -14,7 +14,7 @@ While we fully expect you'll use it to display a Gregorian calendar most of the 
 
 ## Further documentation
 
-If you install [appledoc](http://gentlebytes.com/appledoc/) ("`brew install appledoc`") you can build the "TimesSquare Documentation" target in Xcode and see (and search!) the full API in your documentation window.
+If you install [appledoc](http://gentlebytes.com/appledoc/) ("`brew info homebrew/versions/appledoc22`", "`ln -s /usr/local/Cellar/appledoc22/2.2.1/bin/appledoc /usr/local/bin/appledoc`") you can build the "TimesSquare Documentation" target in Xcode and see (and search!) the full API in your documentation window.
 
 ## Contributing
 
