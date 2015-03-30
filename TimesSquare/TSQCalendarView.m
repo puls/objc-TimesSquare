@@ -239,7 +239,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
     NSDate *firstOfMonth = [self firstOfMonthForSection:section];
-    NSRange rangeOfWeeks = [self.calendar rangeOfUnit:NSCalendarUnitWeekOfMonth inUnit:NSCalendarUnitMonth forDate:firstOfMonth];
+    
+    // using the new calendar units, even though they are available in iOS 7.0, don't actually work for this calculation
+    // on iOS 7.  So we can't use the new units here.
+    NSRange rangeOfWeeks = [self.calendar rangeOfUnit:NSWeekCalendarUnit inUnit:NSMonthCalendarUnit forDate:firstOfMonth];
     return rangeOfWeeks.length;
 }
 
