@@ -19,6 +19,12 @@
 		5C4733BA1AC357C000269A66 /* TSQCalendarMonthHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068089167010030071C71E /* TSQCalendarMonthHeaderCell.m */; };
 		5C4733BB1AC357C000269A66 /* TSQCalendarRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808B167010030071C71E /* TSQCalendarRowCell.m */; };
 		5C4733BC1AC357C000269A66 /* TSQCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A806808D167010030071C71E /* TSQCalendarView.m */; };
+		5CEF2FEE1ACB788F003E8F61 /* TimesSquare.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A806806316700FD70071C71E /* TimesSquare.h */; };
+		5CEF2FEF1ACB788F003E8F61 /* TSQCalendarCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A8068086167010030071C71E /* TSQCalendarCell.h */; };
+		5CEF2FF01ACB788F003E8F61 /* TSQCalendarMonthHeaderCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A8068088167010030071C71E /* TSQCalendarMonthHeaderCell.h */; };
+		5CEF2FF11ACB788F003E8F61 /* TSQCalendarRowCell.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A806808A167010030071C71E /* TSQCalendarRowCell.h */; };
+		5CEF2FF21ACB788F003E8F61 /* TSQCalendarView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A806808C167010030071C71E /* TSQCalendarView.h */; };
+		5CEF2FF31ACB788F003E8F61 /* TimesSquare-iOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C47339D1AC3575C00269A66 /* TimesSquare-iOS.h */; };
 		A806805F16700FD70071C71E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A806805E16700FD70071C71E /* Foundation.framework */; };
 		A806808E167010030071C71E /* TSQCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068087167010030071C71E /* TSQCalendarCell.m */; };
 		A8068090167010030071C71E /* TSQCalendarMonthHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068089167010030071C71E /* TSQCalendarMonthHeaderCell.m */; };
@@ -33,6 +39,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5CEF2FED1ACB785C003E8F61 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Headers;
+			dstSubfolderSpec = 1;
+			files = (
+				5CEF2FEE1ACB788F003E8F61 /* TimesSquare.h in CopyFiles */,
+				5CEF2FEF1ACB788F003E8F61 /* TSQCalendarCell.h in CopyFiles */,
+				5CEF2FF01ACB788F003E8F61 /* TSQCalendarMonthHeaderCell.h in CopyFiles */,
+				5CEF2FF11ACB788F003E8F61 /* TSQCalendarRowCell.h in CopyFiles */,
+				5CEF2FF21ACB788F003E8F61 /* TSQCalendarView.h in CopyFiles */,
+				5CEF2FF31ACB788F003E8F61 /* TimesSquare-iOS.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A806805916700FD70071C71E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -215,6 +236,7 @@
 				5C4733951AC3575B00269A66 /* Frameworks */,
 				5C4733961AC3575B00269A66 /* Headers */,
 				5C4733971AC3575B00269A66 /* Resources */,
+				5CEF2FED1ACB785C003E8F61 /* CopyFiles */,
 			);
 			buildRules = (
 			);
