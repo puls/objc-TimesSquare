@@ -1,5 +1,5 @@
 //
-//  TimesSquare.h
+//  TSQTACalendarRowCell.h
 //  TimesSquare
 //
 //  Created by Jim Puls on 12/5/12.
@@ -7,6 +7,8 @@
 //  See the LICENSE file distributed with this work for the terms under
 //  which Square, Inc. licenses this file to you.
 
-#import "TSQCalendarMonthHeaderCell.h"
-#import "TSQCalendarRowCell.h"
-#import "TSQCalendarView.h"
+#import "TimesSquare.h"
+
+@interface TSQTACalendarRowCell : TSQCalendarRowCell
+
+@end
