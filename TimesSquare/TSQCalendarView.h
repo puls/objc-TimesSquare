@@ -10,6 +10,12 @@
 #import <UIKit/UIKit.h>
 
 
+typedef NS_ENUM(NSInteger, TSQSelectionMode) {
+    TSQSelectionModeSingle,
+    TSQSelectionModeMultiple
+};
+
+
 @protocol TSQCalendarViewDelegate;
 
 
@@ -35,12 +41,36 @@
  */
 @property (nonatomic, strong) NSDate *lastDate;
 
+/** The first date that can be selected in the calendar view.
+ 
+ Set this property to any `NSDate`; `TSQCalendarView` will disable interaction of cells
+ for all dates before the `firstSelectableDate`, If `firstSelectableDate` is before or after
+ the bounds of `firstDate` and `lastDate` then this value will be ignored.
+ */
+@property (nonatomic, strong) NSDate *firstSelectableDate;
+
+/** The selection mode that the calendar supports i.e single or multiple
+ 
+ Set this property to `TSQSelectionModeMultiple` or `TSQSelectionModeSingle`; `TSQSelectionModeMultiple` will allow mutliple selection of dates.
+ Defaults to `TSQSelectionModeSingle` single selection.
+ */
+@property (nonatomic, assign) TSQSelectionMode selectionMode;
+
 /** The currently-selected date on the calendar.
  
  Set this property to any `NSDate`; `TSQCalendarView` will only look at the month, day, and year.
- You can read and write this property; the delegate method `calendarView:didSelectDate:` will be called both when a new date is selected from the UI and when this method is called manually.
+ You can read and write this property. If `calendarView` is configured to `selectionMode` `TSQSelectionModeMultiple` 
+ then this property does nothing and returns nil, use `selectedDates` instead.
  */
 @property (nonatomic, strong) NSDate *selectedDate;
+
+/** The currently-selected dates on the calendar.
+ 
+ Set this property to an Array of `NSDate` objects; `TSQCalendarView` will only look at the month, day, and year.
+ You can read and write this property. If `calendarView` is configured to `selectionMode` `TSQSelectionModeSingle`
+ then this property does nothing and returns an empty array, use `selectedDate` instead.
+ */
+@property (nonatomic, strong) NSArray *selectedDates;
 
 /** @name Calendar Configuration */
 
@@ -70,6 +100,18 @@
  This property is roughly equivalent to the one defined on `UIScrollView` except the snapping is to months rather than integer multiples of the view's bounds.
  */
 @property (nonatomic) BOOL pagingEnabled;
+
+/** Whether or not the calendar can be scrolled, useful for fixed calendar views.
+ 
+ This property is the equivalent to the one defined on `UIScrollView`.
+ */
+@property (nonatomic) BOOL scrollingEnabled;
+
+/** Whether or not the calendar bounces, useful for when scrolling is disabled.
+ 
+ This property is the equivalent to the one defined on `UIScrollView`.
+ */
+@property (nonatomic) BOOL bounces;
 
 /** The distance from the edges of the view to where the content begins.
  
@@ -126,9 +168,20 @@
 
 /** Tells the delegate that a particular date was selected.
  
+ `selectionMode` must be `TSQSelectionModeSingle` for this method to be called.
+ 
  @param calendarView The calendar view that is selecting a date.
  @param date Midnight on the date being selected.
  */
 - (void)calendarView:(TSQCalendarView *)calendarView didSelectDate:(NSDate *)date;
+
+/** Tells the delegate that one of more dates were selected.
+ 
+ `selectionMode` must be `TSQSelectionModeMultiple` for this method to be called.
+ 
+ @param calendarView The calendar view that is selecting a date.
+ @param dates Array of selected dates each date being on Midnight.
+ */
+- (void)calendarView:(TSQCalendarView *)calendarView didSelectDates:(NSArray *)dates;
 
 @end

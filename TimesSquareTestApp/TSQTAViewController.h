@@ -12,5 +12,6 @@
 @interface TSQTAViewController : UIViewController
 
 @property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic, assign) BOOL multipleSelection;
 
 @end
