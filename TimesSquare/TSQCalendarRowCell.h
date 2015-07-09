@@ -65,4 +65,12 @@
  */
 - (void)selectColumnForDate:(NSDate *)date;
 
+/** @name Button configuration */
+
+/** The button class to use for day buttons.
+ 
+ The class should be a subclass of `TSQCalendarRowButton` or at least implement all of its methods.
+ */
+@property (nonatomic, strong) Class rowButtonClass;
+
 @end

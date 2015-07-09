@@ -104,6 +104,15 @@
  */
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated;
 
+/** Whether a particular date should display an event marker
+ 
+ This method passes straight through to the delegate
+ 
+ @param date The date being displayed.
+ @return Whether or not the date should display an event marker.
+ */
+- (BOOL)shouldDisplayEventMarkerForDate:(NSDate *)date;
+
 @end
 
 /** The methods in the `TSQCalendarViewDelegate` protocol allow the adopting delegate to either prevent a day from being selected or respond to it.
@@ -130,5 +139,15 @@
  @param date Midnight on the date being selected.
  */
 - (void)calendarView:(TSQCalendarView *)calendarView didSelectDate:(NSDate *)date;
+
+/** @name Displaying event markers */
+
+/** Asks the delegate whether a particular date should display an event marker
+ 
+ @param calendarView The calendar view that is displaying a date.
+ @param date The date being displayed.
+ @return Whether or not the date should display an event marker.
+ */
+- (BOOL)calendarView:(TSQCalendarView *)calendarView shouldDisplayEventMarkerForDate:(NSDate *)date;
 
 @end
