@@ -118,6 +118,7 @@
         [self layoutViewsForColumnAtIndex:displayIndex inRect:columnBounds];
         start += width + self.columnSpacing;
     }
+    
 
 }
 

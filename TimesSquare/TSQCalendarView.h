@@ -97,6 +97,9 @@
  */
 @property (nonatomic, strong) Class rowCellClass;
 
+// Return all(?) shift notes
+@property (nonatomic, readonly) NSArray *shiftNotes;
+
 /** Scrolls the receiver until the specified date month is completely visible.
 
  @param date A date that identifies the month that will be visible.
@@ -123,6 +126,8 @@
  @return Whether or not the date is selectable.
  */
 - (BOOL)calendarView:(TSQCalendarView *)calendarView shouldSelectDate:(NSDate *)date;
+
+- (NSString*)calendarView: (TSQCalendarView *)calendarView secondTitleForDate: (NSDate*) date;
 
 /** Tells the delegate that a particular date was selected.
  

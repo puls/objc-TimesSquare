@@ -73,6 +73,7 @@ This is white by default.
  */
 @property (nonatomic, getter = isBottomRow) BOOL bottomRow;
 
+
 /** Method to select a specific date within the week.
 
  This is funneled through and called by the calendar view, to facilitate deselection of other rows.
