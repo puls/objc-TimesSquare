@@ -28,7 +28,6 @@
         self.secondTitleLabel.userInteractionEnabled = NO;
         self.secondTitleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.secondTitleLabel];
-        self.secondTitleLabel.text = @"blah blah";
     }
     return self;
 }

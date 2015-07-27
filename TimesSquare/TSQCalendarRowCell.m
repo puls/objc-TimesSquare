@@ -163,8 +163,6 @@
             TSQCalendarDayButton *notThisMonthButton = self.notThisMonthButtons[index];
             dayButton.secondTitleLabel.text = secondTitle;
             notThisMonthButton.secondTitleLabel.text = secondTitle;
-    
-            
         }
         
         NSDateComponents *thisDateComponents = [self.calendar components:NSCalendarUnitDay|NSCalendarUnitMonth|NSCalendarUnitYear fromDate:date];
