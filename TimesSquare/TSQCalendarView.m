@@ -162,6 +162,18 @@
   [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:animated];
 }
 
+
+
+- (void)scrollDate:(NSDate *)date toPosition:(UITableViewScrollPosition)position animated:(BOOL)animated {
+    NSIndexPath *cellPath = [self indexPathForRowAtDate:date];
+
+    [self.tableView scrollToRowAtIndexPath:cellPath
+                          atScrollPosition:position
+                                  animated:animated];
+}
+
+
+
 - (TSQCalendarMonthHeaderCell *)makeHeaderCellWithIdentifier:(NSString *)identifier;
 {
     TSQCalendarMonthHeaderCell *cell = [[[self headerCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];

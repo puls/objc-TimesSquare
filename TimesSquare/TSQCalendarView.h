@@ -104,6 +104,16 @@
  */
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated;
 
+
+
+/** Scrolls the receiver until the specified date is at the specified position in the view.
+
+@param date A date that identifies the month that will be visible.
+@param position A UITableViewScroll Position, determining the position of the date after scroll is finished.
+@param animated YES if you want to animate the change in position, NO if it should be immediate.
+*/
+- (void)scrollDate:(NSDate *)date toPosition:(UITableViewScrollPosition)position animated:(BOOL)animated;
+
 @end
 
 /** The methods in the `TSQCalendarViewDelegate` protocol allow the adopting delegate to either prevent a day from being selected or respond to it.
