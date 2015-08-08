@@ -199,6 +199,13 @@
 
 - (void)layoutSubviews;
 {
+    if (!self.dayButtons) {
+        [self createDayButtons];
+        [self createNotThisMonthButtons];
+        [self createTodayButton];
+        [self createSelectedButton];
+    }
+    
     if (!self.backgroundView) {
         [self setBottomRow:NO];
     }
