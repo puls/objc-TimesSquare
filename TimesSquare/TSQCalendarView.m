@@ -318,6 +318,16 @@
         }
         CGRect sectionRect = [self.tableView rectForSection:section];
         *targetContentOffset = sectionRect.origin;
+    } else if (self.snapsToRows) {
+        // Find the frame of the cell the scroll will end in
+        NSIndexPath *targetIndexPath = [self.tableView indexPathForRowAtPoint:*targetContentOffset];
+        CGRect targetCellRect = [self.tableView rectForRowAtIndexPath:targetIndexPath];
+        // Round the scroll finish point to the nearest cell boundary
+        if (targetContentOffset->y < targetCellRect.origin.y + targetCellRect.size.height/2.) {
+            targetContentOffset->y = targetCellRect.origin.y;
+        } else {
+            targetContentOffset->y = targetCellRect.origin.y + targetCellRect.size.height;
+        }
     }
 }
 
