@@ -50,14 +50,27 @@
     return [UIFont boldSystemFontOfSize:19.0f];
 }
 
+- (UIFont *)secondTitleFont
+{
+    return [UIFont boldSystemFontOfSize:12.0f];
+}
+
 - (UIColor *)todayTextColor
 {
     return [UIColor whiteColor];
 }
 
-- (void)configureButton:(UIButton *)button;
+- (UIColor *)secondTitleTextColor
+{
+    return [UIColor blackColor];
+}
+
+
+- (void)configureButton:(TSQCalendarDayButton *)button;
 {
     button.titleLabel.font = [self dayOfMonthFont];
+    button.secondTitleLabel.font = [self secondTitleFont];
+    button.secondTitleLabel.textColor = [self secondTitleTextColor];
     button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
     [button setTitleColor:self.textColor forState:UIControlStateNormal];
@@ -98,6 +111,7 @@
 - (void)createTodayButton;
 {
     self.todayButton = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
+  
     [self.contentView addSubview:self.todayButton];
     [self configureButton:self.todayButton];
     [self.todayButton addTarget:self action:@selector(todayButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
