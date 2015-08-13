@@ -56,7 +56,10 @@
     NSMutableArray *dayButtons = [NSMutableArray arrayWithCapacity:self.daysInWeek];
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         UIButton *button = [[UIButton alloc] initWithFrame:self.contentView.bounds];
-        [button addTarget:self action:@selector(dateButtonPressed:) forControlEvents:UIControlEventTouchDown];
+        [button addTarget:self action:@selector(dateButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
+        [button addTarget:self action:@selector(dateButtonTouchDragExit:) forControlEvents:UIControlEventTouchDragExit];
+        [button addTarget:self action:@selector(dateButtonTouchCancel:) forControlEvents:UIControlEventTouchCancel];
+        [button addTarget:self action:@selector(dateButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         [dayButtons addObject:button];
         [self.contentView addSubview:button];
         [self configureButton:button];
@@ -181,12 +184,39 @@
     [self setNeedsLayout];
 }
 
-- (IBAction)dateButtonPressed:(id)sender;
+- (void)resetDateButtonDisplay:(UIButton*)aButton;
+{
+    aButton.backgroundColor = nil;
+    [aButton setTitleColor:self.textColor forState:UIControlStateNormal];
+}
+
+- (void)markDateButtonSelected:(UIButton*)aButton;
+{
+    aButton.backgroundColor = [UIColor darkGrayColor];
+    [aButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
+
+- (IBAction)dateButtonTouchUpInside:(id)sender;
 {
     NSDateComponents *offset = [NSDateComponents new];
     offset.day = [self.dayButtons indexOfObject:sender];
     NSDate *selectedDate = [self.calendar dateByAddingComponents:offset toDate:self.beginningDate options:0];
     self.calendarView.selectedDate = selectedDate;
+}
+
+- (IBAction)dateButtonTouchDown:(id)sender;
+{
+    [self markDateButtonSelected:sender];
+}
+
+- (IBAction)dateButtonTouchDragExit:(id)sender;
+{
+    [self resetDateButtonDisplay:sender];
+}
+
+- (IBAction)dateButtonTouchCancel:(id)sender;
+{
+    [self resetDateButtonDisplay:sender];
 }
 
 - (IBAction)todayButtonPressed:(id)sender;
