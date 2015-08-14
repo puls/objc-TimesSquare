@@ -63,14 +63,22 @@
 - (UIColor *)secondTitleTextColor
 {
     return [UIColor blackColor];
+
 }
 
 
-- (void)configureButton:(TSQCalendarDayButton *)button;
+- (void)configureButton:(TSQCalendarDayButton *)button isSelected: (BOOL) selected;
 {
     button.titleLabel.font = [self dayOfMonthFont];
     button.secondTitleLabel.font = [self secondTitleFont];
-    button.secondTitleLabel.textColor = [self secondTitleTextColor];
+    if (!selected) {
+        button.secondTitleLabel.textColor = [self secondTitleTextColor];
+    } else {
+        button.secondTitleLabel.textColor = [UIColor whiteColor];
+        button.secondTitleLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.75f];
+    }
+    button.secondTitleLabel.adjustsFontSizeToFitWidth = NO;
+    button.secondTitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
     [button setTitleColor:self.textColor forState:UIControlStateNormal];
@@ -86,7 +94,7 @@
         [button addTarget:self action:@selector(dateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [dayButtons addObject:button];
         [self.contentView addSubview:button];
-        [self configureButton:button];
+        [self configureButton:button isSelected:NO];
         [button setTitleColor:[self.textColor colorWithAlphaComponent:0.5f] forState:UIControlStateDisabled];
     }
     self.dayButtons = dayButtons;
@@ -99,7 +107,7 @@
         TSQCalendarDayButton *button = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
         [notThisMonthButtons addObject:button];
         [self.contentView addSubview:button];
-        [self configureButton:button];
+        [self configureButton:button isSelected: NO];
         [button setTitleColor:[self.textColor colorWithAlphaComponent:0.5f] forState:UIControlStateDisabled];
         button.enabled = NO;
         UIColor *backgroundPattern = [UIColor colorWithPatternImage:[self notThisMonthBackgroundImage]];
@@ -113,7 +121,7 @@
     self.todayButton = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
   
     [self.contentView addSubview:self.todayButton];
-    [self configureButton:self.todayButton];
+    [self configureButton:self.todayButton isSelected:NO];
     [self.todayButton addTarget:self action:@selector(todayButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.todayButton setTitleColor:[self todayTextColor] forState:UIControlStateNormal];
@@ -127,10 +135,8 @@
 {
     self.selectedButton = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
     [self.contentView addSubview:self.selectedButton];
-    [self configureButton:self.selectedButton];
-    
+    [self configureButton:self.selectedButton isSelected:YES];
     [self.selectedButton setAccessibilityTraits:UIAccessibilityTraitSelected|self.selectedButton.accessibilityTraits];
-    
     self.selectedButton.enabled = NO;
     [self.selectedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.selectedButton setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
@@ -294,6 +300,11 @@
 		[self.selectedButton setTitle:newTitle forState:UIControlStateNormal];
 		[self.selectedButton setTitle:newTitle forState:UIControlStateDisabled];
         [self.selectedButton setAccessibilityLabel:[self.dayButtons[newIndexOfSelectedButton] accessibilityLabel]];
+        
+        if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:secondTitleForDate:)]) {
+            self.selectedButton.secondTitleLabel.text = [self.calendarView.delegate calendarView:self.calendarView secondTitleForDate:date];
+        }
+        
     } else {
         self.selectedButton.hidden = YES;
     }
