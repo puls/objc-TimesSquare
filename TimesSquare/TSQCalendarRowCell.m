@@ -75,7 +75,6 @@
         button.secondTitleLabel.textColor = [self secondTitleTextColor];
     } else {
         button.secondTitleLabel.textColor = [UIColor whiteColor];
-        button.secondTitleLabel.shadowColor = [UIColor colorWithWhite:0.0f alpha:0.75f];
     }
     button.secondTitleLabel.adjustsFontSizeToFitWidth = NO;
     button.secondTitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;

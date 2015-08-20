@@ -23,7 +23,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.secondTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 85, 18)];
+        [self setTitleEdgeInsets:UIEdgeInsetsMake(-10, 0, 0, 0)];
+        self.secondTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 65, 18)];
         self.secondTitleLabel.textAlignment = NSTextAlignmentCenter;
         self.secondTitleLabel.userInteractionEnabled = NO;
         self.secondTitleLabel.backgroundColor = [UIColor clearColor];
