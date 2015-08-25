@@ -1,5 +1,10 @@
 # TimesSquare
 
+[![CI Status](https://travis-ci.org/square/objc-TimesSquare.svg?branch=master)](https://travis-ci.org/square/objc-TimesSquare)
+[![Version](https://img.shields.io/cocoapods/v/TimesSquare.svg)](http://cocoadocs.org/docsets/TimesSquare)
+[![License](https://img.shields.io/cocoapods/l/TimesSquare.svg)](http://cocoadocs.org/docsets/TimesSquare)
+[![Platform](https://img.shields.io/cocoapods/p/TimesSquare.svg)](http://cocoadocs.org/docsets/TimesSquare)
+
 TimesSquare is a library to display a calendar in a view in your iPhone or iPad app. We wrote it after searching high and low for a better way and finding none.
 
 ## Usage
@@ -14,7 +19,7 @@ While we fully expect you'll use it to display a Gregorian calendar most of the 
 
 ## Further documentation
 
-If you install [appledoc](http://gentlebytes.com/appledoc/) ("`brew install appledoc`") you can build the "TimesSquare Documentation" target in Xcode and see (and search!) the full API in your documentation window.
+If you install [appledoc](http://gentlebytes.com/appledoc/) ("`brew info homebrew/versions/appledoc22`", "`ln -s /usr/local/Cellar/appledoc22/2.2.1/bin/appledoc /usr/local/bin/appledoc`") you can build the "TimesSquare Documentation" target in Xcode and see (and search!) the full API in your documentation window.
 
 ## Contributing
 
