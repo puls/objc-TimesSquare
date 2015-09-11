@@ -10,5 +10,5 @@
 
 @interface TSQCalendarDayButton : UIButton
 
-@property (nonatomic, strong) UILabel *secondTitleLabel;
+@property (nonatomic, strong) UILabel *subtitleLabel;
 @end

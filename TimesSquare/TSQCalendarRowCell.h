@@ -24,7 +24,7 @@
 @property (nonatomic, weak, readonly) UIFont *dayOfMonthFont;
 
 
-@property (nonatomic, weak, readonly) UIFont *secondTitleFont;
+@property (nonatomic, weak, readonly) UIFont *subtitleFont;
 
 
 /** The text color for a day that's "today".
@@ -33,7 +33,7 @@ This is white by default.
 */
 @property (nonatomic, weak, readonly) UIColor *todayTextColor;
 
-@property (nonatomic, weak, readonly) UIColor *secondTitleTextColor;
+@property (nonatomic, weak, readonly) UIColor *subtitleTextColor;
 
 /** @name Images */
 

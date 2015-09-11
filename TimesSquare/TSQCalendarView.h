@@ -137,7 +137,13 @@
  */
 - (BOOL)calendarView:(TSQCalendarView *)calendarView shouldSelectDate:(NSDate *)date;
 
-- (NSString*)calendarView: (TSQCalendarView *)calendarView secondTitleForDate: (NSDate*) date;
+- (NSString*)calendarView: (TSQCalendarView *)calendarView subtitleForDate: (NSDate*) date;
+
+- (UIColor*)calendarView: (TSQCalendarView *)calendarView dateColorForDate: (NSDate*) date;
+
+- (UIColor*)calendarView: (TSQCalendarView *)calendarView disabledDateColorForDate: (NSDate*) date;
+
+- (UIColor*)calendarView: (TSQCalendarView *)calendarView subtitleColorForDate: (NSDate*) date;
 
 /** Tells the delegate that a particular date was selected.
  
