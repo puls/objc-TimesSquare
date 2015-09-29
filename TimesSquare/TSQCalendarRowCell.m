@@ -79,13 +79,16 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
 {
     button.titleLabel.font = [self dayOfMonthFont];
     button.subtitleLabel.font = [self subtitleFont];
+    button.subtitleSymbolLabel.font = [self subtitleFont];
     if (!selected) {
         button.subtitleLabel.textColor = [self subtitleTextColor];
+        button.subtitleSymbolLabel.textColor = [self subtitleTextColor];
     } else {
         button.subtitleLabel.textColor = [UIColor whiteColor];
+        button.subtitleSymbolLabel.textColor = [UIColor whiteColor];
     }
     button.subtitleLabel.adjustsFontSizeToFitWidth = NO;
-    button.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    button.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
     [button setTitleColor:self.textColor forState:UIControlStateNormal];
@@ -218,10 +221,11 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
     
     
     
-    NSString *subtitle = nil;
+    button.subtitleLabel.text = nil;
+    button.subtitleSymbolLabel.text = nil;
     if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleForDate:)])
     {
-        subtitle = [self.calendarView.delegate calendarView:self.calendarView subtitleForDate:date];
+        NSString *subtitle = [self.calendarView.delegate calendarView:self.calendarView subtitleForDate:date];
         button.subtitleLabel.text = subtitle;
         
         UIColor *subtitleColor = nil;
@@ -256,6 +260,14 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
         }
         
         button.subtitleLabel.textColor = subtitleColor;
+        
+        
+        if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleTrailingSymbolForDate:)])
+        {
+            NSString *symbolString = [self.calendarView.delegate calendarView:self.calendarView subtitleTrailingSymbolForDate:date];
+            button.subtitleSymbolLabel.text = symbolString;
+            button.subtitleSymbolLabel.textColor = subtitleColor;
+        }
     }
 }
 
@@ -429,11 +441,8 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
 		[self.selectedButton setTitle:newTitle forState:UIControlStateNormal];
 		[self.selectedButton setTitle:newTitle forState:UIControlStateDisabled];
         [self.selectedButton setAccessibilityLabel:[self.dayButtons[newIndexOfSelectedButton] accessibilityLabel]];
-        
-        if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleForDate:)]) {
-            self.selectedButton.subtitleLabel.text = [self.calendarView.delegate calendarView:self.calendarView subtitleForDate:date];
-        }
-        
+        self.selectedButton.subtitleLabel.text = [self.dayButtons[newIndexOfSelectedButton] subtitleLabel].text;
+        self.selectedButton.subtitleSymbolLabel.text = [self.dayButtons[newIndexOfSelectedButton] subtitleSymbolLabel].text;
     } else {
         self.selectedButton.hidden = YES;
     }

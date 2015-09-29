@@ -139,6 +139,8 @@
 
 - (NSString*)calendarView: (TSQCalendarView *)calendarView subtitleForDate: (NSDate*) date;
 
+- (NSString*)calendarView: (TSQCalendarView *)calendarView subtitleTrailingSymbolForDate: (NSDate*) date;
+
 - (UIColor*)calendarView: (TSQCalendarView *)calendarView dateColorForDate: (NSDate*) date;
 
 - (UIColor*)calendarView: (TSQCalendarView *)calendarView disabledDateColorForDate: (NSDate*) date;

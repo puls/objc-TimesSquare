@@ -27,8 +27,11 @@
         self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 65, 18)];
         self.subtitleLabel.textAlignment = NSTextAlignmentCenter;
         self.subtitleLabel.userInteractionEnabled = NO;
-        self.subtitleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:self.subtitleLabel];
+        
+        self.subtitleSymbolLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 50, 8, 18)];
+        self.subtitleSymbolLabel.userInteractionEnabled = NO;
+        [self addSubview:self.subtitleSymbolLabel];
     }
     return self;
 }
