@@ -307,7 +307,7 @@
     }
     
     static NSString *identifier = @"header";
-    TSQCalendarMonthHeaderCell *cell = [tableView dequeueReusableHeaderFooterViewWithIdentifier:identifier];
+    TSQCalendarMonthHeaderCell *cell = (TSQCalendarMonthHeaderCell *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:identifier];
     if (!cell) {
         cell = [self makeHeaderCellWithIdentifier:identifier];
         cell.firstOfMonth = [self firstOfMonthForSection:section];
