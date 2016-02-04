@@ -54,6 +54,8 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
     return self;
 }
 
+#pragma mark - Fonts
+
 - (UIFont *)dayOfMonthFont
 {
     return [UIFont boldSystemFontOfSize:19.0f];
@@ -63,6 +65,8 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
 {
     return [UIFont boldSystemFontOfSize:12.0f];
 }
+
+#pragma mark - Colors
 
 - (UIColor *)todayTextColor
 {
@@ -74,6 +78,37 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
     return [UIColor blackColor];
 }
 
+- (UIColor *)selectedTextColor
+{
+    return [UIColor whiteColor];
+}
+
+- (UIColor *)selectedSubtitleTextColor
+{
+    return [UIColor whiteColor];
+}
+
+- (UIColor *)textShadowColor
+{
+    return [UIColor whiteColor];
+}
+
+- (UIColor *)todayTextShadowColor
+{
+    return [UIColor colorWithWhite:0.0f alpha:0.75f];
+}
+
+- (UIColor *)selectedTextShadowColor
+{
+    return [UIColor colorWithWhite:0.0f alpha:0.75f];
+}
+
+- (UIColor *)todaySubtitleTextColor
+{
+    return [self subtitleTextColor];
+}
+
+#pragma mark - Buttons
 
 - (void)configureButton:(TSQCalendarDayButton *)button isSelected: (BOOL) selected;
 {
@@ -84,15 +119,15 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
         button.subtitleLabel.textColor = [self subtitleTextColor];
         button.subtitleSymbolLabel.textColor = [self subtitleTextColor];
     } else {
-        button.subtitleLabel.textColor = [UIColor whiteColor];
-        button.subtitleSymbolLabel.textColor = [UIColor whiteColor];
+        button.subtitleLabel.textColor = [self selectedSubtitleTextColor];
+        button.subtitleSymbolLabel.textColor = [self selectedSubtitleTextColor];
     }
     button.subtitleLabel.adjustsFontSizeToFitWidth = NO;
     button.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
     [button setTitleColor:self.textColor forState:UIControlStateNormal];
-    [button setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitleShadowColor:[self textShadowColor] forState:UIControlStateNormal];
 
 }
 
@@ -136,7 +171,7 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
     
     [self.todayButton setTitleColor:[self todayTextColor] forState:UIControlStateNormal];
     [self.todayButton setBackgroundImage:[self todayBackgroundImage] forState:UIControlStateNormal];
-    [self.todayButton setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
+    [self.todayButton setTitleShadowColor:[self todayTextShadowColor] forState:UIControlStateNormal];
 
     self.todayButton.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
 }
@@ -148,9 +183,9 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
     [self configureButton:self.selectedButton isSelected:YES];
     [self.selectedButton setAccessibilityTraits:UIAccessibilityTraitSelected|self.selectedButton.accessibilityTraits];
     self.selectedButton.enabled = NO;
-    [self.selectedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.selectedButton setTitleColor:[self selectedTextColor] forState:UIControlStateNormal];
     [self.selectedButton setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
-    [self.selectedButton setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
+    [self.selectedButton setTitleShadowColor:[self selectedTextShadowColor] forState:UIControlStateNormal];
     
     self.selectedButton.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
     self.indexOfSelectedButton = -1;
@@ -195,7 +230,7 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
         }
         else if (buttonType == CalendarButtonTypeSelected)
         {
-            dateColor = [UIColor whiteColor];
+            dateColor = [self selectedTextColor];
         }
         else if (buttonType == CalendarButtonTypeNormalDay)
         {
@@ -242,9 +277,13 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
         // defaults
         if (! subtitleColor)
         {
-            if (buttonType == CalendarButtonTypeSelected)
+            if (buttonType == CalendarButtonTypeToday)
             {
-                subtitleColor = [UIColor whiteColor];
+                subtitleColor = [self todaySubtitleTextColor];
+            }
+            else if (buttonType == CalendarButtonTypeSelected)
+            {
+                subtitleColor = [self selectedSubtitleTextColor];
             }
             else
             {

@@ -32,8 +32,19 @@
 This is white by default.
 */
 @property (nonatomic, weak, readonly) UIColor *todayTextColor;
+@property (nonatomic, weak, readonly) UIColor *todayTextShadowColor;
+@property (nonatomic, weak, readonly) UIColor *todaySubtitleTextColor;
 
+@property (nonatomic, weak, readonly) UIColor *textShadowColor;
 @property (nonatomic, weak, readonly) UIColor *subtitleTextColor;
+
+/** The text color for a day that's selected
+ 
+ This is white by default.
+ */
+@property (nonatomic, weak, readonly) UIColor *selectedTextColor;
+@property (nonatomic, weak, readonly) UIColor *selectedTextShadowColor;
+@property (nonatomic, weak, readonly) UIColor *selectedSubtitleTextColor;
 
 /** @name Images */
 
