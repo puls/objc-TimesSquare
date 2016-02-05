@@ -342,6 +342,11 @@
 
 - (NSDate *)clampDate:(NSDate *)date toComponents:(NSUInteger)unitFlags
 {
+    if (date == nil) {
+        // [__NSCFCalendar components:fromDate:]: date cannot be nil
+        return nil;
+    }
+
     NSDateComponents *components = [self.calendar components:unitFlags fromDate:date];
     return [self.calendar dateFromComponents:components];
 }
