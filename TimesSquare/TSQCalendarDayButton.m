@@ -23,6 +23,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        // default button type to normal day
+        self.type = CalendarButtonTypeNormalDay;
+
         [self setTitleEdgeInsets:UIEdgeInsetsMake(-10, 0, 0, 0)];
         self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 65, 18)];
         self.subtitleLabel.textAlignment = NSTextAlignmentCenter;

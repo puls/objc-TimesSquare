@@ -11,15 +11,6 @@
 #import "TSQCalendarView.h"
 #import "TSQCalendarDayButton.h"
 
-typedef NS_ENUM(NSInteger, CalendarButtonType) {
-    CalendarButtonTypeNormalDay = 0,
-    CalendarButtonTypeOtherMonth = 1,
-    CalendarButtonTypeToday = 2,
-    CalendarButtonTypeSelected = 3
-};
-
-
-
 @interface TSQCalendarRowCell ()
 
 @property (nonatomic, strong) NSArray *dayButtons;
@@ -197,9 +188,10 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
 {
     UIColor *dateColor = nil;
     UIColor *disabledDateColor = nil;
-    
-    
-    
+
+    // update button type
+    button.type = buttonType;
+
     // prefer the delegate date color over everything else; this will always be
     // used if the delegate returns a color
     
