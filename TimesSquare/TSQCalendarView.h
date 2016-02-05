@@ -83,6 +83,12 @@
  */
 @property (nonatomic) CGPoint contentOffset;
 
+/** The size of the calendar content view
+ 
+ This property is equivalent to the one defined on `UIScrollView`.
+ */
+@property (nonatomic) CGSize contentSize;
+
 /** The cell class to use for month headers.
  
  Since there's very little configuration to be done for each cell, this can be set as a shortcut to implementing a data source.

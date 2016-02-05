@@ -346,4 +346,9 @@
     return [self.calendar dateFromComponents:components];
 }
 
+- (CGSize)contentSize
+{
+    return self.tableView.contentSize;
+}
+
 @end
