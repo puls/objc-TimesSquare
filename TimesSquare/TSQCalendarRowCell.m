@@ -162,6 +162,7 @@
     button.type = CalendarButtonTypeSelected;
     [self.contentView addSubview:button];
     [self configureButton:button];
+    [button setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
     [button setAccessibilityTraits:UIAccessibilityTraitSelected|button.accessibilityTraits];
     button.enabled = NO;
     button.hidden = YES;
@@ -177,29 +178,6 @@
     UIColor *dateShadowColor = nil;
 
     NSDate *date = button.day;
-
-    // ** BACKGROUND IMAGE **/
-
-    UIImage *backgroundImage = nil;
-    switch (button.type)
-    {
-        case CalendarButtonTypeNormalDay:
-            if ([button isForDay:self.calendarView.initialDate]) {
-                backgroundImage = [self initialDayBackgroundImage];
-            } else if ([button isForToday]) {
-                backgroundImage = [self todayBackgroundImage];
-            }
-            break;
-
-        case CalendarButtonTypeOtherMonth:
-            break;
-
-        case CalendarButtonTypeSelected:
-            backgroundImage = [self selectedBackgroundImage];
-            break;
-    }
-
-    [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 
     // ** DATE COLOR **/
 
@@ -406,6 +384,15 @@
             button.enabled = buttonEnabled;
             button.hidden = NO;
         }
+
+        // update background image
+        UIImage *backgroundImage = nil;
+        if ([currentDayButton isForDay:self.calendarView.initialDate]) {
+            backgroundImage = [self initialDayBackgroundImage];
+        } else if ([currentDayButton isForToday]) {
+            backgroundImage = [self todayBackgroundImage];
+        }
+        [currentDayButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 
         // update button colors
         [self updateColorsForButton:currentDayButton];
