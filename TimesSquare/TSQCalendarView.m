@@ -152,6 +152,16 @@
     }
 }
 
+- (BOOL)scrollEnabled
+{
+    return self.tableView.scrollEnabled;
+}
+
+- (void)setScrollEnabled:(BOOL)scrollEnabled
+{
+    self.tableView.scrollEnabled = scrollEnabled;
+}
+
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated
 {
   NSInteger section = [self sectionForDate:date];

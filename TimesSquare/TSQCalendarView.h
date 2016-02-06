@@ -115,6 +115,10 @@
 // Return all(?) shift notes
 @property (nonatomic, readonly) NSArray *shiftNotes;
 
+// Returns and modifies the scrollEnabled on the table view
+
+@property (nonatomic) BOOL scrollEnabled;
+
 /** Scrolls the receiver until the specified date month is completely visible.
 
  @param date A date that identifies the month that will be visible.
