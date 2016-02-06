@@ -10,15 +10,6 @@
 
 @implementation TSQCalendarDayButton
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -38,4 +29,29 @@
     }
     return self;
 }
+
+- (BOOL)isForToday
+{
+    NSDate *today = [NSDate date];
+    return [self isForDayIgnoringTime:today];
+}
+
+- (BOOL)isForDay:(NSDate *)day
+{
+    return [self isForDayIgnoringTime:day];
+}
+
+- (BOOL)isForDayIgnoringTime:(NSDate *)aDay
+{
+    if (aDay == nil || self.day == nil) {
+        return NO;
+    }
+
+    NSDateComponents *components1 = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.day];
+    NSDateComponents *components2 = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:aDay];
+    return ((components1.year == components2.year) &&
+            (components1.month == components2.month) &&
+            (components1.day == components2.day));
+}
+
 @end

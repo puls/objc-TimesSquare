@@ -46,6 +46,14 @@ This is white by default.
 @property (nonatomic, weak, readonly) UIColor *selectedTextShadowColor;
 @property (nonatomic, weak, readonly) UIColor *selectedSubtitleTextColor;
 
+/** The text color for the initial day
+
+ This uses the default text colors.
+ */
+@property (nonatomic, weak, readonly) UIColor *initialDayTextColor;
+@property (nonatomic, weak, readonly) UIColor *initialDayTextShadowColor;
+@property (nonatomic, weak, readonly) UIColor *initialDaySubtitleTextColor;
+
 /** @name Images */
 
 /** The background image for the entire row.
@@ -67,6 +75,12 @@ This is white by default.
  This is dark gray in the system's built-in Calendar app. You probably want to use a stretchable image.
  */
 @property (nonatomic, weak, readonly) UIImage *todayBackgroundImage;
+
+/** The background image for the initial date.
+
+ This is dark gray in the system's built-in Calendar app. You probably want to use a stretchable image.
+ */
+@property (nonatomic, weak, readonly) UIImage *initialDayBackgroundImage;
 
 /** The background image for a day that's not this month.
  

@@ -42,6 +42,15 @@
  */
 @property (nonatomic, strong) NSDate *selectedDate;
 
+
+/** The initial date to be highlighted on the calendar.
+ 
+ Set this property to any `NSDate`; `TSQCalendarView` will only look at the month, day, and year.
+ You can read and write this property
+ */
+
+@property (nonatomic, strong) NSDate *initialDate;
+
 /** @name Calendar Configuration */
 
 /** The calendar type to use when displaying.
@@ -148,6 +157,8 @@
 - (NSString*)calendarView: (TSQCalendarView *)calendarView subtitleTrailingSymbolForDate: (NSDate*) date;
 
 - (UIColor*)calendarView: (TSQCalendarView *)calendarView dateColorForDate: (NSDate*) date;
+
+- (UIColor*)calendarView: (TSQCalendarView *)calendarView dateShadowColorForDate: (NSDate*) date;
 
 - (UIColor*)calendarView: (TSQCalendarView *)calendarView disabledDateColorForDate: (NSDate*) date;
 

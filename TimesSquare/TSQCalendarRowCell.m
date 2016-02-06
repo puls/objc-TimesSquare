@@ -15,16 +15,13 @@
 
 @property (nonatomic, strong) NSArray *dayButtons;
 @property (nonatomic, strong) NSArray *notThisMonthButtons;
-@property (nonatomic, strong) TSQCalendarDayButton *todayButton;
 @property (nonatomic, strong) TSQCalendarDayButton *selectedButton;
 
-@property (nonatomic, assign) NSInteger indexOfTodayButton;
 @property (nonatomic, assign) NSInteger indexOfSelectedButton;
 
 @property (nonatomic, strong) NSDateFormatter *dayFormatter;
 @property (nonatomic, strong) NSDateFormatter *accessibilityFormatter;
 
-@property (nonatomic, strong) NSDateComponents *todayDateComponents;
 @property (nonatomic) NSInteger monthOfBeginningDate;
 
 @property (nonatomic, strong) UILabel *subtitleLabel;
@@ -99,27 +96,34 @@
     return [self subtitleTextColor];
 }
 
+- (UIColor *)initialDayTextColor
+{
+    return [self textColor];
+}
+
+- (UIColor *)initialDayTextShadowColor
+{
+    return [self textShadowColor];
+}
+
+- (UIColor *)initialDaySubtitleTextColor
+{
+    return [self subtitleTextColor];
+}
+
 #pragma mark - Buttons
 
-- (void)configureButton:(TSQCalendarDayButton *)button isSelected: (BOOL) selected;
+- (void)configureButton:(TSQCalendarDayButton *)button
 {
+    [self updateColorsForButton:button];
+
     button.titleLabel.font = [self dayOfMonthFont];
     button.subtitleLabel.font = [self subtitleFont];
     button.subtitleSymbolLabel.font = [self subtitleFont];
-    if (!selected) {
-        button.subtitleLabel.textColor = [self subtitleTextColor];
-        button.subtitleSymbolLabel.textColor = [self subtitleTextColor];
-    } else {
-        button.subtitleLabel.textColor = [self selectedSubtitleTextColor];
-        button.subtitleSymbolLabel.textColor = [self selectedSubtitleTextColor];
-    }
     button.subtitleLabel.adjustsFontSizeToFitWidth = NO;
     button.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
-    [button setTitleColor:self.textColor forState:UIControlStateNormal];
-    [button setTitleShadowColor:[self textShadowColor] forState:UIControlStateNormal];
-
 }
 
 - (void)createDayButtons;
@@ -127,11 +131,11 @@
     NSMutableArray *dayButtons = [NSMutableArray arrayWithCapacity:self.daysInWeek];
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         TSQCalendarDayButton *button = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
+        button.type = CalendarButtonTypeNormalDay;
         [button addTarget:self action:@selector(dateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [dayButtons addObject:button];
         [self.contentView addSubview:button];
-        [self configureButton:button isSelected:NO];
-        [button setTitleColor:[self.textColor colorWithAlphaComponent:0.5f] forState:UIControlStateDisabled];
+        [self configureButton:button];
     }
     self.dayButtons = dayButtons;
 }
@@ -141,10 +145,10 @@
     NSMutableArray *notThisMonthButtons = [NSMutableArray arrayWithCapacity:self.daysInWeek];
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         TSQCalendarDayButton *button = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
+        button.type = CalendarButtonTypeOtherMonth;
         [notThisMonthButtons addObject:button];
         [self.contentView addSubview:button];
-        [self configureButton:button isSelected: NO];
-        [button setTitleColor:[self.textColor colorWithAlphaComponent:0.5f] forState:UIControlStateDisabled];
+        [self configureButton:button];
         button.enabled = NO;
         UIColor *backgroundPattern = [UIColor colorWithPatternImage:[self notThisMonthBackgroundImage]];
         button.backgroundColor = backgroundPattern;
@@ -152,45 +156,52 @@
     self.notThisMonthButtons = notThisMonthButtons;
 }
 
-- (void)createTodayButton;
-{
-    self.todayButton = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
-  
-    [self.contentView addSubview:self.todayButton];
-    [self configureButton:self.todayButton isSelected:NO];
-    [self.todayButton addTarget:self action:@selector(todayButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.todayButton setTitleColor:[self todayTextColor] forState:UIControlStateNormal];
-    [self.todayButton setBackgroundImage:[self todayBackgroundImage] forState:UIControlStateNormal];
-    [self.todayButton setTitleShadowColor:[self todayTextShadowColor] forState:UIControlStateNormal];
-
-    self.todayButton.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
-}
-
 - (void)createSelectedButton;
 {
-    self.selectedButton = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
-    [self.contentView addSubview:self.selectedButton];
-    [self configureButton:self.selectedButton isSelected:YES];
-    [self.selectedButton setAccessibilityTraits:UIAccessibilityTraitSelected|self.selectedButton.accessibilityTraits];
-    self.selectedButton.enabled = NO;
-    [self.selectedButton setTitleColor:[self selectedTextColor] forState:UIControlStateNormal];
-    [self.selectedButton setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
-    [self.selectedButton setTitleShadowColor:[self selectedTextShadowColor] forState:UIControlStateNormal];
-    
-    self.selectedButton.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
+    TSQCalendarDayButton *button = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
+    button.type = CalendarButtonTypeSelected;
+    [self.contentView addSubview:button];
+    [self configureButton:button];
+    [button setAccessibilityTraits:UIAccessibilityTraitSelected|button.accessibilityTraits];
+    button.enabled = NO;
+    button.hidden = YES;
     self.indexOfSelectedButton = -1;
+
+    self.selectedButton = button;
 }
 
-- (void)updateButton:(TSQCalendarDayButton *)button
-          buttonType:(CalendarButtonType)buttonType
-             forDate:(NSDate *)date
+- (void)updateColorsForButton:(TSQCalendarDayButton *)button
 {
     UIColor *dateColor = nil;
     UIColor *disabledDateColor = nil;
+    UIColor *dateShadowColor = nil;
 
-    // update button type
-    button.type = buttonType;
+    NSDate *date = button.day;
+
+    // ** BACKGROUND IMAGE **/
+
+    UIImage *backgroundImage = nil;
+    switch (button.type)
+    {
+        case CalendarButtonTypeNormalDay:
+            if ([button isForDay:self.calendarView.initialDate]) {
+                backgroundImage = [self initialDayBackgroundImage];
+            } else if ([button isForToday]) {
+                backgroundImage = [self todayBackgroundImage];
+            }
+            break;
+
+        case CalendarButtonTypeOtherMonth:
+            break;
+
+        case CalendarButtonTypeSelected:
+            backgroundImage = [self selectedBackgroundImage];
+            break;
+    }
+
+    [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+
+    // ** DATE COLOR **/
 
     // prefer the delegate date color over everything else; this will always be
     // used if the delegate returns a color
@@ -200,8 +211,34 @@
         dateColor = [self.calendarView.delegate calendarView:self.calendarView dateColorForDate:date];
     }
     
-    
-    
+    // if the delegate doesn't return a date color, fall back to some sane defaults,
+    // which can still be overridden in subclasses
+    if (! dateColor)
+    {
+        switch (button.type)
+        {
+            case CalendarButtonTypeNormalDay:
+                if ([button isForToday]) {
+                    dateColor = [self todayTextColor];
+                } else if ([button isForDay:self.calendarView.initialDate]) {
+                    dateColor = [self initialDayTextColor];
+                } else {
+                    dateColor = self.textColor;
+                }
+                break;
+
+            case CalendarButtonTypeOtherMonth:
+                dateColor = [self.textColor colorWithAlphaComponent:0.5f];
+                break;
+
+            case CalendarButtonTypeSelected:
+                dateColor = [self selectedTextColor];
+                break;
+        }
+    }
+
+    // ** DISABLED DATE COLOR **/
+
     // prefer the delegate disabledDate color over everything else; this will
     // always be used if the delegate returns a color (except for other month
     // buttons)
@@ -210,44 +247,54 @@
         disabledDateColor = [self.calendarView.delegate calendarView:self.calendarView disabledDateColorForDate:date];
     }
 
-    
-    
-    // if the delegate doesn't return a date color, fall back to some sane defaults,
-    // which can still be overridden in subclasses
-    if (! dateColor)
-    {
-        if (buttonType == CalendarButtonTypeToday)
-        {
-            dateColor = [self todayTextColor];
-        }
-        else if (buttonType == CalendarButtonTypeSelected)
-        {
-            dateColor = [self selectedTextColor];
-        }
-        else if (buttonType == CalendarButtonTypeNormalDay)
-        {
-            dateColor = self.textColor;
-        }
-        else
-        {
-            dateColor = [self.textColor colorWithAlphaComponent:0.5f];
-        }
-    }
-    
-    
-    
     // if the delegate doesn't return a disabled date color, fall back to a sane
     // default.  Other month buttons will always get this disabled color.
-    if ((! disabledDateColor) || (buttonType == CalendarButtonTypeOtherMonth))
+    if ((! disabledDateColor) || (button.type == CalendarButtonTypeOtherMonth))
     {
         disabledDateColor = [self.textColor colorWithAlphaComponent:0.5f];
     }
-    
+
+    // ** DATE SHADOW COLOR **/
+
+    // prefer the delegate date shadow color over everything else; this will
+    // always be used if the delegate returns a color
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:dateShadowColorForDate:)])
+    {
+        dateShadowColor = [self.calendarView.delegate calendarView:self.calendarView dateShadowColorForDate:date];
+    }
+
+    if (! dateShadowColor)
+    {
+        switch (button.type)
+        {
+            case CalendarButtonTypeNormalDay:
+                if ([button isForToday]) {
+                    dateShadowColor = [self todayTextShadowColor];
+                } else if ([button isForDay:self.calendarView.initialDate]) {
+                    dateShadowColor = [self initialDayTextShadowColor];
+                } else if (button.type == CalendarButtonTypeNormalDay) {
+                    dateShadowColor = [self textShadowColor];
+                }
+                break;
+
+            case CalendarButtonTypeOtherMonth:
+                break;
+
+            case CalendarButtonTypeSelected:
+                dateShadowColor = [self selectedTextShadowColor];
+                break;
+        }
+    }
+
     [button setTitleColor:dateColor forState:UIControlStateNormal];
     [button setTitleColor:disabledDateColor forState:UIControlStateDisabled];
-    
-    
-    
+    button.titleLabel.shadowColor = dateShadowColor;
+}
+
+- (void)updateSubtitlesForButton:(TSQCalendarDayButton *)button
+{
+    NSDate *date = button.day;
+
     button.subtitleLabel.text = nil;
     button.subtitleSymbolLabel.text = nil;
     if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleForDate:)])
@@ -269,23 +316,30 @@
         // defaults
         if (! subtitleColor)
         {
-            if (buttonType == CalendarButtonTypeToday)
+            switch (button.type)
             {
-                subtitleColor = [self todaySubtitleTextColor];
-            }
-            else if (buttonType == CalendarButtonTypeSelected)
-            {
-                subtitleColor = [self selectedSubtitleTextColor];
-            }
-            else
-            {
-                subtitleColor = [self subtitleTextColor];
+                case CalendarButtonTypeNormalDay:
+                    if ([button isForToday]) {
+                        subtitleColor = [self todaySubtitleTextColor];
+                    } else if ([button isForDay:self.calendarView.initialDate]) {
+                        subtitleColor = [self initialDaySubtitleTextColor];
+                    } else {
+                        subtitleColor = [self subtitleTextColor];
+                    }
+                    break;
+
+                case CalendarButtonTypeOtherMonth:
+                    break;
+
+                case CalendarButtonTypeSelected:
+                    subtitleColor = [self selectedSubtitleTextColor];
+                    break;
             }
         }
         
         // prefer a disabled color for other month buttons, even if the delegate
         // returned a color
-        if (buttonType == CalendarButtonTypeOtherMonth)
+        if (button.type == CalendarButtonTypeOtherMonth)
         {
             subtitleColor = [self.textColor colorWithAlphaComponent:0.5f];
         }
@@ -309,24 +363,20 @@
     if (!self.dayButtons) {
         [self createDayButtons];
         [self createNotThisMonthButtons];
-        [self createTodayButton];
         [self createSelectedButton];
     }
 
     NSDateComponents *offset = [NSDateComponents new];
     offset.day = 1;
 
-    self.todayButton.hidden = YES;
-    self.indexOfTodayButton = -1;
-    self.selectedButton.hidden = YES;
-    self.indexOfSelectedButton = -1;
-    
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
         NSString *title = [self.dayFormatter stringFromDate:date];
         NSString *accessibilityLabel = [self.accessibilityFormatter stringFromDate:date];
         
         TSQCalendarDayButton *currentDayButton = self.dayButtons[index];
         TSQCalendarDayButton *currentNotThisMonthButton = self.notThisMonthButtons[index];
+        currentDayButton.day = date;
+        currentNotThisMonthButton.day = date;
         [currentDayButton setTitle:title forState:UIControlStateNormal];
         [currentDayButton setTitle:title forState:UIControlStateDisabled];
         [currentDayButton setAccessibilityLabel:accessibilityLabel];
@@ -352,33 +402,18 @@
                 buttonEnabled = [self.calendarView.delegate calendarView:self.calendarView shouldSelectDate:date];
             }
             
-            if ([self.todayDateComponents isEqual:thisDateComponents])
-            {
-                self.todayButton.hidden = NO;
-                [self.todayButton setTitle:title forState:UIControlStateNormal];
-                [self.todayButton setAccessibilityLabel:accessibilityLabel];
-                self.indexOfTodayButton = index;
-                self.todayButton.enabled = buttonEnabled;
-                
-                [self updateButton:self.todayButton
-                        buttonType:CalendarButtonTypeToday
-                           forDate:date];
-            }
-            else
-            {
-                UIButton *button = self.dayButtons[index];
-                button.enabled = buttonEnabled;
-                button.hidden = NO;
-            }
+            UIButton *button = self.dayButtons[index];
+            button.enabled = buttonEnabled;
+            button.hidden = NO;
         }
-        
-        [self updateButton:currentDayButton
-                buttonType:CalendarButtonTypeNormalDay
-                   forDate:date];
-        
-        [self updateButton:currentNotThisMonthButton
-                buttonType:CalendarButtonTypeOtherMonth
-                   forDate:date];
+
+        // update button colors
+        [self updateColorsForButton:currentDayButton];
+        [self updateColorsForButton:currentNotThisMonthButton];
+
+        // update button subtitles
+        [self updateSubtitlesForButton:currentDayButton];
+        [self updateSubtitlesForButton:currentNotThisMonthButton];
 
         date = [self.calendar dateByAddingComponents:offset toDate:date options:0];
     }
@@ -402,14 +437,6 @@
 {
     NSDateComponents *offset = [NSDateComponents new];
     offset.day = [self.dayButtons indexOfObject:sender];
-    NSDate *selectedDate = [self.calendar dateByAddingComponents:offset toDate:self.beginningDate options:0];
-    self.calendarView.selectedDate = selectedDate;
-}
-
-- (IBAction)todayButtonPressed:(id)sender;
-{
-    NSDateComponents *offset = [NSDateComponents new];
-    offset.day = self.indexOfTodayButton;
     NSDate *selectedDate = [self.calendar dateByAddingComponents:offset toDate:self.beginningDate options:0];
     self.calendarView.selectedDate = selectedDate;
 }
@@ -439,9 +466,6 @@
     dayButton.frame = rect;
     notThisMonthButton.frame = rect;
 
-    if (self.indexOfTodayButton == (NSInteger)index) {
-        self.todayButton.frame = rect;
-    }
     if (self.indexOfSelectedButton == (NSInteger)index) {
         self.selectedButton.frame = rect;
     }
@@ -467,17 +491,26 @@
     self.indexOfSelectedButton = newIndexOfSelectedButton;
     
     if (newIndexOfSelectedButton >= 0) {
+        // update selected button colors
+        TSQCalendarDayButton *dayButton = self.dayButtons[newIndexOfSelectedButton];
+        self.selectedButton.day = dayButton.day;
+        [self updateColorsForButton:self.selectedButton];
+        [self updateSubtitlesForButton:self.selectedButton];
+
+        // update selected button text
         self.selectedButton.hidden = NO;
-		NSString *newTitle = [self.dayButtons[newIndexOfSelectedButton] currentTitle];
+        self.selectedButton.enabled = YES;
+		NSString *newTitle = [dayButton currentTitle];
 		[self.selectedButton setTitle:newTitle forState:UIControlStateNormal];
 		[self.selectedButton setTitle:newTitle forState:UIControlStateDisabled];
-        [self.selectedButton setAccessibilityLabel:[self.dayButtons[newIndexOfSelectedButton] accessibilityLabel]];
-        self.selectedButton.subtitleLabel.text = [self.dayButtons[newIndexOfSelectedButton] subtitleLabel].text;
-        self.selectedButton.subtitleSymbolLabel.text = [self.dayButtons[newIndexOfSelectedButton] subtitleSymbolLabel].text;
+        [self.selectedButton setAccessibilityLabel:[dayButton accessibilityLabel]];
+        self.selectedButton.subtitleLabel.text = [dayButton subtitleLabel].text;
+        self.selectedButton.subtitleSymbolLabel.text = [dayButton subtitleSymbolLabel].text;
     } else {
         self.selectedButton.hidden = YES;
+        self.selectedButton.enabled = NO;
     }
-    
+
     [self setNeedsLayout];
 }
 
@@ -513,14 +546,6 @@
 {
     [super setFirstOfMonth:firstOfMonth];
     self.monthOfBeginningDate = 0;
-}
-
-- (NSDateComponents *)todayDateComponents;
-{
-    if (!_todayDateComponents) {
-        self.todayDateComponents = [self.calendar components:NSCalendarUnitDay|NSCalendarUnitMonth|NSCalendarUnitYear fromDate:[NSDate date]];
-    }
-    return _todayDateComponents;
 }
 
 @end

@@ -11,16 +11,18 @@
 typedef NS_ENUM(NSInteger, CalendarButtonType) {
     CalendarButtonTypeNormalDay = 0,
     CalendarButtonTypeOtherMonth = 1,
-    CalendarButtonTypeToday = 2,
-    CalendarButtonTypeSelected = 3,
-    CalendarButtonTypeInitial = 4,
+    CalendarButtonTypeSelected = 2,
 };
 
 @interface TSQCalendarDayButton : UIButton
 
 @property (nonatomic, assign) CalendarButtonType type;
+@property (nonatomic, strong) NSDate *day;
 
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) UILabel *subtitleSymbolLabel;
+
+- (BOOL)isForToday;
+- (BOOL)isForDay:(NSDate *)date;
 
 @end
