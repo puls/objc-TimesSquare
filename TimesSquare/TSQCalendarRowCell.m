@@ -263,6 +263,15 @@
     [button setTitleColor:dateColor forState:UIControlStateNormal];
     [button setTitleColor:disabledDateColor forState:UIControlStateDisabled];
     button.titleLabel.shadowColor = dateShadowColor;
+
+    // ** ICON **/
+
+    UIImage *icon = nil;
+    if ([button isForToday]) {
+        icon = [self todayIcon];
+    }
+    // can extend later to support other icons
+    button.icon = icon;
 }
 
 - (void)updateSubtitlesForButton:(TSQCalendarDayButton *)button

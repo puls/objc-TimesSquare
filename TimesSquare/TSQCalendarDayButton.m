@@ -13,6 +13,8 @@
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) UILabel *subtitleSymbolLabel;
 
+@property (nonatomic, strong) UIImageView *iconImageView;
+
 @end
 
 @implementation TSQCalendarDayButton
@@ -35,6 +37,10 @@
         self.subtitleSymbolLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 50, 8, 18)];
         self.subtitleSymbolLabel.userInteractionEnabled = NO;
         [self addSubview:self.subtitleSymbolLabel];
+
+        self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        self.iconImageView.userInteractionEnabled = NO;
+        [self addSubview:self.iconImageView];
     }
     return self;
 }
@@ -49,6 +55,7 @@
     if (![self.subtitleLabel.text isEqualToString:subtitle])
     {
         self.subtitleLabel.text = subtitle;
+        [self layoutSubviews];
     }
 }
 
@@ -62,6 +69,7 @@
     if (![self.subtitleSymbolLabel.text isEqualToString:subtitleSymbol])
     {
         self.subtitleSymbolLabel.text = subtitleSymbol;
+        [self layoutSubviews];
     }
 }
 
@@ -76,6 +84,7 @@
     {
         self.subtitleLabel.font = subtitleFont;
         self.subtitleSymbolLabel.font = subtitleFont;
+        [self layoutSubviews];
     }
 }
 
@@ -88,6 +97,47 @@
 {
     self.subtitleLabel.textColor = subtitleColor;
     self.subtitleSymbolLabel.textColor = subtitleColor;
+}
+
+- (UIImage *)icon
+{
+    return self.iconImageView.image;
+}
+
+- (void)setIcon:(UIImage *)icon
+{
+    if (![self.iconImageView.image isEqual:icon])
+    {
+        self.iconImageView.image = icon;
+        [self layoutSubviews];
+    }
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    CGFloat subtitleCenterY = 0.75f * CGRectGetMaxY(self.bounds);
+    self.iconImageView.hidden = (self.iconImageView.image == nil);
+    if (! self.iconImageView.hidden)
+    {
+        self.iconImageView.hidden = NO;
+
+        CGFloat iconWidth = self.iconImageView.image.size.width;
+        CGFloat iconHeight = self.iconImageView.image.size.height;
+
+        CGFloat midX = CGRectGetMidX(self.bounds);
+
+        CGFloat originX = midX - iconWidth/2.0f;
+        CGFloat originY = subtitleCenterY - iconHeight/2.0f;
+
+        self.iconImageView.frame = CGRectMake(originX,
+                                              originY,
+                                              iconWidth,
+                                              iconHeight);
+
+#warning need to layout icon differently if subtitle is displayed
+    }
 }
 
 - (BOOL)isForToday

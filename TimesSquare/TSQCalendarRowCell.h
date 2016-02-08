@@ -88,6 +88,10 @@ This is white by default.
  */
 @property (nonatomic, weak, readonly) UIImage *notThisMonthBackgroundImage;
 
+/** A small icon that appears below the day number to indicate today */
+
+@property (nonatomic, weak, readonly) UIImage *todayIcon;
+
 /** @name State Properties Set by Calendar View */
 
 /** The date at the beginning of the week for this cell.
