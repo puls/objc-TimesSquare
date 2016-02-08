@@ -78,7 +78,7 @@
     return self.subtitleLabel.font;
 }
 
-- (void)updateSubtitleFont:(UIFont *)subtitleFont
+- (void)setSubtitleFont:(UIFont *)subtitleFont
 {
     if (![self.subtitleFont isEqual:subtitleFont])
     {

@@ -284,9 +284,8 @@
 
     if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleForDate:)])
     {
-        NSString *subtitle = [self.calendarView.delegate calendarView:self.calendarView subtitleForDate:date];
-        subtitle = subtitle;
-        
+        subtitle = [self.calendarView.delegate calendarView:self.calendarView subtitleForDate:date];
+
         // only check the color if the delegate also responds to the subtitle
         // delegate method.  Prefer this subtitle color returned by the delegate,
         // except for other month buttons.
