@@ -24,7 +24,6 @@
 
 @property (nonatomic) NSInteger monthOfBeginningDate;
 
-@property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) NSArray *shiftNotes;
 
 @end
@@ -118,10 +117,7 @@
     [self updateColorsForButton:button];
 
     button.titleLabel.font = [self dayOfMonthFont];
-    button.subtitleLabel.font = [self subtitleFont];
-    button.subtitleSymbolLabel.font = [self subtitleFont];
-    button.subtitleLabel.adjustsFontSizeToFitWidth = NO;
-    button.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    button.subtitleFont = [self subtitleFont];
     button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
 }
@@ -273,14 +269,14 @@
 {
     NSDate *date = button.day;
 
-    button.subtitleLabel.text = nil;
-    button.subtitleSymbolLabel.text = nil;
+    NSString *subtitle = nil;
+    NSString *subtitleSymbol = nil;
+    UIColor *subtitleColor = nil;
+
     if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleForDate:)])
     {
         NSString *subtitle = [self.calendarView.delegate calendarView:self.calendarView subtitleForDate:date];
-        button.subtitleLabel.text = subtitle;
-        
-        UIColor *subtitleColor = nil;
+        subtitle = subtitle;
         
         // only check the color if the delegate also responds to the subtitle
         // delegate method.  Prefer this subtitle color returned by the delegate,
@@ -321,17 +317,16 @@
         {
             subtitleColor = [self.textColor colorWithAlphaComponent:0.5f];
         }
-        
-        button.subtitleLabel.textColor = subtitleColor;
-        
-        
+
         if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleTrailingSymbolForDate:)])
         {
-            NSString *symbolString = [self.calendarView.delegate calendarView:self.calendarView subtitleTrailingSymbolForDate:date];
-            button.subtitleSymbolLabel.text = symbolString;
-            button.subtitleSymbolLabel.textColor = subtitleColor;
+            subtitleSymbol = [self.calendarView.delegate calendarView:self.calendarView subtitleTrailingSymbolForDate:date];
         }
     }
+
+    button.subtitle = subtitle;
+    button.subtitleSymbol = subtitleSymbol;
+    button.subtitleColor = subtitleColor;
 }
 
 - (void)setBeginningDate:(NSDate *)date;
@@ -491,8 +486,8 @@
 		[self.selectedButton setTitle:newTitle forState:UIControlStateNormal];
 		[self.selectedButton setTitle:newTitle forState:UIControlStateDisabled];
         [self.selectedButton setAccessibilityLabel:[dayButton accessibilityLabel]];
-        self.selectedButton.subtitleLabel.text = [dayButton subtitleLabel].text;
-        self.selectedButton.subtitleSymbolLabel.text = [dayButton subtitleSymbolLabel].text;
+        self.selectedButton.subtitle = dayButton.subtitle;
+        self.selectedButton.subtitleSymbol = dayButton.subtitleSymbol;
     } else {
         self.selectedButton.hidden = YES;
         self.selectedButton.enabled = NO;
