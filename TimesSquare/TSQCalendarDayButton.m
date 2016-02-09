@@ -8,15 +8,6 @@
 
 #import "TSQCalendarDayButton.h"
 
-@interface TSQCalendarDayButton ()
-
-@property (nonatomic, strong) UILabel *subtitleLabel;
-@property (nonatomic, strong) UILabel *subtitleSymbolLabel;
-
-@property (nonatomic, strong) UIImageView *iconImageView;
-
-@end
-
 @implementation TSQCalendarDayButton
 
 static const CGFloat TSQCalendarRowCellMaxSubtitleHeight = 18.0f;
@@ -44,87 +35,15 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
         self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         self.iconImageView.userInteractionEnabled = NO;
         [self addSubview:self.iconImageView];
+
+        [self registerForNotifications];
     }
     return self;
 }
 
-- (NSString *)subtitle
+- (void)dealloc
 {
-    return self.subtitleLabel.text;
-}
-
-- (void)setSubtitle:(NSString *)subtitle;
-{
-    if (![self.subtitleLabel.text isEqualToString:subtitle])
-    {
-        self.subtitleLabel.text = subtitle;
-        [self layoutSubviews];
-    }
-}
-
-- (NSString *)subtitleSymbol
-{
-    return self.subtitleSymbolLabel.text;
-}
-
-- (void)setSubtitleSymbol:(NSString *)subtitleSymbol
-{
-    if (![self.subtitleSymbolLabel.text isEqualToString:subtitleSymbol])
-    {
-        self.subtitleSymbolLabel.text = subtitleSymbol;
-        [self layoutSubviews];
-    }
-}
-
-- (UIFont *)subtitleFont
-{
-    return self.subtitleLabel.font;
-}
-
-- (void)setSubtitleFont:(UIFont *)subtitleFont
-{
-    if (![self.subtitleFont isEqual:subtitleFont])
-    {
-        self.subtitleLabel.font = subtitleFont;
-        self.subtitleSymbolLabel.font = subtitleFont;
-        [self layoutSubviews];
-    }
-}
-
-- (UIColor *)subtitleColor
-{
-    return self.subtitleLabel.textColor;
-}
-
-- (void)setSubtitleColor:(UIColor *)subtitleColor
-{
-    self.subtitleLabel.textColor = subtitleColor;
-    self.subtitleSymbolLabel.textColor = subtitleColor;
-}
-
-- (UIImage *)icon
-{
-    return self.iconImageView.image;
-}
-
-- (void)setIcon:(UIImage *)icon
-{
-    if (![self.iconImageView.image isEqual:icon])
-    {
-        self.iconImageView.image = icon;
-        [self layoutSubviews];
-    }
-}
-
-- (CGSize)maxSubtitleSize
-{
-    CGFloat maxWidth = self.bounds.size.width - 2 * TSQCalendarRowCellSubtitleBuffer;
-    return CGSizeMake(maxWidth, TSQCalendarRowCellMaxSubtitleHeight);
-}
-
-- (CGSize)maxSubtitleSymbolSize
-{
-    return CGSizeMake(8.0f, TSQCalendarRowCellMaxSubtitleHeight);
+    [self unregisterForNotifications];
 }
 
 - (void)layoutSubviews
@@ -201,6 +120,64 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
                                               iconWidth,
                                               iconHeight);
     }
+}
+
+#pragma mark - Observations
+
+- (void)registerForNotifications
+{
+    [self.subtitleLabel addObserver:self
+                         forKeyPath:@"font"
+                            options:NSKeyValueObservingOptionNew
+                            context:nil];
+
+    [self.subtitleLabel addObserver:self
+                         forKeyPath:@"text"
+                            options:NSKeyValueObservingOptionNew
+                            context:nil];
+
+    [self.subtitleSymbolLabel addObserver:self
+                               forKeyPath:@"font"
+                                  options:NSKeyValueObservingOptionNew
+                                  context:nil];
+
+    [self.subtitleSymbolLabel addObserver:self
+                               forKeyPath:@"text"
+                                  options:NSKeyValueObservingOptionNew
+                                  context:nil];
+
+    [self.iconImageView addObserver:self
+                         forKeyPath:@"image"
+                            options:NSKeyValueObservingOptionNew
+                            context:nil];
+}
+
+- (void)unregisterForNotifications
+{
+    [self.subtitleLabel removeObserver:self forKeyPath:@"font"];
+    [self.subtitleLabel removeObserver:self forKeyPath:@"text"];
+    [self.subtitleSymbolLabel removeObserver:self forKeyPath:@"font"];
+    [self.subtitleSymbolLabel removeObserver:self forKeyPath:@"text"];
+    [self.iconImageView removeObserver:self forKeyPath:@"image"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    // relayout subviews when certain properties of the subtitle label, subtitle symbol label, or icon image view changes
+    [self layoutSubviews];
+}
+
+#pragma mark - Helper Methods
+
+- (CGSize)maxSubtitleSize
+{
+    CGFloat maxWidth = self.bounds.size.width - 2 * TSQCalendarRowCellSubtitleBuffer;
+    return CGSizeMake(maxWidth, TSQCalendarRowCellMaxSubtitleHeight);
+}
+
+- (CGSize)maxSubtitleSymbolSize
+{
+    return CGSizeMake(8.0f, TSQCalendarRowCellMaxSubtitleHeight);
 }
 
 - (BOOL)isForToday

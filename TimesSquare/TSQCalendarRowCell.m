@@ -117,7 +117,8 @@
     [self updateColorsForButton:button];
 
     button.titleLabel.font = [self dayOfMonthFont];
-    button.subtitleFont = [self subtitleFont];
+    button.subtitleLabel.font = [self subtitleFont];
+    button.subtitleSymbolLabel.font = [self subtitleFont];
     button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
 }
@@ -271,7 +272,7 @@
         icon = [self todayIcon];
     }
     // can extend later to support other icons
-    button.icon = icon;
+    button.iconImageView.image = icon;
 }
 
 - (void)updateSubtitlesForButton:(TSQCalendarDayButton *)button
@@ -332,9 +333,10 @@
         }
     }
 
-    button.subtitle = subtitle;
-    button.subtitleSymbol = subtitleSymbol;
-    button.subtitleColor = subtitleColor;
+    button.subtitleLabel.text = subtitle;
+    button.subtitleSymbolLabel.text = subtitleSymbol;
+    button.subtitleLabel.textColor = subtitleColor;
+    button.subtitleSymbolLabel.textColor = subtitleColor;
 }
 
 - (void)setBeginningDate:(NSDate *)date;
@@ -494,8 +496,8 @@
 		[self.selectedButton setTitle:newTitle forState:UIControlStateNormal];
 		[self.selectedButton setTitle:newTitle forState:UIControlStateDisabled];
         [self.selectedButton setAccessibilityLabel:[dayButton accessibilityLabel]];
-        self.selectedButton.subtitle = dayButton.subtitle;
-        self.selectedButton.subtitleSymbol = dayButton.subtitleSymbol;
+        self.selectedButton.subtitleLabel.text = dayButton.subtitleLabel.text;
+        self.selectedButton.subtitleSymbolLabel.text = dayButton.subtitleSymbolLabel.text;
     } else {
         self.selectedButton.hidden = YES;
         self.selectedButton.enabled = NO;
