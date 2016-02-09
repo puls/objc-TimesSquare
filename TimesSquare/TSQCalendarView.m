@@ -154,7 +154,7 @@
 
 - (void)setInitialDate:(NSDate *)initialDate
 {
-    if ([_initialDate isEqualToDate:initialDate])
+    if (![_initialDate isEqualToDate:initialDate])
     {
         _initialDate = initialDate;
         [self.tableView reloadData];
