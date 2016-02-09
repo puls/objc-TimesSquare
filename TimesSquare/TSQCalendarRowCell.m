@@ -268,11 +268,22 @@
     // ** ICON **/
 
     UIImage *icon = nil;
-    if ([button isForToday]) {
+    UIColor *iconTintColor = nil;
+
+    if ([button isForToday])
+    {
         icon = [self todayIcon];
+
+        if (button.type == CalendarButtonTypeSelected)
+        {
+            // when selected, tint the icon the same as selected text
+            icon = [icon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            iconTintColor = dateColor;
+        }
     }
     // can extend later to support other icons
     button.iconImageView.image = icon;
+    button.iconImageView.tintColor = iconTintColor;
 }
 
 - (void)updateSubtitlesForButton:(TSQCalendarDayButton *)button
