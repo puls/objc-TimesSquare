@@ -122,7 +122,7 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
     return CGSizeMake(maxWidth, TSQCalendarRowCellMaxSubtitleHeight);
 }
 
-- (CGSize)maxSubtitleSymboleSize
+- (CGSize)maxSubtitleSymbolSize
 {
     return CGSizeMake(8.0f, TSQCalendarRowCellMaxSubtitleHeight);
 }
@@ -159,7 +159,7 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
 
     if (! self.subtitleSymbolLabel.hidden)
     {
-        CGSize maxSymbolSize = [self maxSubtitleSymboleSize];
+        CGSize maxSymbolSize = [self maxSubtitleSymbolSize];
         CGSize sizeThatFits = [self.subtitleSymbolLabel sizeThatFits:maxSymbolSize];
 
         CGFloat symbolWidth = fminf(sizeThatFits.width, maxSymbolSize.width);
