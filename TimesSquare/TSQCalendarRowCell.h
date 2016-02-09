@@ -32,8 +32,27 @@
 This is white by default.
 */
 @property (nonatomic, weak, readonly) UIColor *todayTextColor;
+@property (nonatomic, weak, readonly) UIColor *todayTextShadowColor;
+@property (nonatomic, weak, readonly) UIColor *todaySubtitleTextColor;
 
+@property (nonatomic, weak, readonly) UIColor *textShadowColor;
 @property (nonatomic, weak, readonly) UIColor *subtitleTextColor;
+
+/** The text color for a day that's selected
+ 
+ This is white by default.
+ */
+@property (nonatomic, weak, readonly) UIColor *selectedTextColor;
+@property (nonatomic, weak, readonly) UIColor *selectedTextShadowColor;
+@property (nonatomic, weak, readonly) UIColor *selectedSubtitleTextColor;
+
+/** The text color for the initial day
+
+ This uses the default text colors.
+ */
+@property (nonatomic, weak, readonly) UIColor *initialDayTextColor;
+@property (nonatomic, weak, readonly) UIColor *initialDayTextShadowColor;
+@property (nonatomic, weak, readonly) UIColor *initialDaySubtitleTextColor;
 
 /** @name Images */
 
@@ -57,11 +76,21 @@ This is white by default.
  */
 @property (nonatomic, weak, readonly) UIImage *todayBackgroundImage;
 
+/** The background image for the initial date.
+
+ This is dark gray in the system's built-in Calendar app. You probably want to use a stretchable image.
+ */
+@property (nonatomic, weak, readonly) UIImage *initialDayBackgroundImage;
+
 /** The background image for a day that's not this month.
  
  These are the trailing days from the previous month or the leading days from the following month. This can be `nil`.
  */
 @property (nonatomic, weak, readonly) UIImage *notThisMonthBackgroundImage;
+
+/** A small icon that appears below the day number to indicate today */
+
+@property (nonatomic, weak, readonly) UIImage *todayIcon;
 
 /** @name State Properties Set by Calendar View */
 

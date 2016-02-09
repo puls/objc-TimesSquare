@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, CalendarButtonType) {
+    CalendarButtonTypeNormalDay = 0,
+    CalendarButtonTypeOtherMonth = 1,
+    CalendarButtonTypeSelected = 2,
+};
+
 @interface TSQCalendarDayButton : UIButton
+
+@property (nonatomic, assign) CalendarButtonType type;
+@property (nonatomic, strong) NSDate *day;
 
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) UILabel *subtitleSymbolLabel;
+@property (nonatomic, strong) UIImageView *iconImageView;
+
+- (BOOL)isForToday;
+- (BOOL)isForDay:(NSDate *)date;
 
 @end

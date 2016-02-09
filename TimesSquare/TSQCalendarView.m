@@ -152,6 +152,25 @@
     }
 }
 
+- (void)setInitialDate:(NSDate *)initialDate
+{
+    if (![_initialDate isEqualToDate:initialDate])
+    {
+        _initialDate = initialDate;
+        [self.tableView reloadData];
+    }
+}
+
+- (BOOL)scrollEnabled
+{
+    return self.tableView.scrollEnabled;
+}
+
+- (void)setScrollEnabled:(BOOL)scrollEnabled
+{
+    self.tableView.scrollEnabled = scrollEnabled;
+}
+
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated
 {
   NSInteger section = [self sectionForDate:date];
@@ -342,8 +361,18 @@
 
 - (NSDate *)clampDate:(NSDate *)date toComponents:(NSUInteger)unitFlags
 {
+    if (date == nil) {
+        // [__NSCFCalendar components:fromDate:]: date cannot be nil
+        return nil;
+    }
+
     NSDateComponents *components = [self.calendar components:unitFlags fromDate:date];
     return [self.calendar dateFromComponents:components];
+}
+
+- (CGSize)contentSize
+{
+    return self.tableView.contentSize;
 }
 
 @end
