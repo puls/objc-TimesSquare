@@ -157,6 +157,7 @@
 {
     TSQCalendarDayButton *button = [[TSQCalendarDayButton alloc] initWithFrame:self.contentView.bounds];
     button.type = CalendarButtonTypeSelected;
+    [button addTarget:self action:@selector(dateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:button];
     [self configureButton:button];
     [button setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
@@ -441,9 +442,8 @@
 
 - (IBAction)dateButtonPressed:(id)sender;
 {
-    NSDateComponents *offset = [NSDateComponents new];
-    offset.day = [self.dayButtons indexOfObject:sender];
-    NSDate *selectedDate = [self.calendar dateByAddingComponents:offset toDate:self.beginningDate options:0];
+    TSQCalendarDayButton *dayButton = (TSQCalendarDayButton *)sender;
+    NSDate *selectedDate = dayButton.day;
     self.calendarView.selectedDate = selectedDate;
 }
 
@@ -515,7 +515,8 @@
         TSQCalendarDayButton *dayButton = self.dayButtons[newIndexOfSelectedButton];
         self.selectedButton.day = dayButton.day;
         self.selectedButton.type = isInitialDay ? CalendarButtonTypeInitialDay : CalendarButtonTypeSelected;
-        [self updateColorsForButton:self.selectedButton];
+        self.selectedButton.enabled = isInitialDay;
+        [self updateAppearanceForButton:self.selectedButton];
         [self updateSubtitlesForButton:self.selectedButton];
 
         // update selected button text
