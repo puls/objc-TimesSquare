@@ -195,8 +195,6 @@
             case CalendarButtonTypeNormalDay:
                 if ([button isForToday]) {
                     dateColor = [self todayTextColor];
-                } else if ([button isForDay:self.calendarView.initialDate]) {
-                    dateColor = [self initialDayTextColor];
                 } else {
                     dateColor = self.textColor;
                 }
@@ -209,6 +207,9 @@
             case CalendarButtonTypeSelected:
                 dateColor = [self selectedTextColor];
                 break;
+
+            case CalendarButtonTypeInitialDay:
+                dateColor = [self initialDayTextColor];
         }
     }
 
@@ -245,8 +246,6 @@
             case CalendarButtonTypeNormalDay:
                 if ([button isForToday]) {
                     dateShadowColor = [self todayTextShadowColor];
-                } else if ([button isForDay:self.calendarView.initialDate]) {
-                    dateShadowColor = [self initialDayTextShadowColor];
                 } else if (button.type == CalendarButtonTypeNormalDay) {
                     dateShadowColor = [self textShadowColor];
                 }
@@ -257,6 +256,10 @@
 
             case CalendarButtonTypeSelected:
                 dateShadowColor = [self selectedTextShadowColor];
+                break;
+
+            case CalendarButtonTypeInitialDay:
+                dateShadowColor = [self initialDayTextShadowColor];
                 break;
         }
     }
@@ -315,8 +318,6 @@
                 case CalendarButtonTypeNormalDay:
                     if ([button isForToday]) {
                         subtitleColor = [self todaySubtitleTextColor];
-                    } else if ([button isForDay:self.calendarView.initialDate]) {
-                        subtitleColor = [self initialDaySubtitleTextColor];
                     } else {
                         subtitleColor = [self subtitleTextColor];
                     }
@@ -327,6 +328,10 @@
 
                 case CalendarButtonTypeSelected:
                     subtitleColor = [self selectedSubtitleTextColor];
+                    break;
+
+                case CalendarButtonTypeInitialDay:
+                    subtitleColor = [self initialDaySubtitleTextColor];
                     break;
             }
         }
@@ -403,9 +408,7 @@
 
         // update background image
         UIImage *backgroundImage = nil;
-        if ([currentDayButton isForDay:self.calendarView.initialDate]) {
-            backgroundImage = [self initialDayBackgroundImage];
-        } else if ([currentDayButton isForToday]) {
+        if ([currentDayButton isForToday]) {
             backgroundImage = [self todayBackgroundImage];
         }
         [currentDayButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
@@ -476,6 +479,16 @@
 
 - (void)selectColumnForDate:(NSDate *)date;
 {
+    [self selectColumnForDate:date isInitialDay:NO];
+}
+
+- (void)selectColumnForInitialDate:(NSDate *)date
+{
+    [self selectColumnForDate:date isInitialDay:YES];
+}
+
+- (void)selectColumnForDate:(NSDate *)date isInitialDay:(BOOL)isInitialDay
+{
     if (!date && self.indexOfSelectedButton == -1) {
         return;
     }
@@ -494,9 +507,14 @@
     self.indexOfSelectedButton = newIndexOfSelectedButton;
     
     if (newIndexOfSelectedButton >= 0) {
+        // update background image
+        UIImage *backgroundImage = isInitialDay ? [self initialDayBackgroundImage] : [self selectedBackgroundImage];
+        [self.selectedButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+
         // update selected button colors
         TSQCalendarDayButton *dayButton = self.dayButtons[newIndexOfSelectedButton];
         self.selectedButton.day = dayButton.day;
+        self.selectedButton.type = isInitialDay ? CalendarButtonTypeInitialDay : CalendarButtonTypeSelected;
         [self updateColorsForButton:self.selectedButton];
         [self updateSubtitlesForButton:self.selectedButton];
 

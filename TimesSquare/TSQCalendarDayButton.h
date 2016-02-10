@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
     CalendarButtonTypeNormalDay = 0,
     CalendarButtonTypeOtherMonth = 1,
     CalendarButtonTypeSelected = 2,
+    CalendarButtonTypeInitialDay = 3,
 };
 
 @interface TSQCalendarDayButton : UIButton

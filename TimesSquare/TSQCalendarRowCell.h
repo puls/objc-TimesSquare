@@ -115,4 +115,12 @@ This is white by default.
  */
 - (void)selectColumnForDate:(NSDate *)date;
 
+/** Method to select the initial date within the week.
+
+ This is funneled through and called by the calendar view, to facilitate deselection of other rows.
+
+ @param date The initial date to select, or nil to deselect all columns.
+ */
+- (void)selectColumnForInitialDate:(NSDate *)date;
+
 @end
