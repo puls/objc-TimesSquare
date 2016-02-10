@@ -114,7 +114,7 @@
 
 - (void)configureButton:(TSQCalendarDayButton *)button
 {
-    [self updateColorsForButton:button];
+    [self updateAppearanceForButton:button];
 
     button.titleLabel.font = [self dayOfMonthFont];
     button.subtitleLabel.font = [self subtitleFont];
@@ -169,7 +169,7 @@
     self.selectedButton = button;
 }
 
-- (void)updateColorsForButton:(TSQCalendarDayButton *)button
+- (void)updateAppearanceForButton:(TSQCalendarDayButton *)button
 {
     UIColor *dateColor = nil;
     UIColor *disabledDateColor = nil;
@@ -177,50 +177,17 @@
 
     NSDate *date = button.day;
 
-    // ** DATE COLOR **/
-
-    // prefer the delegate date color over everything else; this will always be
-    // used if the delegate returns a color
-    
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:dateColorForDate:)])
-    {
-        dateColor = [self.calendarView.delegate calendarView:self.calendarView dateColorForDate:date];
-    }
-    
-    // if the delegate doesn't return a date color, fall back to some sane defaults,
-    // which can still be overridden in subclasses
-    if (! dateColor)
-    {
-        switch (button.type)
-        {
-            case CalendarButtonTypeNormalDay:
-                if ([button isForToday]) {
-                    dateColor = [self todayTextColor];
-                } else {
-                    dateColor = self.textColor;
-                }
-                break;
-
-            case CalendarButtonTypeOtherMonth:
-                dateColor = [self.textColor colorWithAlphaComponent:0.5f];
-                break;
-
-            case CalendarButtonTypeSelected:
-                dateColor = [self selectedTextColor];
-                break;
-
-            case CalendarButtonTypeInitialDay:
-                dateColor = [self initialDayTextColor];
-        }
+    BOOL dateIsSelectable = YES;
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)]) {
+        dateIsSelectable = [self.calendarView.delegate calendarView:self.calendarView shouldSelectDate:date];
     }
 
     // ** DISABLED DATE COLOR **/
 
-    // prefer the delegate disabledDate color over everything else; this will
-    // always be used if the delegate returns a color (except for other month
-    // buttons)
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:disabledDateColorForDate:)])
-    {
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:disabledDateColorForDate:)]) {
+        // prefer the delegate disabledDate color over everything else; this will
+        // always be used if the delegate returns a color (except for other month
+        // buttons)
         disabledDateColor = [self.calendarView.delegate calendarView:self.calendarView disabledDateColorForDate:date];
     }
 
@@ -231,38 +198,92 @@
         disabledDateColor = [self.textColor colorWithAlphaComponent:0.5f];
     }
 
+    // ** DATE COLOR **/
+
+    // prefer the delegate date color over everything else; this will always be
+    // used if the delegate returns a color
+    UIColor *delegateDateColor = nil;
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:dateColorForDate:)])
+    {
+        delegateDateColor = [self.calendarView.delegate calendarView:self.calendarView dateColorForDate:date];
+    }
+    
+    // if the delegate doesn't return a date color, fall back to some sane defaults,
+    // which can still be overridden in subclasses
+    switch (button.type)
+    {
+        case CalendarButtonTypeNormalDay:
+            if (delegateDateColor) {
+                dateColor = delegateDateColor;
+            } else if ([button isForToday]) {
+                dateColor = [self todayTextColor];
+            } else {
+                dateColor = self.textColor;
+            }
+            break;
+
+        case CalendarButtonTypeOtherMonth:
+            dateColor = [self.textColor colorWithAlphaComponent:0.5f];
+            break;
+
+        case CalendarButtonTypeSelected:
+            dateColor = [self selectedTextColor];
+            break;
+
+        case CalendarButtonTypeInitialDay:
+            if (dateIsSelectable) {
+                if (delegateDateColor) {
+                    dateColor = delegateDateColor;
+                } else if ([button isForToday]) {
+                    dateColor = [self todayTextColor];
+                } else {
+                    dateColor = [self initialDayTextColor];
+                }
+            } else {
+                dateColor = disabledDateColor;
+            }
+    }
+
     // ** DATE SHADOW COLOR **/
 
     // prefer the delegate date shadow color over everything else; this will
     // always be used if the delegate returns a color
+    UIColor *delegateDateShadowColor = nil;
     if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:dateShadowColorForDate:)])
     {
-        dateShadowColor = [self.calendarView.delegate calendarView:self.calendarView dateShadowColorForDate:date];
+        delegateDateShadowColor = [self.calendarView.delegate calendarView:self.calendarView dateShadowColorForDate:date];
     }
 
-    if (! dateShadowColor)
+    switch (button.type)
     {
-        switch (button.type)
-        {
-            case CalendarButtonTypeNormalDay:
-                if ([button isForToday]) {
+        case CalendarButtonTypeNormalDay:
+            if (delegateDateShadowColor) {
+                dateShadowColor = delegateDateShadowColor;
+            } else if ([button isForToday]) {
+                dateShadowColor = [self todayTextShadowColor];
+            } else {
+                dateShadowColor = [self textShadowColor];
+            }
+            break;
+
+        case CalendarButtonTypeOtherMonth:
+            break;
+
+        case CalendarButtonTypeSelected:
+            dateShadowColor = [self selectedTextShadowColor];
+            break;
+
+        case CalendarButtonTypeInitialDay:
+            if (dateIsSelectable) {
+                if (delegateDateShadowColor) {
+                    dateShadowColor = delegateDateShadowColor;
+                } else if ([button isForToday]) {
                     dateShadowColor = [self todayTextShadowColor];
-                } else if (button.type == CalendarButtonTypeNormalDay) {
-                    dateShadowColor = [self textShadowColor];
+                } else {
+                    dateShadowColor = [self initialDayTextShadowColor];
                 }
-                break;
-
-            case CalendarButtonTypeOtherMonth:
-                break;
-
-            case CalendarButtonTypeSelected:
-                dateShadowColor = [self selectedTextShadowColor];
-                break;
-
-            case CalendarButtonTypeInitialDay:
-                dateShadowColor = [self initialDayTextShadowColor];
-                break;
-        }
+            }
+            break;
     }
 
     [button setTitleColor:dateColor forState:UIControlStateNormal];
@@ -298,6 +319,27 @@
     NSString *subtitleSymbol = nil;
     UIColor *subtitleColor = nil;
 
+    BOOL dateIsSelectable = YES;
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)]) {
+        dateIsSelectable = [self.calendarView.delegate calendarView:self.calendarView shouldSelectDate:date];
+    }
+
+    // ** DISABLED DATE COLOR **/
+    UIColor *disabledDateColor = nil;
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:disabledDateColorForDate:)]) {
+        // prefer the delegate disabledDate color over everything else; this will
+        // always be used if the delegate returns a color (except for other month
+        // buttons)
+        disabledDateColor = [self.calendarView.delegate calendarView:self.calendarView disabledDateColorForDate:date];
+    }
+
+    // if the delegate doesn't return a disabled date color, fall back to a sane
+    // default.  Other month buttons will always get this disabled color.
+    if ((! disabledDateColor) || (button.type == CalendarButtonTypeOtherMonth))
+    {
+        disabledDateColor = [self.textColor colorWithAlphaComponent:0.5f];
+    }
+    
     if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleForDate:)])
     {
         subtitle = [self.calendarView.delegate calendarView:self.calendarView subtitleForDate:date];
@@ -305,43 +347,46 @@
         // only check the color if the delegate also responds to the subtitle
         // delegate method.  Prefer this subtitle color returned by the delegate,
         // except for other month buttons.
-        if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleColorForDate:)])
-        {
-            subtitleColor = [self.calendarView.delegate calendarView:self.calendarView subtitleColorForDate:date];
+        UIColor *delegateSubtitleColor = nil;
+        if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleColorForDate:)]) {
+            delegateSubtitleColor = [self.calendarView.delegate calendarView:self.calendarView subtitleColorForDate:date];
         }
-        
-        // if the delegate doesn't return a subtitle color, fall back to sane
-        // defaults
-        if (! subtitleColor)
+
+        switch (button.type)
         {
-            switch (button.type)
-            {
-                case CalendarButtonTypeNormalDay:
-                    if ([button isForToday]) {
+            case CalendarButtonTypeNormalDay:
+                if (delegateSubtitleColor) {
+                    subtitleColor = delegateSubtitleColor;
+                } else if ([button isForToday]) {
+                    subtitleColor = [self todaySubtitleTextColor];
+                } else {
+                    subtitleColor = [self subtitleTextColor];
+                }
+                break;
+
+            case CalendarButtonTypeOtherMonth:
+                // prefer a disabled color for other month buttons, even if the delegate
+                // returned a color
+                subtitleColor = disabledDateColor;
+                break;
+
+            case CalendarButtonTypeSelected:
+                subtitleColor = [self selectedSubtitleTextColor];
+                break;
+
+            case CalendarButtonTypeInitialDay:
+                if (dateIsSelectable) {
+                    if (delegateSubtitleColor) {
+                        subtitleColor = delegateSubtitleColor;
+                    } else if ([button isForToday]) {
                         subtitleColor = [self todaySubtitleTextColor];
                     } else {
-                        subtitleColor = [self subtitleTextColor];
+                        subtitleColor = [self initialDaySubtitleTextColor];
                     }
-                    break;
-
-                case CalendarButtonTypeOtherMonth:
-                    break;
-
-                case CalendarButtonTypeSelected:
-                    subtitleColor = [self selectedSubtitleTextColor];
-                    break;
-
-                case CalendarButtonTypeInitialDay:
-                    subtitleColor = [self initialDaySubtitleTextColor];
-                    break;
-            }
-        }
-        
-        // prefer a disabled color for other month buttons, even if the delegate
-        // returned a color
-        if (button.type == CalendarButtonTypeOtherMonth)
-        {
-            subtitleColor = [self.textColor colorWithAlphaComponent:0.5f];
+                } else {
+                    subtitleColor = disabledDateColor;
+                }
+                break;
         }
 
         if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:subtitleTrailingSymbolForDate:)])
@@ -415,8 +460,8 @@
         [currentDayButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 
         // update button colors
-        [self updateColorsForButton:currentDayButton];
-        [self updateColorsForButton:currentNotThisMonthButton];
+        [self updateAppearanceForButton:currentDayButton];
+        [self updateAppearanceForButton:currentNotThisMonthButton];
 
         // update button subtitles
         [self updateSubtitlesForButton:currentDayButton];
