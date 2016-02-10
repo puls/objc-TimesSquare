@@ -70,10 +70,11 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
         CGFloat originX = midX - subtitleWidth/2.0f;
         CGFloat originY = subtitleCenterY - subtitleHeight/2.0f;
 
-        self.subtitleLabel.frame = CGRectMake(originX,
-                                              originY,
-                                              subtitleWidth,
-                                              subtitleHeight);
+        CGRect subtitleFrame = CGRectMake(floorf(originX),
+                                          floorf(originY),
+                                          subtitleWidth,
+                                          subtitleHeight);
+        self.subtitleLabel.frame = CGRectIntegral(subtitleFrame);
     }
 
     if (! self.subtitleSymbolLabel.hidden)
@@ -93,10 +94,11 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
             originX = CGRectGetMaxX(self.subtitleLabel.frame) + symbolBuffer;
         }
 
-        self.subtitleSymbolLabel.frame = CGRectMake(originX,
-                                                    originY,
-                                                    symbolWidth,
-                                                    symbolHeight);
+        CGRect symbolFrame = CGRectMake(floorf(originX),
+                                        floorf(originY),
+                                        symbolWidth,
+                                        symbolHeight);
+        self.subtitleSymbolLabel.frame = CGRectIntegral(symbolFrame);
     }
 
     if (! self.iconImageView.hidden)
@@ -115,10 +117,11 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
             originX = self.subtitleLabel.frame.origin.x - iconWidth - iconBuffer;
         }
 
-        self.iconImageView.frame = CGRectMake(originX,
-                                              originY,
-                                              iconWidth,
-                                              iconHeight);
+        CGRect iconFrame = CGRectMake(floorf(originX),
+                                      floorf(originY),
+                                      iconWidth,
+                                      iconHeight);
+        self.iconImageView.frame = CGRectIntegral(iconFrame);
     }
 }
 
