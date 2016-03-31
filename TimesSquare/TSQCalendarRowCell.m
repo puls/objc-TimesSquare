@@ -295,7 +295,7 @@
     UIImage *icon = nil;
     UIColor *iconTintColor = nil;
 
-    if ([button isForToday])
+    if ([button isForToday] && button.type != CalendarButtonTypeOtherMonth)
     {
         icon = [self todayIcon];
 
