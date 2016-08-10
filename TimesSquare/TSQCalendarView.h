@@ -168,6 +168,8 @@
 
 - (UIColor*)calendarView: (TSQCalendarView *)calendarView subtitleColorForDate: (NSDate*) date;
 
+- (NSDictionary*)calendarView: (TSQCalendarView *)calendarView additionalDateTextAttributesForDate: (NSDate*) date;
+
 /** Tells the delegate that a particular date was selected.
  
  @param calendarView The calendar view that is selecting a date.

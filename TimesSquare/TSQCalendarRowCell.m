@@ -288,7 +288,7 @@
 
     [button setTitleColor:dateColor forState:UIControlStateNormal];
     [button setTitleColor:disabledDateColor forState:UIControlStateDisabled];
-    button.titleLabel.shadowColor = dateShadowColor;
+    [button setTitleShadowColor:dateShadowColor forState:UIControlStateNormal];
 
     // ** ICON **/
 
@@ -309,6 +309,67 @@
     // can extend later to support other icons
     button.iconImageView.image = icon;
     button.iconImageView.tintColor = iconTintColor;
+}
+
+- (void)updateTitleForButton:(TSQCalendarDayButton *)button
+{
+    NSDate *date = button.day;
+
+    if (date == nil) {
+        return;
+    }
+
+    NSString *title = [self.dayFormatter stringFromDate:date];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateDisabled];
+
+    // add accessibility label
+    NSString *accessibilityLabel = [self.accessibilityFormatter stringFromDate:date];
+    [button setAccessibilityLabel:accessibilityLabel];
+
+    // check if we should use an attributed string
+    NSDictionary *additionalAttributes = nil;
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:additionalDateTextAttributesForDate:)]) {
+        additionalAttributes = [self.calendarView.delegate calendarView:self.calendarView additionalDateTextAttributesForDate:date];
+    }
+
+    if (additionalAttributes) {
+        // create text attributes for normal button
+        NSMutableDictionary *normalAttributes = [additionalAttributes mutableCopy];
+
+        if ([button titleColorForState:UIControlStateNormal]) {
+            normalAttributes[NSForegroundColorAttributeName] = [button titleColorForState:UIControlStateNormal];
+        }
+
+        if ([button titleShadowColorForState:UIControlStateNormal]) {
+            NSShadow *shadow = [NSShadow new];
+            shadow.shadowOffset = button.titleLabel.shadowOffset;
+            shadow.shadowColor = [button titleShadowColorForState:UIControlStateNormal];
+            normalAttributes[NSShadowAttributeName] = shadow;
+        }
+
+        // update button title with normal attributes
+        NSAttributedString *normalTitle = [[NSAttributedString alloc] initWithString:title attributes:normalAttributes];
+        [button setAttributedTitle:normalTitle forState:UIControlStateNormal];
+
+        // create text attributes for disabled button
+        NSMutableDictionary *disabledAttributes = [normalAttributes mutableCopy];
+
+        if ([button titleColorForState:UIControlStateDisabled]) {
+            disabledAttributes[NSForegroundColorAttributeName] = [button titleColorForState:UIControlStateDisabled];
+        }
+
+        if ([button titleShadowColorForState:UIControlStateDisabled]) {
+            NSShadow *shadow = [NSShadow new];
+            shadow.shadowOffset = button.titleLabel.shadowOffset;
+            shadow.shadowColor = [button titleShadowColorForState:UIControlStateDisabled];
+            disabledAttributes[NSShadowAttributeName] = shadow;
+        }
+
+        // update button title with normal attributes
+        NSAttributedString *disabledTitle = [[NSAttributedString alloc] initWithString:title attributes:disabledAttributes];
+        [button setAttributedTitle:disabledTitle forState:UIControlStateDisabled];
+    }
 }
 
 - (void)updateSubtitlesForButton:(TSQCalendarDayButton *)button
@@ -415,20 +476,12 @@
     offset.day = 1;
 
     for (NSUInteger index = 0; index < self.daysInWeek; index++) {
-        NSString *title = [self.dayFormatter stringFromDate:date];
-        NSString *accessibilityLabel = [self.accessibilityFormatter stringFromDate:date];
-        
+
         TSQCalendarDayButton *currentDayButton = self.dayButtons[index];
         TSQCalendarDayButton *currentNotThisMonthButton = self.notThisMonthButtons[index];
         currentDayButton.day = date;
         currentNotThisMonthButton.day = date;
-        [currentDayButton setTitle:title forState:UIControlStateNormal];
-        [currentDayButton setTitle:title forState:UIControlStateDisabled];
-        [currentDayButton setAccessibilityLabel:accessibilityLabel];
-        [currentNotThisMonthButton setTitle:title forState:UIControlStateNormal];
-        [currentNotThisMonthButton setTitle:title forState:UIControlStateDisabled];
-        [currentNotThisMonthButton setAccessibilityLabel:accessibilityLabel];
-        
+
         NSDateComponents *thisDateComponents = [self.calendar components:NSCalendarUnitDay|NSCalendarUnitMonth|NSCalendarUnitYear fromDate:date];
         
         [currentDayButton setHidden:YES];
@@ -462,6 +515,10 @@
         // update button colors
         [self updateAppearanceForButton:currentDayButton];
         [self updateAppearanceForButton:currentNotThisMonthButton];
+
+        // update button title
+        [self updateTitleForButton:currentDayButton];
+        [self updateTitleForButton:currentNotThisMonthButton];
 
         // update button subtitles
         [self updateSubtitlesForButton:currentDayButton];
@@ -567,10 +624,7 @@
         // update selected button text
         self.selectedButton.hidden = NO;
         self.selectedButton.enabled = YES;
-		NSString *newTitle = [dayButton currentTitle];
-		[self.selectedButton setTitle:newTitle forState:UIControlStateNormal];
-		[self.selectedButton setTitle:newTitle forState:UIControlStateDisabled];
-        [self.selectedButton setAccessibilityLabel:[dayButton accessibilityLabel]];
+        [self updateTitleForButton:self.selectedButton];
         self.selectedButton.subtitleLabel.text = dayButton.subtitleLabel.text;
         self.selectedButton.subtitleSymbolLabel.text = dayButton.subtitleSymbolLabel.text;
     } else {
