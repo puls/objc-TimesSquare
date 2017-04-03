@@ -162,6 +162,10 @@
 
     // update new selected cell
     TSQCalendarRowCell *dateRowCell = [self cellForRowAtDate:date];
+    if (dateRowCell == nil) {
+        return;
+    }
+
     if (isInitialDate) {
         [dateRowCell selectColumnForInitialDate:date];
     } else {
@@ -169,6 +173,10 @@
     }
 
     NSIndexPath *newIndexPath = [self indexPathForRowAtDate:date];
+    if (newIndexPath == nil) {
+        return;
+    }
+
     CGRect newIndexPathRect = [self.tableView rectForRowAtIndexPath:newIndexPath];
     CGRect scrollBounds = self.tableView.bounds;
     
