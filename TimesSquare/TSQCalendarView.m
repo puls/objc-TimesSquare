@@ -228,7 +228,7 @@
     return cell;
 }
 
-#pragma mark Calendar calculations
+#pragma mark - Calendar calculations
 
 - (NSDate *)firstOfMonthForSection:(NSInteger)section;
 {
@@ -262,7 +262,7 @@
     return [NSIndexPath indexPathForRow:targetWeek - firstWeek inSection:section];
 }
 
-#pragma mark UIView
+#pragma mark - UIView
 
 - (void)layoutSubviews;
 {
@@ -291,7 +291,7 @@
     }
 }
 
-#pragma mark UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 {
@@ -320,7 +320,7 @@
     return cell;
 }
 
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 {
@@ -371,7 +371,7 @@
 }
 
 
-#pragma mark UIScrollViewDelegate
+#pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset;
 {
