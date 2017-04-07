@@ -112,9 +112,6 @@
  */
 @property (nonatomic, strong) Class rowCellClass;
 
-// Return all(?) shift notes
-@property (nonatomic, readonly) NSArray *shiftNotes;
-
 // Returns and modifies the scrollEnabled on the table view
 
 @property (nonatomic) BOOL scrollEnabled;

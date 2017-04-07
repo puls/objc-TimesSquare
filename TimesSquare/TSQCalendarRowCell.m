@@ -24,8 +24,6 @@
 
 @property (nonatomic) NSInteger monthOfBeginningDate;
 
-@property (nonatomic, strong) NSArray *shiftNotes;
-
 @end
 
 
