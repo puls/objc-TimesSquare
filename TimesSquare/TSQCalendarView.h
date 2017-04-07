@@ -116,6 +116,10 @@
 
 @property (nonatomic) BOOL scrollEnabled;
 
+// Returns and modifies the showsVerticalScrollIndicator on the table view
+
+@property (nonatomic) BOOL showsVerticalScrollIndicator;
+
 /** Scrolls the receiver until the specified date month is completely visible.
 
  @param date A date that identifies the month that will be visible.

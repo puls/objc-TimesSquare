@@ -228,6 +228,16 @@
     return cell;
 }
 
+- (void)setShowsVerticalScrollIndicator:(BOOL)showsVerticalScrollIndicator
+{
+    self.tableView.showsVerticalScrollIndicator = showsVerticalScrollIndicator;
+}
+
+- (BOOL)showsVerticalScrollIndicator
+{
+    return self.tableView.showsVerticalScrollIndicator;
+}
+
 #pragma mark - Calendar calculations
 
 - (NSDate *)firstOfMonthForSection:(NSInteger)section;
