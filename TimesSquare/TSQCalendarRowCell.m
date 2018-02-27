@@ -201,11 +201,15 @@
     // prefer the delegate date color over everything else; this will always be
     // used if the delegate returns a color
     UIColor *delegateDateColor = nil;
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:dateColorForDate:)])
-    {
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:dateColorForDate:)]) {
         delegateDateColor = [self.calendarView.delegate calendarView:self.calendarView dateColorForDate:date];
     }
-    
+
+    UIColor *delegateSelectedDateColor = nil;
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:selectedDateColorForDate:)]) {
+        delegateSelectedDateColor = [self.calendarView.delegate calendarView:self.calendarView selectedDateColorForDate:date];
+    }
+
     // if the delegate doesn't return a date color, fall back to some sane defaults,
     // which can still be overridden in subclasses
     switch (button.type)
@@ -225,7 +229,11 @@
             break;
 
         case CalendarButtonTypeSelected:
-            dateColor = [self selectedTextColor];
+            if (delegateSelectedDateColor) {
+                dateColor = delegateSelectedDateColor;
+            } else {
+                dateColor = [self selectedTextColor];
+            }
             break;
 
         case CalendarButtonTypeInitialDay:
@@ -247,8 +255,7 @@
     // prefer the delegate date shadow color over everything else; this will
     // always be used if the delegate returns a color
     UIColor *delegateDateShadowColor = nil;
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:dateShadowColorForDate:)])
-    {
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:dateShadowColorForDate:)]) {
         delegateDateShadowColor = [self.calendarView.delegate calendarView:self.calendarView dateShadowColorForDate:date];
     }
 
@@ -310,12 +317,15 @@
 
     // ** BACKGROUND IMAGE **/
 
-    UIImage *backgroundImage = nil;
+    UIImage *delegateBackgroundImage = nil;
     if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:)]) {
-        backgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date];
+        delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date];
     }
 
-    if (backgroundImage == nil && [button isForToday]) {
+    UIImage *backgroundImage = nil;
+    if (delegateBackgroundImage != nil) {
+        backgroundImage = delegateBackgroundImage;
+    } else if ([button isForToday]) {
         backgroundImage = [self todayBackgroundImage];
     }
     [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
