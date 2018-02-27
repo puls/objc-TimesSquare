@@ -307,6 +307,18 @@
     // can extend later to support other icons
     button.iconImageView.image = icon;
     button.iconImageView.tintColor = iconTintColor;
+
+    // ** BACKGROUND IMAGE **/
+
+    UIImage *backgroundImage = nil;
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:)]) {
+        backgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date];
+    }
+
+    if (backgroundImage == nil && [button isForToday]) {
+        backgroundImage = [self todayBackgroundImage];
+    }
+    [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 }
 
 - (void)updateTitleForButton:(TSQCalendarDayButton *)button
@@ -503,14 +515,7 @@
             button.hidden = NO;
         }
 
-        // update background image
-        UIImage *backgroundImage = nil;
-        if ([currentDayButton isForToday]) {
-            backgroundImage = [self todayBackgroundImage];
-        }
-        [currentDayButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
-
-        // update button colors
+        // update button appearance
         [self updateAppearanceForButton:currentDayButton];
         [self updateAppearanceForButton:currentNotThisMonthButton];
 
