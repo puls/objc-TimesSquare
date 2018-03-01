@@ -314,8 +314,11 @@
     // can extend later to support other icons
     button.iconImageView.image = icon;
     button.iconImageView.tintColor = iconTintColor;
+}
 
-    // ** BACKGROUND IMAGE **/
+- (void)updateBackgroundImageForButton:(TSQCalendarDayButton *)button
+{
+    NSDate *date = button.day;
 
     UIImage *delegateBackgroundImage = nil;
     if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:)]) {
@@ -325,10 +328,13 @@
     UIImage *backgroundImage = nil;
     if (delegateBackgroundImage != nil) {
         backgroundImage = delegateBackgroundImage;
+    } else if (button.type == CalendarButtonTypeSelected) {
+        backgroundImage = button.isInitialDay ? [self initialDayBackgroundImage] : [self selectedBackgroundImage];
     } else if ([button isForToday]) {
         backgroundImage = [self todayBackgroundImage];
     }
 
+    [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 }
 
 - (void)updateTitleForButton:(TSQCalendarDayButton *)button
@@ -581,14 +587,25 @@
 
 - (void)layoutViewsForColumnAtIndex:(NSUInteger)index inRect:(CGRect)rect;
 {
-    UIButton *dayButton = self.dayButtons[index];
-    UIButton *notThisMonthButton = self.notThisMonthButtons[index];
-    
-    dayButton.frame = rect;
-    notThisMonthButton.frame = rect;
-
+    // find buttons that we need to update the frame
+    NSMutableArray<TSQCalendarDayButton *> *buttons = [NSMutableArray new];
+    if (index < self.dayButtons.count) {
+        [buttons addObject:self.dayButtons[index]];
+    }
+    if (index < self.notThisMonthButtons.count) {
+        [buttons addObject:self.notThisMonthButtons[index]];
+    }
     if (self.indexOfSelectedButton == (NSInteger)index) {
-        self.selectedButton.frame = rect;
+        [buttons addObject:self.selectedButton];
+    }
+
+    for (TSQCalendarDayButton *button in buttons) {
+        if (CGRectEqualToRect(button.frame, rect) == NO) {
+            button.frame = rect;
+
+            // image views are dependant on button size so they need to be regenerated
+            [self updateBackgroundImageForButton:button];
+        }
     }
 }
 
@@ -622,10 +639,6 @@
     self.indexOfSelectedButton = newIndexOfSelectedButton;
     
     if (newIndexOfSelectedButton >= 0) {
-        // update background image
-        UIImage *backgroundImage = isInitialDay ? [self initialDayBackgroundImage] : [self selectedBackgroundImage];
-        [self.selectedButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
-
         // update selected button colors
         TSQCalendarDayButton *dayButton = self.dayButtons[newIndexOfSelectedButton];
         self.selectedButton.day = dayButton.day;
@@ -634,6 +647,9 @@
         self.selectedButton.isInitialDay = isInitialDay;
         [self updateAppearanceForButton:self.selectedButton];
         [self updateSubtitlesForButton:self.selectedButton];
+
+        // update background image
+        [self updateBackgroundImageForButton:self.selectedButton];
 
         // update selected button text
         self.selectedButton.hidden = NO;
