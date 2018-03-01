@@ -631,6 +631,7 @@
         self.selectedButton.day = dayButton.day;
         self.selectedButton.type = isInitialDay ? CalendarButtonTypeInitialDay : CalendarButtonTypeSelected;
         self.selectedButton.enabled = isInitialDay;
+        self.selectedButton.isInitialDay = isInitialDay;
         [self updateAppearanceForButton:self.selectedButton];
         [self updateSubtitlesForButton:self.selectedButton];
 
