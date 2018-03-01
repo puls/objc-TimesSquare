@@ -36,6 +36,10 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
         self.iconImageView.userInteractionEnabled = NO;
         [self addSubview:self.iconImageView];
 
+        self.foregroundImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        self.foregroundImageView.userInteractionEnabled = NO;
+        [self addSubview:self.foregroundImageView];
+
         [self registerForNotifications];
     }
     return self;
@@ -56,6 +60,7 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
     self.subtitleLabel.hidden = !([self.subtitleLabel.text length] > 0);
     self.subtitleSymbolLabel.hidden = !([self.subtitleSymbolLabel.text length] > 0);
     self.iconImageView.hidden = (self.iconImageView.image == nil);
+    self.foregroundImageView.hidden = (self.foregroundImageView.image == nil);
 
     CGFloat iconWidth = self.iconImageView.image.size.width;
     CGFloat iconHeight = self.iconImageView.image.size.height;
@@ -103,8 +108,6 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
 
     if (! self.iconImageView.hidden)
     {
-        self.iconImageView.hidden = NO;
-
         CGFloat midX = CGRectGetMidX(self.bounds);
 
         CGFloat originX = midX - iconWidth/2.0f;
@@ -122,6 +125,10 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
                                       iconWidth,
                                       iconHeight);
         self.iconImageView.frame = CGRectIntegral(iconFrame);
+    }
+
+    if (self.foregroundImageView.hidden == false) {
+        self.foregroundImageView.frame = self.bounds;
     }
 }
 
@@ -153,6 +160,11 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
                          forKeyPath:@"image"
                             options:NSKeyValueObservingOptionNew
                             context:nil];
+
+    [self.foregroundImageView addObserver:self
+                               forKeyPath:@"image"
+                                  options:NSKeyValueObservingOptionNew
+                                  context:nil];
 }
 
 - (void)unregisterForNotifications

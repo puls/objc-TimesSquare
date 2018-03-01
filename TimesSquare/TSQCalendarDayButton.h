@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) UILabel *subtitleSymbolLabel;
 @property (nonatomic, strong) UIImageView *iconImageView;
+@property (nonatomic, strong) UIImageView *foregroundImageView;
 
 - (BOOL)isForToday;
 - (BOOL)isForDay:(NSDate *)date;
