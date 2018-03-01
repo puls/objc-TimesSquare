@@ -318,8 +318,8 @@
     // ** BACKGROUND IMAGE **/
 
     UIImage *delegateBackgroundImage = nil;
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:)]) {
-        delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date];
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:)]) {
+        delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size];
     }
 
     UIImage *backgroundImage = nil;
@@ -333,8 +333,8 @@
     // ** FOREGROUND IMAGE **/
 
     UIImage *forgroundImage = nil;
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:foregroundImageForDate:)]) {
-        forgroundImage = [self.calendarView.delegate calendarView:self.calendarView foregroundImageForDate:date];
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:foregroundImageForDate:size:)]) {
+        forgroundImage = [self.calendarView.delegate calendarView:self.calendarView foregroundImageForDate:date size:button.bounds.size];
     }
     button.foregroundImageView.image = forgroundImage;
 }
