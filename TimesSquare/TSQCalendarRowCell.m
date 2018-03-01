@@ -328,15 +328,7 @@
     } else if ([button isForToday]) {
         backgroundImage = [self todayBackgroundImage];
     }
-    [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 
-    // ** FOREGROUND IMAGE **/
-
-    UIImage *forgroundImage = nil;
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:foregroundImageForDate:size:)]) {
-        forgroundImage = [self.calendarView.delegate calendarView:self.calendarView foregroundImageForDate:date size:button.bounds.size];
-    }
-    button.foregroundImageView.image = forgroundImage;
 }
 
 - (void)updateTitleForButton:(TSQCalendarDayButton *)button
