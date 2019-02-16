@@ -351,7 +351,11 @@
 
     // add accessibility label
     NSString *accessibilityLabel = [self.accessibilityFormatter stringFromDate:date];
-    [button setAccessibilityLabel:accessibilityLabel];
+    if (button.type == 1) {
+        [button setAccessibilityLabel:[NSString stringWithFormat:@"%@ Disabled", accessibilityLabel]];
+    } else {
+        [button setAccessibilityLabel:accessibilityLabel];
+    }
 
     // check if we should use an attributed string
     NSDictionary *additionalAttributes = nil;
