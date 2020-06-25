@@ -190,6 +190,8 @@
             [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }
     }
+    
+    [dateRowCell refreshImages];
 }
 
 - (BOOL)scrollEnabled
@@ -326,6 +328,7 @@
         cell = [[[self rowCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
         cell.backgroundColor = self.backgroundColor;
         cell.calendarView = self;
+        [cell refreshImages];
     }
     return cell;
 }
@@ -350,6 +353,8 @@
 
     BOOL isBottomRow = indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1;
     [(TSQCalendarRowCell *)cell setBottomRow:isBottomRow];
+    
+    [(TSQCalendarRowCell *)cell refreshImages];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;

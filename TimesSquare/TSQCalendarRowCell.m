@@ -344,7 +344,8 @@
     if (date == nil) {
         return;
     }
-
+    
+    [self updateBackgroundImageForButton:button];
     NSString *title = [self.dayFormatter stringFromDate:date];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateDisabled];
@@ -604,10 +605,9 @@
     }
 
     for (TSQCalendarDayButton *button in buttons) {
-         [button setBackgroundImage:nil forState:UIControlStateNormal];
         if (CGRectEqualToRect(button.frame, rect) == NO) {
             button.frame = rect;
-            
+//            [self clearButtonImages:button];
             // image views are dependant on button size so they need to be regenerated
             [self updateBackgroundImageForButton:button];
         }
@@ -707,8 +707,24 @@
 - (void)prepareForReuse {
     [super prepareForReuse];
     
+//    for (TSQCalendarDayButton *button in self.dayButtons) {
+//        [self clearButtonImages:button];
+//    }
+    
+    NSLog(@"HERE");
+    
+    [self refreshImages];
+}
+
+- (void)refreshImages {
     for (TSQCalendarDayButton *button in self.dayButtons) {
-        [self clearButtonImages:button];
+        [self updateBackgroundImageForButton:button];
+        
+        if (button.currentBackgroundImage != nil) {
+            NSLog(@"Button with image refreshed");
+        } else {
+            NSLog(@"Wasted refresh");
+        }
     }
 }
 
