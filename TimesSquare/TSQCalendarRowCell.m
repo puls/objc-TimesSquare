@@ -652,6 +652,9 @@
         [self updateAppearanceForButton:self.selectedButton];
         [self updateSubtitlesForButton:self.selectedButton];
 
+        // update background image
+        [self updateBackgroundImageForButton:self.selectedButton];
+
         // update selected button text
         self.selectedButton.hidden = NO;
         self.selectedButton.enabled = YES;
