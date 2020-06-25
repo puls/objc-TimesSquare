@@ -190,8 +190,6 @@
             [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }
     }
-    
-    [dateRowCell refreshImages];
 }
 
 - (BOOL)scrollEnabled
@@ -328,7 +326,6 @@
         cell = [[[self rowCellClass] alloc] initWithCalendar:self.calendar reuseIdentifier:identifier];
         cell.backgroundColor = self.backgroundColor;
         cell.calendarView = self;
-        [cell refreshImages];
     }
     return cell;
 }
