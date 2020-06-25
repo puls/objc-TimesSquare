@@ -603,11 +603,10 @@
         [buttons addObject:self.selectedButton];
     }
 
-    [self prepareForReuse];
     for (TSQCalendarDayButton *button in buttons) {
+         [button setBackgroundImage:nil forState:UIControlStateNormal];
         if (CGRectEqualToRect(button.frame, rect) == NO) {
             button.frame = rect;
-            [self clearButtonImages:button];
             
             // image views are dependant on button size so they need to be regenerated
             [self updateBackgroundImageForButton:button];
