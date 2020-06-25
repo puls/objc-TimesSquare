@@ -603,9 +603,8 @@
         [buttons addObject:self.selectedButton];
     }
 
+    [self prepareForReuse];
     for (TSQCalendarDayButton *button in buttons) {
-       
-        
         if (CGRectEqualToRect(button.frame, rect) == NO) {
             button.frame = rect;
             [self clearButtonImages:button];
