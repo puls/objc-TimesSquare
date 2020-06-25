@@ -704,35 +704,10 @@
     self.monthOfBeginningDate = 0;
 }
 
-- (void)prepareForReuse {
-    [super prepareForReuse];
-    
-//    for (TSQCalendarDayButton *button in self.dayButtons) {
-//        [self clearButtonImages:button];
-//    }
-    
-    NSLog(@"HERE");
-    
-    [self refreshImages];
-}
-
 - (void)refreshImages {
     for (TSQCalendarDayButton *button in self.dayButtons) {
         [self updateBackgroundImageForButton:button];
-        
-        if (button.currentBackgroundImage != nil) {
-            NSLog(@"Button with image refreshed");
-        } else {
-            NSLog(@"Wasted refresh");
-        }
     }
-}
-
-- (void)clearButtonImages:(UIButton *)button
-{
-    [button setBackgroundImage:nil forState:UIControlStateNormal];
-    [button setBackgroundImage:nil forState:UIControlStateDisabled];
-    [button setBackgroundImage:nil forState:UIControlStateSelected];
 }
 
 @end
