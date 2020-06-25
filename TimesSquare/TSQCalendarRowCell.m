@@ -345,7 +345,6 @@
         return;
     }
     
-    [self updateBackgroundImageForButton:button];
     NSString *title = [self.dayFormatter stringFromDate:date];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateDisabled];
@@ -607,7 +606,6 @@
     for (TSQCalendarDayButton *button in buttons) {
         if (CGRectEqualToRect(button.frame, rect) == NO) {
             button.frame = rect;
-//            [self clearButtonImages:button];
             // image views are dependant on button size so they need to be regenerated
             [self updateBackgroundImageForButton:button];
         }
@@ -652,9 +650,6 @@
         self.selectedButton.isInitialDay = isInitialDay;
         [self updateAppearanceForButton:self.selectedButton];
         [self updateSubtitlesForButton:self.selectedButton];
-
-        // update background image
-        [self updateBackgroundImageForButton:self.selectedButton];
 
         // update selected button text
         self.selectedButton.hidden = NO;
