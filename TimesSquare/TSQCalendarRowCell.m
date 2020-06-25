@@ -604,6 +604,8 @@
     }
 
     for (TSQCalendarDayButton *button in buttons) {
+        [self clearButtonImages:button];
+        
         if (CGRectEqualToRect(button.frame, rect) == NO) {
             button.frame = rect;
 
@@ -701,6 +703,21 @@
 {
     [super setFirstOfMonth:firstOfMonth];
     self.monthOfBeginningDate = 0;
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    for (TSQCalendarDayButton *button in self.dayButtons) {
+        [self clearButtonImages:button];
+    }
+}
+
+- (void)clearButtonImages:(UIButton *)button
+{
+    [button setBackgroundImage:nil forState:UIControlStateNormal];
+    [button setBackgroundImage:nil forState:UIControlStateDisabled];
+    [button setBackgroundImage:nil forState:UIControlStateSelected];
 }
 
 @end
