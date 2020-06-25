@@ -345,6 +345,7 @@
         return;
     }
     
+    [self updateBackgroundImageForButton:button];
     NSString *title = [self.dayFormatter stringFromDate:date];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateDisabled];
