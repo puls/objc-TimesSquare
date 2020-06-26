@@ -123,6 +123,4 @@ This is white by default.
  */
 - (void)selectColumnForInitialDate:(NSDate *)date;
 
-- (void)refreshImages;
-
 @end

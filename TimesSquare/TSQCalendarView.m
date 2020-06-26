@@ -350,8 +350,6 @@
 
     BOOL isBottomRow = indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1;
     [(TSQCalendarRowCell *)cell setBottomRow:isBottomRow];
-    
-//    [(TSQCalendarRowCell *)cell refreshImages];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;

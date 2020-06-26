@@ -703,10 +703,4 @@
     self.monthOfBeginningDate = 0;
 }
 
-- (void)refreshImages {
-    for (TSQCalendarDayButton *button in self.dayButtons) {
-        [self updateBackgroundImageForButton:button];
-    }
-}
-
 @end
