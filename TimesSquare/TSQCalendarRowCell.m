@@ -318,23 +318,26 @@
 
 - (void)updateBackgroundImageForButton:(TSQCalendarDayButton *)button
 {
-    NSDate *date = button.day;
+    if (button.type != CalendarButtonTypeOtherMonth)
+    {
+        NSDate *date = button.day;
 
-    UIImage *delegateBackgroundImage = nil;
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:)]) {
-        delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size];
+        UIImage *delegateBackgroundImage = nil;
+        if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:)]) {
+            delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size];
+        }
+
+        UIImage *backgroundImage = nil;
+        if (delegateBackgroundImage != nil) {
+            backgroundImage = delegateBackgroundImage;
+        } else if (button.type == CalendarButtonTypeSelected) {
+            backgroundImage = button.isInitialDay ? [self initialDayBackgroundImage] : [self selectedBackgroundImage];
+        } else if ([button isForToday]) {
+            backgroundImage = [self todayBackgroundImage];
+        }
+
+        [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
     }
-
-    UIImage *backgroundImage = nil;
-    if (delegateBackgroundImage != nil) {
-        backgroundImage = delegateBackgroundImage;
-    } else if (button.type == CalendarButtonTypeSelected) {
-        backgroundImage = button.isInitialDay ? [self initialDayBackgroundImage] : [self selectedBackgroundImage];
-    } else if ([button isForToday]) {
-        backgroundImage = [self todayBackgroundImage];
-    }
-
-    [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 }
 
 - (void)updateTitleForButton:(TSQCalendarDayButton *)button
@@ -344,6 +347,8 @@
     if (date == nil) {
         return;
     }
+    
+    
     
     [self updateBackgroundImageForButton:button];
     NSString *title = [self.dayFormatter stringFromDate:date];
