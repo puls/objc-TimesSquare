@@ -575,7 +575,7 @@
     NSDate *selectedDate = dayButton.day;
     self.calendarView.selectedDate = selectedDate;
     
-    if (initialNilDateState && dayButton.isInitialDay) {
+    if (initialNilDateState && [dayButton.day isEqualToDate:self.calendarView.initialDate]) {
         [self updateBackgroundImageForButton:dayButton];
     }
 }
