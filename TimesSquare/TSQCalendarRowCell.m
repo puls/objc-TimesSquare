@@ -318,13 +318,13 @@
 
 - (void)updateBackgroundImageForButton:(TSQCalendarDayButton *)button
 {
-    if (button.type != CalendarButtonTypeOtherMonth)
+    if (button.type != CalendarButtonTypeOtherMonth && button.isInitialDay)
     {
         NSDate *date = button.day;
 
         UIImage *delegateBackgroundImage = nil;
-        if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:)]) {
-            delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size];
+        if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:isInThisMonth:)]) {
+            delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size isInThisMonth:button.type == CalendarButtonTypeOtherMonth];
         }
 
         UIImage *backgroundImage = nil;
