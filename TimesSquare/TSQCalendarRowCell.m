@@ -322,11 +322,7 @@
     
     UIImage *delegateBackgroundImage = nil;
     if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:isInThisMonth:)]) {
-        
-        
-        BOOL thisMonth = button.type != CalendarButtonTypeOtherMonth || (button.type == button.isInitialDay && button.isSelected);
-        
-        NSLog(@"%ld", (long)button.buttonType);
+        BOOL thisMonth = button.type != CalendarButtonTypeOtherMonth;
         
         delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size isInThisMonth:thisMonth];
     }
@@ -350,8 +346,6 @@
     if (date == nil) {
         return;
     }
-    
-    
     
     [self updateBackgroundImageForButton:button];
     NSString *title = [self.dayFormatter stringFromDate:date];
@@ -576,9 +570,14 @@
 
 - (IBAction)dateButtonPressed:(id)sender;
 {
+    BOOL initialNilDateState = self.calendarView.selectedDate == nil;
     TSQCalendarDayButton *dayButton = (TSQCalendarDayButton *)sender;
     NSDate *selectedDate = dayButton.day;
     self.calendarView.selectedDate = selectedDate;
+    
+    if (initialNilDateState && dayButton.isInitialDay) {
+        [self updateBackgroundImageForButton:dayButton];
+    }
 }
 
 - (void)layoutSubviews;
