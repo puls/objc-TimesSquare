@@ -319,12 +319,14 @@
 - (void)updateBackgroundImageForButton:(TSQCalendarDayButton *)button
 {
     NSDate *date = button.day;
-
+    
     UIImage *delegateBackgroundImage = nil;
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:)]) {
-        delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size];
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:isInThisMonth:)]) {
+        BOOL thisMonth = button.type != CalendarButtonTypeOtherMonth;
+        
+        delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size isInThisMonth:thisMonth];
     }
-
+    
     UIImage *backgroundImage = nil;
     if (delegateBackgroundImage != nil) {
         backgroundImage = delegateBackgroundImage;
@@ -333,7 +335,7 @@
     } else if ([button isForToday]) {
         backgroundImage = [self todayBackgroundImage];
     }
-
+    
     [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
 }
 
@@ -344,7 +346,8 @@
     if (date == nil) {
         return;
     }
-
+    
+    [self updateBackgroundImageForButton:button];
     NSString *title = [self.dayFormatter stringFromDate:date];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateDisabled];
@@ -567,9 +570,14 @@
 
 - (IBAction)dateButtonPressed:(id)sender;
 {
+    BOOL initialNilDateState = self.calendarView.selectedDate == nil;
     TSQCalendarDayButton *dayButton = (TSQCalendarDayButton *)sender;
     NSDate *selectedDate = dayButton.day;
     self.calendarView.selectedDate = selectedDate;
+    
+    if (initialNilDateState && [dayButton.day isEqualToDate:self.calendarView.initialDate]) {
+        [self updateBackgroundImageForButton:dayButton];
+    }
 }
 
 - (void)layoutSubviews;
@@ -606,7 +614,6 @@
     for (TSQCalendarDayButton *button in buttons) {
         if (CGRectEqualToRect(button.frame, rect) == NO) {
             button.frame = rect;
-
             // image views are dependant on button size so they need to be regenerated
             [self updateBackgroundImageForButton:button];
         }
