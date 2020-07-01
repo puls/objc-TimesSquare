@@ -42,6 +42,15 @@
  */
 @property (nonatomic, strong) NSDate *selectedDate;
 
+
+/** The initial date to be highlighted on the calendar.
+ 
+ Set this property to any `NSDate`; `TSQCalendarView` will only look at the month, day, and year.
+ You can read and write this property
+ */
+
+@property (nonatomic, strong) NSDate *initialDate;
+
 /** @name Calendar Configuration */
 
 /** The calendar type to use when displaying.
@@ -83,6 +92,12 @@
  */
 @property (nonatomic) CGPoint contentOffset;
 
+/** The size of the calendar content view
+ 
+ This property is equivalent to the one defined on `UIScrollView`.
+ */
+@property (nonatomic) CGSize contentSize;
+
 /** The cell class to use for month headers.
  
  Since there's very little configuration to be done for each cell, this can be set as a shortcut to implementing a data source.
@@ -96,6 +111,14 @@
  The class should be a subclass of `TSQCalendarRowCell` or at least implement all of its methods.
  */
 @property (nonatomic, strong) Class rowCellClass;
+
+// Returns and modifies the scrollEnabled on the table view
+
+@property (nonatomic) BOOL scrollEnabled;
+
+// Returns and modifies the showsVerticalScrollIndicator on the table view
+
+@property (nonatomic) BOOL showsVerticalScrollIndicator;
 
 /** Scrolls the receiver until the specified date month is completely visible.
 
@@ -133,6 +156,24 @@
  @return Whether or not the date is selectable.
  */
 - (BOOL)calendarView:(TSQCalendarView *)calendarView shouldSelectDate:(NSDate *)date;
+
+- (NSString*)calendarView: (TSQCalendarView *)calendarView subtitleForDate: (NSDate*) date;
+
+- (NSString*)calendarView: (TSQCalendarView *)calendarView subtitleTrailingSymbolForDate: (NSDate*) date;
+
+- (UIColor*)calendarView: (TSQCalendarView *)calendarView dateColorForDate: (NSDate*) date;
+
+- (UIColor*)calendarView: (TSQCalendarView *)calendarView dateShadowColorForDate: (NSDate*) date;
+
+- (UIColor*)calendarView: (TSQCalendarView *)calendarView disabledDateColorForDate: (NSDate*) date;
+
+- (UIColor*)calendarView: (TSQCalendarView *)calendarView subtitleColorForDate: (NSDate*) date;
+
+- (UIColor*)calendarView: (TSQCalendarView *)calendarView selectedDateColorForDate: (NSDate*) date;
+
+- (UIImage*)calendarView: (TSQCalendarView *)calendarView backgroundImageForDate: (NSDate*) date size:(CGSize)size isInThisMonth:(BOOL)thisMonth isSelected:(BOOL)isSelected;
+
+- (NSDictionary*)calendarView: (TSQCalendarView *)calendarView additionalDateTextAttributesForDate: (NSDate*) date;
 
 /** Tells the delegate that a particular date was selected.
  
