@@ -156,6 +156,7 @@
 
 - (void)updateSelectedDate:(NSDate *)date isInitialDate:(BOOL)isInitialDate
 {
+    [[self cellForRowAtDate:_selectedDate] deselectColumnForDate:self.selectedDate];
     // clear existing selected cells
     [[self cellForRowAtDate:_selectedDate] selectColumnForDate:nil];
     [[self cellForRowAtDate:_initialDate] selectColumnForDate:nil];
