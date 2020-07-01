@@ -123,4 +123,6 @@ This is white by default.
  */
 - (void)selectColumnForInitialDate:(NSDate *)date;
 
+- (void)deselectColumnForDate:(NSDate *)date; 
+
 @end

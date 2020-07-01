@@ -316,27 +316,19 @@
     button.iconImageView.tintColor = iconTintColor;
 }
 
-- (void)updateBackgroundImageForButton:(TSQCalendarDayButton *)button
+- (void)updateBackgroundImageForButton:(TSQCalendarDayButton *)button isSelected:(BOOL)isSelected
 {
     NSDate *date = button.day;
     
     UIImage *delegateBackgroundImage = nil;
-    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:isInThisMonth:)]) {
+    if ([self.calendarView.delegate respondsToSelector:@selector(calendarView:backgroundImageForDate:size:isInThisMonth:isSelected:)]) {
         BOOL thisMonth = button.type != CalendarButtonTypeOtherMonth;
         
-        delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size isInThisMonth:thisMonth];
+        delegateBackgroundImage = [self.calendarView.delegate calendarView:self.calendarView backgroundImageForDate:date size:button.bounds.size isInThisMonth:thisMonth isSelected:isSelected];
     }
     
-    UIImage *backgroundImage = nil;
-    if (delegateBackgroundImage != nil) {
-        backgroundImage = delegateBackgroundImage;
-    } else if (button.type == CalendarButtonTypeSelected) {
-        backgroundImage = button.isInitialDay ? [self initialDayBackgroundImage] : [self selectedBackgroundImage];
-    } else if ([button isForToday]) {
-        backgroundImage = [self todayBackgroundImage];
-    }
-    
-    [button setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+   
+    [button setBackgroundImage:delegateBackgroundImage forState:UIControlStateNormal];
 }
 
 - (void)updateTitleForButton:(TSQCalendarDayButton *)button
@@ -346,8 +338,8 @@
     if (date == nil) {
         return;
     }
-    
-    [self updateBackgroundImageForButton:button];
+
+    [self updateBackgroundImageForButton:button isSelected:[self.calendarView.selectedDate isEqualToDate:button.day]];
     NSString *title = [self.dayFormatter stringFromDate:date];
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateDisabled];
@@ -570,14 +562,10 @@
 
 - (IBAction)dateButtonPressed:(id)sender;
 {
-    BOOL initialNilDateState = self.calendarView.selectedDate == nil;
     TSQCalendarDayButton *dayButton = (TSQCalendarDayButton *)sender;
     NSDate *selectedDate = dayButton.day;
     self.calendarView.selectedDate = selectedDate;
-    
-    if (initialNilDateState && [dayButton.day isEqualToDate:self.calendarView.initialDate]) {
-        [self updateBackgroundImageForButton:dayButton];
-    }
+    [self updateBackgroundImageForButton:dayButton isSelected:YES];
 }
 
 - (void)layoutSubviews;
@@ -615,7 +603,7 @@
         if (CGRectEqualToRect(button.frame, rect) == NO) {
             button.frame = rect;
             // image views are dependant on button size so they need to be regenerated
-            [self updateBackgroundImageForButton:button];
+            [self updateBackgroundImageForButton:button isSelected:[self.calendarView.selectedDate isEqualToDate:button.day]];
         }
     }
 }
@@ -623,6 +611,17 @@
 - (void)selectColumnForDate:(NSDate *)date;
 {
     [self selectColumnForDate:date isInitialDay:NO];
+}
+
+- (void)deselectColumnForDate:(NSDate *)date
+{
+    for (TSQCalendarDayButton *button in self.dayButtons) {
+        if ([button.day isEqualToDate:date])
+        {
+            [self updateBackgroundImageForButton:button isSelected:NO];
+            break; 
+        }
+    }
 }
 
 - (void)selectColumnForInitialDate:(NSDate *)date
@@ -660,7 +659,7 @@
         [self updateSubtitlesForButton:self.selectedButton];
 
         // update background image
-        [self updateBackgroundImageForButton:self.selectedButton];
+        [self updateBackgroundImageForButton:self.selectedButton isSelected:NO];
 
         // update selected button text
         self.selectedButton.hidden = NO;
