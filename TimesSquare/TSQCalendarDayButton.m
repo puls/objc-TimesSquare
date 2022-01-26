@@ -21,12 +21,12 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
         self.type = CalendarButtonTypeNormalDay;
 
         [self setTitleEdgeInsets:UIEdgeInsetsMake(-10, 0, 0, 0)];
-        self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        self.subtitleLabel.textAlignment = NSTextAlignmentCenter;
-        self.subtitleLabel.userInteractionEnabled = NO;
-        self.subtitleLabel.adjustsFontSizeToFitWidth = NO;
-        self.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-        [self addSubview:self.subtitleLabel];
+        self.tsqSubtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.tsqSubtitleLabel.textAlignment = NSTextAlignmentCenter;
+        self.tsqSubtitleLabel.userInteractionEnabled = NO;
+        self.tsqSubtitleLabel.adjustsFontSizeToFitWidth = NO;
+        self.tsqSubtitleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        [self addSubview:self.tsqSubtitleLabel];
         
         self.subtitleSymbolLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.subtitleSymbolLabel.userInteractionEnabled = NO;
@@ -53,17 +53,17 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
     CGFloat midX = CGRectGetMidX(self.bounds);
     CGFloat subtitleCenterY = 0.75f * CGRectGetMaxY(self.bounds);
 
-    self.subtitleLabel.hidden = !([self.subtitleLabel.text length] > 0);
+    self.tsqSubtitleLabel.hidden = !([self.tsqSubtitleLabel.text length] > 0);
     self.subtitleSymbolLabel.hidden = !([self.subtitleSymbolLabel.text length] > 0);
     self.iconImageView.hidden = (self.iconImageView.image == nil);
 
     CGFloat iconWidth = self.iconImageView.image.size.width;
     CGFloat iconHeight = self.iconImageView.image.size.height;
 
-    if (! self.subtitleLabel.hidden)
+    if (! self.tsqSubtitleLabel.hidden)
     {
         CGSize maxSubtitleSize = [self maxSubtitleSize];
-        CGSize sizeThatFits = [self.subtitleLabel sizeThatFits:maxSubtitleSize];
+        CGSize sizeThatFits = [self.tsqSubtitleLabel sizeThatFits:maxSubtitleSize];
 
         CGFloat subtitleWidth = fminf(sizeThatFits.width, maxSubtitleSize.width);
         CGFloat subtitleHeight = fminf(sizeThatFits.height, maxSubtitleSize.height);
@@ -74,7 +74,7 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
                                           floorf(originY),
                                           subtitleWidth,
                                           subtitleHeight);
-        self.subtitleLabel.frame = CGRectIntegral(subtitleFrame);
+        self.tsqSubtitleLabel.frame = CGRectIntegral(subtitleFrame);
     }
 
     if (! self.subtitleSymbolLabel.hidden)
@@ -87,11 +87,11 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
         CGFloat originX = CGRectGetMaxX(self.bounds) - TSQCalendarRowCellSubtitleBuffer;
         CGFloat originY = subtitleCenterY - symbolHeight/2.0f;
 
-        if (! self.subtitleLabel.hidden)
+        if (! self.tsqSubtitleLabel.hidden)
         {
             // when subtitle is showing, shift symbol to right of subtitle
             CGFloat symbolBuffer = (TSQCalendarRowCellSubtitleBuffer - symbolWidth)/2.0f;
-            originX = CGRectGetMaxX(self.subtitleLabel.frame) + symbolBuffer;
+            originX = CGRectGetMaxX(self.tsqSubtitleLabel.frame) + symbolBuffer;
         }
 
         CGRect symbolFrame = CGRectMake(floorf(originX),
@@ -108,11 +108,11 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
         CGFloat originX = midX - iconWidth/2.0f;
         CGFloat originY = subtitleCenterY - iconHeight/2.0f;
 
-        if (! self.subtitleLabel.hidden)
+        if (! self.tsqSubtitleLabel.hidden)
         {
             // when subtitle is showing, shift icon to left of subtitle
             CGFloat iconBuffer = (TSQCalendarRowCellSubtitleBuffer - iconWidth)/2.0f;
-            originX = self.subtitleLabel.frame.origin.x - iconWidth - iconBuffer;
+            originX = self.tsqSubtitleLabel.frame.origin.x - iconWidth - iconBuffer;
         }
 
         CGRect iconFrame = CGRectMake(floorf(originX),
@@ -127,12 +127,12 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
 
 - (void)registerForNotifications
 {
-    [self.subtitleLabel addObserver:self
+    [self.tsqSubtitleLabel addObserver:self
                          forKeyPath:@"font"
                             options:NSKeyValueObservingOptionNew
                             context:nil];
 
-    [self.subtitleLabel addObserver:self
+    [self.tsqSubtitleLabel addObserver:self
                          forKeyPath:@"text"
                             options:NSKeyValueObservingOptionNew
                             context:nil];
@@ -155,8 +155,8 @@ static const CGFloat TSQCalendarRowCellSubtitleBuffer = 15.0f;
 
 - (void)unregisterForNotifications
 {
-    [self.subtitleLabel removeObserver:self forKeyPath:@"font"];
-    [self.subtitleLabel removeObserver:self forKeyPath:@"text"];
+    [self.tsqSubtitleLabel removeObserver:self forKeyPath:@"font"];
+    [self.tsqSubtitleLabel removeObserver:self forKeyPath:@"text"];
     [self.subtitleSymbolLabel removeObserver:self forKeyPath:@"font"];
     [self.subtitleSymbolLabel removeObserver:self forKeyPath:@"text"];
     [self.iconImageView removeObserver:self forKeyPath:@"image"];

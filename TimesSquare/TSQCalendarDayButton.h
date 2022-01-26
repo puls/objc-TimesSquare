@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, CalendarButtonType) {
 @property (nonatomic, assign) CalendarButtonType type;
 @property (nonatomic, strong) NSDate *day;
 
-@property (nonatomic, strong) UILabel *subtitleLabel;
+@property (nonatomic, strong) UILabel *tsqSubtitleLabel;
 @property (nonatomic, strong) UILabel *subtitleSymbolLabel;
 @property (nonatomic, strong) UIImageView *iconImageView;
 
