@@ -595,7 +595,7 @@
     if (index < self.notThisMonthButtons.count) {
         [buttons addObject:self.notThisMonthButtons[index]];
     }
-    if (self.indexOfSelectedButton == (NSInteger)index) {
+    if (self.indexOfSelectedButton == (NSInteger)index && self.selectedButton) {
         [buttons addObject:self.selectedButton];
     }
 
