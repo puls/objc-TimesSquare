@@ -115,7 +115,7 @@
     [self updateAppearanceForButton:button];
 
     button.titleLabel.font = [self dayOfMonthFont];
-    button.subtitleLabel.font = [self subtitleFont];
+    button.tsqSubtitleLabel.font = [self subtitleFont];
     button.subtitleSymbolLabel.font = [self subtitleFont];
     button.titleLabel.shadowOffset = self.shadowOffset;
     button.adjustsImageWhenDisabled = NO;
@@ -481,9 +481,9 @@
         }
     }
 
-    button.subtitleLabel.text = subtitle;
+    button.tsqSubtitleLabel.text = subtitle;
     button.subtitleSymbolLabel.text = subtitleSymbol;
-    button.subtitleLabel.textColor = subtitleColor;
+    button.tsqSubtitleLabel.textColor = subtitleColor;
     button.subtitleSymbolLabel.textColor = subtitleColor;
 }
 
@@ -665,7 +665,7 @@
         self.selectedButton.hidden = NO;
         self.selectedButton.enabled = YES;
         [self updateTitleForButton:self.selectedButton];
-        self.selectedButton.subtitleLabel.text = dayButton.subtitleLabel.text;
+        self.selectedButton.tsqSubtitleLabel.text = dayButton.tsqSubtitleLabel.text;
         self.selectedButton.subtitleSymbolLabel.text = dayButton.subtitleSymbolLabel.text;
     } else {
         self.selectedButton.hidden = YES;
