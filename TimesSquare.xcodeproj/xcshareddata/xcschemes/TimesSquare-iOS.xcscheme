@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A806805A16700FD70071C71E"
-               BuildableName = "libTimesSquare.a"
-               BlueprintName = "TimesSquare"
+               BlueprintIdentifier = "5C4733981AC3575B00269A66"
+               BuildableName = "TimesSquare.framework"
+               BlueprintName = "TimesSquare-iOS"
+               ReferencedContainer = "container:TimesSquare.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5C4733A21AC3575C00269A66"
+               BuildableName = "TimesSquare-iOSTests.xctest"
+               BlueprintName = "TimesSquare-iOSTests"
                ReferencedContainer = "container:TimesSquare.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,14 +41,23 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5C4733981AC3575B00269A66"
+            BuildableName = "TimesSquare.framework"
+            BlueprintName = "TimesSquare-iOS"
+            ReferencedContainer = "container:TimesSquare.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A806806B16700FD80071C71E"
-               BuildableName = "TimesSquareTests.octest"
-               BlueprintName = "TimesSquareTests"
+               BlueprintIdentifier = "5C4733A21AC3575C00269A66"
+               BuildableName = "TimesSquare-iOSTests.xctest"
+               BlueprintName = "TimesSquare-iOSTests"
                ReferencedContainer = "container:TimesSquare.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -53,9 +76,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A806805A16700FD70071C71E"
-            BuildableName = "libTimesSquare.a"
-            BlueprintName = "TimesSquare"
+            BlueprintIdentifier = "5C4733981AC3575B00269A66"
+            BuildableName = "TimesSquare.framework"
+            BlueprintName = "TimesSquare-iOS"
             ReferencedContainer = "container:TimesSquare.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,6 +89,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5C4733981AC3575B00269A66"
+            BuildableName = "TimesSquare.framework"
+            BlueprintName = "TimesSquare-iOS"
+            ReferencedContainer = "container:TimesSquare.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
